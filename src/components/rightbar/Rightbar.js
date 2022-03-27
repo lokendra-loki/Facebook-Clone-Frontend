@@ -19,8 +19,11 @@ function Rightbar() {
           <div className="rightBarFriend">
             <div className="rightBarProfileImageContainer">
               <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline">lok</span>
+              <span className="rightBarOnline"></span>
             </div>
+
+            {/* ------ */}
+            <span className="rightBarUsername">Samir Kushmi</span>
           </div>
         </ul>
       </div>
