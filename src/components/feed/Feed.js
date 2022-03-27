@@ -6,8 +6,7 @@ function Feed() {
   return (
     <div className='feed'>
       <div className="feedWrapper">
-        kmfpokjopfdj
-        <Share/>
+        <Share />
       </div>
     </div>
   )
