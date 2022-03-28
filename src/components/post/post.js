@@ -17,7 +17,7 @@ function Post({ post }) {
                     {/* PostTopLeft-------------------------------- */}
                     <div className="postTopLeft">
                         <img className='postProfileImg' src="/assets/person/1.jpeg" alt="" />
-                        <span className="postUsername">{Users.filter(u =>u.id === post.userId)[0].username}</span>
+                        <span className="postUsername">loki chaulagain</span>
                         <span className="postDate">{post.date}</span>
                     </div> 
 
