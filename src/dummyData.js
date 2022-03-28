@@ -88,8 +88,8 @@ export const Posts = [
         desc: "Have a great day",
         photo: "assets/post/1.jpeg",
         date: "45 mins ago",
-        like: 11,
         userId: 4,
+        like: 11,
         comment: 2
     },
 

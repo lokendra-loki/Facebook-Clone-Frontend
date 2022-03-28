@@ -1,9 +1,14 @@
 import React from 'react'
 import "./post.scss"
 import { MoreVert } from "@material-ui/icons"
+import { Users } from '../../dummyData'
+
 
 function Post({ post }) {
-    console.log(post);
+    // const user=Users.filter(u=>u.id===1)
+    // console.log(user[0].username)
+   
+    
     return (
         <div className='post'>
             <div className="postWrapper">
@@ -12,9 +17,9 @@ function Post({ post }) {
                     {/* PostTopLeft-------------------------------- */}
                     <div className="postTopLeft">
                         <img className='postProfileImg' src="/assets/person/1.jpeg" alt="" />
-                        <span className="postUsername">Loki Chaulagain</span>
+                        <span className="postUsername">{Users.filter(u =>u.id === post.userId)[0].username}</span>
                         <span className="postDate">{post.date}</span>
-                    </div>
+                    </div> 
 
                     {/* PostTopRight-------------------------------- */}
                     <div className="postTopRight">
