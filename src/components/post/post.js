@@ -2,7 +2,8 @@ import React from 'react'
 import "./post.scss"
 import { MoreVert } from "@material-ui/icons"
 
-function Post() {
+function Post({ post }) {
+    console.log(post);
     return (
         <div className='post'>
             <div className="postWrapper">
@@ -12,7 +13,7 @@ function Post() {
                     <div className="postTopLeft">
                         <img className='postProfileImg' src="/assets/person/1.jpeg" alt="" />
                         <span className="postUsername">Loki Chaulagain</span>
-                        <span className="postDate">5 mins ago</span>
+                        <span className="postDate">{post.date}</span>
                     </div>
 
                     {/* PostTopRight-------------------------------- */}
@@ -24,8 +25,8 @@ function Post() {
 
                 {/* PostCenter-------------------------------- */}
                 <div className="postCenter">
-                    <span className="postText">Hey! Its my first post</span>
-                    <img className='postImg' src="/assets/post/1.jpeg" alt="" />
+                    <span className="postText">{post?.desc}</span>
+                    <img className='postImg' src={post.photo}  alt="" />
 
                 </div>
 
@@ -35,12 +36,12 @@ function Post() {
                     <div className="postBottomLeft">
                         <img className='likeIcon' src="/assets/like.png" alt="" />
                         <img className='likeIcon' src="/assets/heart.png" alt="" />
-                        <span className="postLikeCounter">32 people like it</span>
+                        <span className="postLikeCounter">{post.like } people like it</span>
                     </div>
 
                     {/* PostButtomRight-------------------------------- */}
                     <div className="postBottomRight">
-                        <span className="postCommentText">9 comments</span>
+                        <span className="postCommentText">{post.comment} comments</span>
                     </div>
                 </div>
             </div>
