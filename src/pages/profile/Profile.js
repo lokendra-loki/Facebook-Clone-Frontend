@@ -28,7 +28,8 @@ function Profile() {
 
                     <div className="profileRightBottom">
                         <Feed />
-                        <Rightbar />
+                        <Rightbar profile/>
+                        {/* here profile is the props */}
                     </div>
 
 

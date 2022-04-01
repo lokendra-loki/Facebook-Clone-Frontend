@@ -14,6 +14,7 @@ function Home() {
             <div className="homeContainer">
                 <Leftbar />
                 <Feed />
+                {/* we didnot send any props here so its home page */}
                 <Rightbar />
             </div>
 
