@@ -23,58 +23,19 @@
     }
 
     // RightBarAdImage-------------------------------------
-    .rightBarAd{
-        width: 100%;
-        border-radius: 10px;
-        margin: 20px 0px;
-
+    .rightBarAd {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0px;
     }
 
-    .rightBarTitle{
-        margin-bottom: 20px;
+    .rightBarTitle {
+      margin-bottom: 20px;
     }
-  .rightBarFriendList{
+    .rightBarFriendList {
       padding: 0;
       margin: 0;
       list-style: none;
-      .rightBarFriend{
-          display: flex;
-          align-items: center;
-          margin-bottom: 15px;
-
-          .rightBarProfileImageContainer{
-              display: flex;
-              align-items: center;
-              margin-right: 10px;
-              position: relative;
-
-              .rightBarprofileImg{
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-              }
-
-              .rightBarOnline{
-                  width: 12px;
-                  height: 12px;
-                  border-radius: 50%;
-                  background-color: limegreen;
-                  position: absolute;
-                  top: -2px;
-                  right: 0px;
-                  border: 1.5px solid white;
-              }
-
-              
-          }
-
-          .rightBarUsername{
-              font-weight: 500;
-
-          }
-      }
-  }
-    
+    }
   }
 }

@@ -6,18 +6,18 @@ export const Users = [
         username: "Samir Kushmi"
     },
 
-
     {
         id: 2,
         profilePicture: "assets/person/2.jpeg",
         username: "Yadav Cahaulagain"
     },
-
+    
     {
         id: 3,
         profilePicture: "assets/person/3.jpeg",
         username: "Laxmi Chaulagain"
     },
+
     {
         id: 4,
         profilePicture: "assets/person/4.jpeg",

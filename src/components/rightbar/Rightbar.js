@@ -1,5 +1,7 @@
 import React from 'react'
 import "./rightbar.scss"
+import { Users } from "../../dummyData"
+import Online from '../online/Online'
 
 function Rightbar() {
   return (
@@ -16,116 +18,21 @@ function Rightbar() {
         <img src="/assets/ad.png" alt="" className="rightBarAd" />
         <h4 className="rightBarTitle">Online Friends</h4>
         <ul className="rightBarFriendList">
-
-          <div className="rightBarFriend">
+          {/* <li className="rightBarFriend">
             <div className="rightBarProfileImageContainer">
               <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
               <span className="rightBarOnline"></span>
             </div>
-
-            {/* ------ */}
             <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
 
+          </li> */}
 
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
+          {/* <Online/> */}
 
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
+          {Users.map(u => (
+            <Online key={u.id} user={u}/>
+          ))}
 
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-
-
-          <div className="rightBarFriend">
-            <div className="rightBarProfileImageContainer">
-              <img src="/assets/person/3.jpeg" alt="" className="rightBarprofileImg" />
-              <span className="rightBarOnline"></span>
-            </div>
-
-            {/* ------ */}
-            <span className="rightBarUsername">Samir Kushmi</span>
-          </div>
-          
         </ul>
       </div>
     </div>

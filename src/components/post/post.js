@@ -1,14 +1,10 @@
 import React from 'react'
 import "./post.scss"
 import { MoreVert } from "@material-ui/icons"
-import { Users } from '../../dummyData'
+
 
 
 function Post({ post }) {
-    // const user=Users.filter(u=>u.id===1)
-    // console.log(user[0].username)
-   
-    
     return (
         <div className='post'>
             <div className="postWrapper">
@@ -19,7 +15,7 @@ function Post({ post }) {
                         <img className='postProfileImg' src="/assets/person/1.jpeg" alt="" />
                         <span className="postUsername">loki chaulagain</span>
                         <span className="postDate">{post.date}</span>
-                    </div> 
+                    </div>
 
                     {/* PostTopRight-------------------------------- */}
                     <div className="postTopRight">
@@ -31,7 +27,7 @@ function Post({ post }) {
                 {/* PostCenter-------------------------------- */}
                 <div className="postCenter">
                     <span className="postText">{post?.desc}</span>
-                    <img className='postImg' src={post.photo}  alt="" />
+                    <img className='postImg' src={post.photo} alt="" />
 
                 </div>
 
@@ -41,7 +37,7 @@ function Post({ post }) {
                     <div className="postBottomLeft">
                         <img className='likeIcon' src="/assets/like.png" alt="" />
                         <img className='likeIcon' src="/assets/heart.png" alt="" />
-                        <span className="postLikeCounter">{post.like } people like it</span>
+                        <span className="postLikeCounter">{post.like} people like it</span>
                     </div>
 
                     {/* PostButtomRight-------------------------------- */}
