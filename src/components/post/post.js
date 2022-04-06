@@ -5,20 +5,22 @@ import { useState } from 'react';
 
 
 
+
+
 function Post({ post }) {
-    
+
     // -----------------------------------
-     const [like,setLike]=useState(post.like);
-     const [isLiked,setIsLikeed]=useState(false);
+    const [like, setLike] = useState(post.like);
+    const [isLiked, setIsLikeed] = useState(false);
     // ---------------------------------
-    const likeHandler=()=>{
-        setLike(isLiked ? like-1 : like+1);
+    const likeHandler = () => {
+        setLike(isLiked ? like - 1 : like + 1);
         setIsLikeed(!isLiked);
-       
+
     }
     //-------------------------------
-    
-     
+
+
 
 
     return (
@@ -29,7 +31,16 @@ function Post({ post }) {
                     {/* PostTopLeft-------------------------------- */}
                     <div className="postTopLeft">
                         <img className='postProfileImg' src="/assets/person/1.jpeg" alt="" />
+                        {/* <img className="postProfileImg" src={Users.filter((u) => u.id === post?.userId)[0].profilePicture} alt=""/> */}
+
+
+
+
+
                         <span className="postUsername">loki chaulagain</span>
+                        {/* <span className="postUsername">
+                        {Users.filter((u) => u.id === post?.userId)[0].username}
+                        </span> */}
                         <span className="postDate">{post.date}</span>
                     </div>
 

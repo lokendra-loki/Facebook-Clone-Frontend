@@ -1,16 +1,31 @@
 import React from 'react'
-// import Register from './components/register/Register'
-// import Login from './pages/login/Login'
 import Home from './pages/home/Home'
-// import Profile from './pages/profile/Profile'
+import Register from './components/register/Register'
+import Login from './pages/login/Login'
+import Profile from './pages/profile/Profile'
+
+
+//React-Router-dom
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <Home/>
-    // <Profile/>
-    // <Login/>
-    // <Register/>
-    
+    <Router>
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile/:username" element={<Profile />} />
+        {/* username use garera profile page ma janxau we are not going to profile page directly */}
+
+      </Routes>
+    </Router>
   )
 }
 

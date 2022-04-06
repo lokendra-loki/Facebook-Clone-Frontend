@@ -11,7 +11,7 @@ function Feed() {
         <Share />
 
         {/* Posts---------------- */}
-        {Posts.map(p => (
+        {Posts.map((p) => (
           <Post key={p.id} post= {p}/>
         ))}
 
