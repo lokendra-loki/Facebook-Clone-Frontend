@@ -5,7 +5,7 @@ import Online from '../online/Online'
 
 
 // props pass garey ko yeta hai
-function Rightbar({ profile }) {
+function Rightbar({user}) {
   // Inner components here
   const HomeRightbar = () => {
     return (
@@ -32,7 +32,7 @@ function Rightbar({ profile }) {
 
 
 
-  // --------for profile page-----------------
+  //-----------for profile page-----------------
   const ProfileRightbar = () => {
     return (
       <>
@@ -41,23 +41,20 @@ function Rightbar({ profile }) {
 
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">City:</span>
-            <span className="rightBarInfoValue">Kathmandu</span>
+            <span className="rightBarInfoValue">{user.city}</span>
           </div>
 
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">From:</span>
-            <span className="rightBarInfoValue">Kailai</span>
+            <span className="rightBarInfoValue">{user.from}</span>
           </div>
 
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">Relationship:</span>
-            <span className="rightBarInfoValue">Divorced</span>
+            <span className="rightBarInfoValue">{user.relationship ===1 ? "single" :user.relationship ===2 ? "Married" : "_"}</span>
           </div>
 
-          <div className="rightBarInfoItem">
-            <span className="rightBarInfoKey">University/College:</span>
-            <span className="rightBarInfoValue">Nepal College of Information Technology</span>
-          </div>
+          
         </div>
 
         <h4>User Friends</h4>
@@ -102,7 +99,7 @@ function Rightbar({ profile }) {
   return (
     <div className='rightBar'>
       <div className="rightBarWrapper">
-        <ProfileRightbar />
+       {user ? <ProfileRightbar /> : <HomeRightbar />}
 
         {/* if it is not profile right bar we will send home right bar */}
         {/* <HomeRightbar/> */}
