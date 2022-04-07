@@ -6,6 +6,12 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
 
 function Profile() {
+    
+
+
+
+
+
     return (
         <>
             <Topbar />

@@ -17,7 +17,7 @@ function Post({ post }) {
     const [user, setUser] = useState({});//empty object
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users/${post.userId}`);//get user by id
+            const res = await axios.get(`users/${post.userId}`);//get user by id
             setUser(res.data)
         }
         fetchUser()
@@ -42,7 +42,7 @@ function Post({ post }) {
                         </Link>
 
                         <Link to={`profile/${user.username}`} >
-                            <span className="postUsername"  >{user.username} </span>
+                            <span className="postUsername" >{user.username} </span>
                         </Link>
 
 
