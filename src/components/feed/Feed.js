@@ -7,15 +7,14 @@ import axios from 'axios'
 
 
 function Feed({ username }) {
-  //useState Hook
-  const [posts, setPosts] = useState([])//initial state empty array
+  const [posts, setPosts] = useState([])
 
-  //when the post component is rendered, it will x post to the array using useEffect Hook
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get("/posts/profile/" + username)
         : await axios.get("posts/timeline/624da824013d67d405ab116e")//get posts by user id
+
       setPosts(res.data)//set posts to the array
     }
     fetchPosts()

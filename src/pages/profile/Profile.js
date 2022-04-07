@@ -4,12 +4,23 @@ import Topbar from '../../components/topbar/Topbar'
 import Leftbar from '../../components/leftbar/Leftbar'
 import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 
 function Profile() {
-    
 
+    // profile ko name ra description backend bata launa ko lagi
+    //Hooks
+    const [user, setUser] = useState({})
 
-
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await axios.get(`/users?username=lokendra`);//query ma username?=lokendra xa 
+            setUser(res.data)
+        }
+        fetchUser()
+    }, [])
 
 
     return (
@@ -27,20 +38,14 @@ function Profile() {
                     </div>
 
                     <div className="profileInfo">
-                        <h4 className='profileInfoName'>Loki Chaulagain</h4>
-                        <span className="profileDescription">Hi I am a Software Engineer at Google</span>
+                        <h4 className='profileInfoName'>{user.username}</h4>
+                        <span className="profileDescription">{user.desc}</span>
                     </div>
-
 
                     <div className="profileRightBottom">
-
-                        {/*  yo feed ma chai user ko post matra hunxa */}
-                        <Feed  username="lokendra"/>
-                        <Rightbar profile/>
-                        {/* here profile is the props */}
+                        <Feed username="lokendra" />
+                        <Rightbar profile />
                     </div>
-
-
                 </div>
 
             </div>

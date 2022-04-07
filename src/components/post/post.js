@@ -7,8 +7,6 @@ import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
 
 
-
-
 function Post({ post }) {
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLikeed] = useState(false);
@@ -38,10 +36,10 @@ function Post({ post }) {
                     {/* PostTopLeft */}
                     <div className="postTopLeft">
                         <Link to={`profile/${user.username}`}>
-                            <img className='postProfileImg' src={user.profilePicture || "assets/person/noAvatar.png"} alt="" />
+                            <img className='postProfileImg' src={user.profilePicture || "/assets/person/noAvatar.png"} alt="" />
                         </Link>
 
-                        <Link to={`profile/${user.username}`} >
+                        <Link to={`/profile/${user.username}`} >
                             <span className="postUsername" >{user.username} </span>
                         </Link>
 
