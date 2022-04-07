@@ -27,7 +27,9 @@ function Profile() {
 
 
                     <div className="profileRightBottom">
-                        <Feed />
+
+                        {/*  yo feed ma chai user ko post matra hunxa */}
+                        <Feed  username="lokendra"/>
                         <Rightbar profile/>
                         {/* here profile is the props */}
                     </div>
