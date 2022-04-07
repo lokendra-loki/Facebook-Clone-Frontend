@@ -63,32 +63,32 @@ function Rightbar({ profile }) {
         <h4>User Friends</h4>
         <div className="rightBarFollowings">
           <div className="eachRightBarFollowing">
-            <img src="assets/person/4.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/4.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="assets/person/3.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/3.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="assets/person/2.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/2.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/1.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="assets/person/8.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/8.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="assets/person/9.jpeg" alt="" className="rightBarFollowingImage" />
+            <img src="/assets/person/9.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
         </div>

@@ -15,8 +15,8 @@ function Profile() {
                     <div className="profileRightTop">
                         {/* profileCoverContainer */}
                         <div className="profileContainer">
-                            <img className='coverPicture' src="assets/post/3.jpeg" alt="" />
-                            <img className='profilePicture' src="assets/person/7.jpeg" alt="" />
+                            <img className='coverPicture' src="/assets/post/3.jpeg" alt="" />
+                            <img className='profilePicture' src="/assets/person/7.jpeg" alt="" />
                         </div>
                     </div>
 
