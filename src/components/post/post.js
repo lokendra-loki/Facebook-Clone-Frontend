@@ -59,7 +59,7 @@ function Post({ post }) {
                 {/* PostCenter- */}
                 <div className="postCenter">
                     <span className="postText">{post?.desc}</span>
-                    <img className='postImg' src={post.img} alt="" />
+                    <img className='postImg' src={post.img || "assets/post/5.jpeg"  } alt="" />
 
                 </div>
 
