@@ -7,13 +7,26 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom'
 
 
+//topbar kp profile according to user login
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+
+
+
 function Topbar() {
+
+    const { user } = useContext(AuthContext)
+
+
+
+
+
     return (
         <div className='topbarContainer'>
 
             {/* Topbar left */}
             <div className="topbarLeft">
-                <Link to="/" style={{textDecoration:"none"}} >
+                <Link to="/" style={{ textDecoration: "none" }} >
                     <span className="logo">Facebook</span>
                 </Link>
             </div>
@@ -52,7 +65,11 @@ function Topbar() {
                     </div>
                 </div>
 
-                <img src="/assets/person/1.jpeg" alt="" className="profilePic" />
+
+                <Link to={`/profile/${user.username}`}>
+                    <img src={user.profilePicture || "assets/person/1.jpeg"} alt="" className="profilePic" />
+                </Link>
+
 
 
             </div>
