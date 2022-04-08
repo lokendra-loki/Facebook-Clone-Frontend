@@ -1,6 +1,9 @@
 import React from 'react'
 import "./share.scss";
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons"
+
+
+
 import { AuthContext } from '../../context/AuthContext'
 import { useContext } from 'react'
 
@@ -8,10 +11,9 @@ import { useContext } from 'react'
 
 const Share = () => {
 
+
+
   const { user } = useContext(AuthContext)
-
-
-
 
 
 
@@ -21,20 +23,9 @@ const Share = () => {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className='shareProfileImg' src={user.profilePicture || "assets/person/1.jpeg"} alt="" />
-          <input placeholder="What's in your mind Loki?" className="shareInput" />
-
+          <img className='shareProfileImg' src={user.profilePicture || "assets/person/2.jpeg"} alt="" />
+          <input placeholder={"What's in your mind " + user.username + "?"} className="shareInput" />
         </div>
-
-
-
-
-
-
-
-
-
-
         <hr className="shareHr" />
         <div className="shareBottom">
           <div className="shareOptions">

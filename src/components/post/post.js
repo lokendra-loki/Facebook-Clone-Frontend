@@ -5,14 +5,31 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
+// import { format } from "timeago.js";
+
+
+
+
+
 
 
 function Post({ post }) {
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLikeed] = useState(false);
 
-
     const [user, setUser] = useState({});//empty object
+
+    const { user: currentUser } = useContext(AuthContext)
+
+
+    useEffect(() => {
+        setIsLikeed(post.likes.includes(currentUser._id));
+    }, [currentUser._id, post.likes])
+
+
+
     useEffect(() => {
         const fetchUser = async () => {
             const res = await axios.get(`/users?userId=${post.userId}`);//get user by id
@@ -22,9 +39,17 @@ function Post({ post }) {
     }, [post.userId])
 
 
+
+    //Like Dislike handler
     const likeHandler = () => {
+        try {
+            axios.put("/posts/" + post._id + "/like", { userId: currentUser._id })
+
+        } catch (err) { }
         setLike(isLiked ? like - 1 : like + 1);
         setIsLikeed(!isLiked);
+
+
     }
 
 
@@ -59,7 +84,7 @@ function Post({ post }) {
                 {/* PostCenter- */}
                 <div className="postCenter">
                     <span className="postText">{post?.desc}</span>
-                    <img className='postImg' src={post.img || "assets/post/5.jpeg"  } alt="" />
+                    <img className='postImg' src={post.img || "assets/post/5.jpeg"} alt="" />
 
                 </div>
 

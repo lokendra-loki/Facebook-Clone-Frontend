@@ -4,7 +4,18 @@ import AuthReducer from './AuthReducer';
 
 //At the beginning we are not login
 const INITIAL_STATE = {
-  user: null,
+  user: {
+    _id:"624da824013d67d405ab116e",
+    username: "lokendra",
+    email: "lokendra@gmail.com",
+    password: "$2b$10$6KYBE63GQzLuoj06kcDxC.cVrmuBzY0Zv5ovB3GSy3Mfaef4HT.ly",
+    profilePicture: "",
+    coverPicture: "",
+    followers: [],
+    followings: []
+
+  },
+
   isFetching: false,
   error: false,
 };
