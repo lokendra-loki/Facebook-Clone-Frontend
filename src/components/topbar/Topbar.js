@@ -7,20 +7,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom'
 
 
-//topbar kp profile according to user login
-import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthContext'
-
-
-
 function Topbar() {
-
-    const { user } = useContext(AuthContext)
-
-
-
-
-
     return (
         <div className='topbarContainer'>
 
@@ -65,13 +52,7 @@ function Topbar() {
                     </div>
                 </div>
 
-
-                <Link to={`/profile/${user.username}`}>
-                    <img src={user.profilePicture || "assets/person/1.jpeg"} alt="" className="profilePic" />
-                </Link>
-
-
-
+                <img src="assets/person/1.jpeg" alt="" className="profilePic" />
             </div>
 
         </div>

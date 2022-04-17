@@ -17,6 +17,10 @@
       font-weight: bold;
       color: white;
       cursor: pointer;
+
+      &:hover{
+        color: #d9e0e7;
+      }
     }
   }
 
@@ -55,8 +59,10 @@
     .topbarLinks {
       margin-left: 10px;
       margin-right: 10px;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
+      color: white;
+      font-weight: 500;
     }
 
     .topbarIcons {

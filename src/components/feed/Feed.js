@@ -1,55 +1,32 @@
 import React from 'react'
-import Post from '../post/Post'
 import Share from '../share/Share'
 import "./feed.scss"
+import Post from '../post/Post'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { AuthContext } from '../../context/AuthContext'
-import { useContext } from 'react'
 
 
-
-function Feed({ username }) {
+function Feed() {
   const [posts, setPosts] = useState([])
-
-
-  //Feed posts kp lagi everyone ko post 
-  const { user } = useContext(AuthContext)
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = username
-        ? await axios.get("/posts/profile/" + username)
-        : await axios.get("posts/timeline/" + user._id)
-
-      setPosts(res.data)//set posts to the array
+      const res = await axios.get("/posts/timeline/624da824013d67d405ab116e")
+      setPosts(res.data)
     }
     fetchPosts()
-
-  }, [username ,user._id])//render this feed only one time
+  }, [])
 
 
   return (
     <div className='feed'>
       <div className="feedWrapper">
         <Share />
-
         {posts.map((p) => (
-          <Post key={p._id} post={p} />
+          <Post key={p.id} post={p} />
         ))}
-
-
       </div>
     </div>
   )
 }
-
 export default Feed
