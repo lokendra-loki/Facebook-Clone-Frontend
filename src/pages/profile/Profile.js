@@ -6,20 +6,19 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import {useParams} from 'react-router'
 
 
 function Profile() {
     const [user, setUser] = useState({})
-    const username = useParams().username
-    
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users?username=${username}`);//query ma username?=lokendra xa 
+            const res = await axios.get(`/users?username=lokendra`);
             setUser(res.data)
         }
         fetchUser()
-    }, [username])
+    })
+
+
 
 
     return (
@@ -29,10 +28,9 @@ function Profile() {
                 <Leftbar />
                 <div className="profileRight">
                     <div className="profileRightTop">
-                        {/* profileCoverContainer */}
                         <div className="profileContainer">
-                            <img className='coverPicture' src={user.coverPicture || "/assets/post/3.jpeg"} alt="" />
-                            <img className='profilePicture' src={user.profilePicture || "/assets/person/7.jpeg"} alt="" />
+                            <img className='coverPicture' src="/assets/post/3.jpeg" alt="" />
+                            <img className='profilePicture' src="/assets/person/7.jpeg" alt="" />
                         </div>
                     </div>
 
@@ -42,14 +40,12 @@ function Profile() {
                     </div>
 
                     <div className="profileRightBottom">
-                        <Feed username={username} />
+                        <Feed username="lokendra" />
                         <Rightbar user={user} />
-
                     </div>
                 </div>
             </div>
         </>
     )
 }
-
 export default Profile

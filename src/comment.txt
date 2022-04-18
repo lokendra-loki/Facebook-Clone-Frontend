@@ -2,3 +2,4 @@
 //Link for Link navigation
 //for making api request we use axios ..javascript fetch also can be used
 //time ago
+//context api for state management ...Redux also can be used

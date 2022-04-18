@@ -54,7 +54,7 @@ function Post({ post }) {
                             <span className="postUsername" >{user.username} </span>
                         </Link>
 
-                        <span className="postDate">{format(post.createdAt)}  </span>
+                        <span className="postDate">{format(post.createdAt)} </span>
                     </div>
 
                     <div className="postTopRight">
@@ -63,10 +63,9 @@ function Post({ post }) {
                 </div>
 
                 <div className="postCenter">
-                    <span className="postText">{post?.desc}</span>
+                    <span className="postText">{post.desc}</span>
                     <img className='postImg' src={post.img} alt="" />
                 </div>
-
 
                 <div className="postBottom">
                     <div className="postBottomLeft">

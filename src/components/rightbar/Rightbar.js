@@ -4,12 +4,9 @@ import { Users } from "../../dummyData"
 import Online from '../online/Online'
 
 
-// props pass garey ko yeta hai
 function Rightbar({user}) {
-  // Inner components here
   const HomeRightbar = () => {
     return (
-      // fragments are used to group multiple elements
       <>
         <div className="birthdayContainer">
           {/* BirthdatContainer------------------------------ */}
@@ -30,9 +27,6 @@ function Rightbar({user}) {
     )
   }
 
-
-
-  //-----------for profile page-----------------
   const ProfileRightbar = () => {
     return (
       <>
@@ -93,22 +87,11 @@ function Rightbar({user}) {
     )
   }
 
-
-
   //------------------------------------lets call here---------------
   return (
     <div className='rightBar'>
       <div className="rightBarWrapper">
        {user ? <ProfileRightbar /> : <HomeRightbar />}
-
-        {/* if it is not profile right bar we will send home right bar */}
-        {/* <HomeRightbar/> */}
-
-
-
-
-
-
       </div>
     </div>
   )
