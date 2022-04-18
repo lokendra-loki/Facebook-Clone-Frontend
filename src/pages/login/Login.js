@@ -1,32 +1,24 @@
 import React from 'react'
 import "./login.scss"
-import { useRef, useContext } from 'react'
-import { loginCall } from '../../apiCalls'
-import { AuthContext } from '../../context/AuthContext'
-import { CircularProgress } from '@material-ui/core'
+// import { CircularProgress } from '@material-ui/core'
+import { useRef } from 'react'
 
 function Login() {
-    //useRef Hook
+    //sending data to the server
     const email = useRef()
     const password = useRef()
 
-    const { user, isFetching, dispatch } = useContext(AuthContext)
 
-
-    //handleClick function
     const handleClick = (e) => {
         e.preventDefault()
-        loginCall({ email: email.current.value, password: password.current.value }, dispatch)
-
+        console.log(email.current.value)
+        console.log(password.current.value)
     }
-    console.log(user)
-
 
 
     return (
         <div className='login'>
             <div className="loginWrapper">
-
                 {/* Login Left Side--------------------------------*/}
                 <div className="loginLeft">
                     <h3 className="loginLogo">Facebook</h3>
@@ -35,33 +27,16 @@ function Login() {
 
                 {/* LoginRight Side----------------------------------*/}
                 <div className="loginRight">
-                    {/* onSubmmit ma handleFunction call hunxa */}
-                    <form className="loginBox" onSubmit={handleClick}  >
-                        <input placeholder="Email"
-                            type="email" required
-                            className="loginInput"
-                            ref={email} />
-
-
-                        <input placeholder="Password"
-                            type="password"
-                            minLength={6}
-                            required className="loginInput"
-                            ref={password} />
-
-                        <button className="loginButton" type="submit" >
-                            {isFetching ? < CircularProgress Size="15px" className="circularProgress" /> : "Log In"}
-                        </button>
+                    <form className="loginBox" onSubmit={handleClick} >
+                        <input placeholder="Email" type="email" className="loginInput" required ref={email} />
+                        <input placeholder="Password" type="password" className="loginInput" required minLength={6} ref={password} />
+                        <button className="loginButton" type="submit">Login</button>
                         <span className="forgot">Forgot Password ?</span>
-                        <button className="registerButton">
-                            {isFetching ? < CircularProgress Size="15px" className="circularProgress" /> : "Create a New Account"}
-
-                        </button>
+                        <button className="registerButton">Register</button>
                     </form>
                 </div>
             </div>
         </div>
     )
 }
-
 export default Login

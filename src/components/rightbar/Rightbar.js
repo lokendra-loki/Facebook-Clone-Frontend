@@ -3,8 +3,7 @@ import "./rightbar.scss"
 import { Users } from "../../dummyData"
 import Online from '../online/Online'
 
-
-function Rightbar({user}) {
+function Rightbar({ user }) {
   const HomeRightbar = () => {
     return (
       <>
@@ -45,10 +44,9 @@ function Rightbar({user}) {
 
           <div className="rightBarInfoItem">
             <span className="rightBarInfoKey">Relationship:</span>
-            <span className="rightBarInfoValue">{user.relationship ===1 ? "single" :user.relationship ===2 ? "Married" : "_"}</span>
+            <span className="rightBarInfoValue">{user.relationship === 1 ? "single" : user.relationship === 2 ? "Married" : "_"}</span>
           </div>
 
-          
         </div>
 
         <h4>User Friends</h4>
@@ -64,37 +62,21 @@ function Rightbar({user}) {
           </div>
 
           <div className="eachRightBarFollowing">
-            <img src="/assets/person/2.jpeg" alt="" className="rightBarFollowingImage" />
-            <span className="rightBarFollowingUsername">Sunil Khatri</span>
-          </div>
-
-          <div className="eachRightBarFollowing">
-            <img src="/assets/person/1.jpeg" alt="" className="rightBarFollowingImage" />
-            <span className="rightBarFollowingUsername">Sunil Khatri</span>
-          </div>
-
-          <div className="eachRightBarFollowing">
-            <img src="/assets/person/8.jpeg" alt="" className="rightBarFollowingImage" />
-            <span className="rightBarFollowingUsername">Sunil Khatri</span>
-          </div>
-
-          <div className="eachRightBarFollowing">
             <img src="/assets/person/9.jpeg" alt="" className="rightBarFollowingImage" />
             <span className="rightBarFollowingUsername">Sunil Khatri</span>
           </div>
+
         </div>
       </>
     )
   }
 
-  //------------------------------------lets call here---------------
   return (
     <div className='rightBar'>
       <div className="rightBarWrapper">
-       {user ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   )
 }
-
 export default Rightbar
