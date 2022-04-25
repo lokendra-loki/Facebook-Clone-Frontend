@@ -1,26 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./profile.scss"
 import Topbar from '../../components/topbar/Topbar'
 import Leftbar from '../../components/leftbar/Leftbar'
 import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { useParams } from 'react-router-dom'
 
 
 function Profile() {
+
+    //fetching profile information (not user feed )
     const [user, setUser] = useState({})
-    const username = useParams().username
-    
+
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users?username=${username}`);
+            const res = await axios.get(`/users?username=lokendra`)
+            console.log(res)
             setUser(res.data)
+
         }
         fetchUser()
-    },[username])
+
+    }, []);
+
+
 
 
 
@@ -33,8 +37,8 @@ function Profile() {
                 <div className="profileRight">
                     <div className="profileRightTop">
                         <div className="profileContainer">
-                            <img className='coverPicture' src={user.coverPicture} alt="" />
-                            <img className='profilePicture' src={user.profilePicture} alt="" />
+                            <img className='coverPicture' src={user.coverPicture || "/assets/post/default.jpeg"} alt="" />
+                            <img className='profilePicture' src={user.profilePicture || "/assets/person/default.jpeg"} alt="" />
                         </div>
                     </div>
 
@@ -44,8 +48,15 @@ function Profile() {
                     </div>
 
                     <div className="profileRightBottom">
-                        <Feed username={username} />
-                        <Rightbar user={user} />
+
+
+                        {/* profile ma feed call garya xau but yo feed ma no timeline post only user ko post hunu paryo  */}
+                        {/* you are not in timeline you are in profile page */}
+                        <Feed username="lokendra" />
+
+
+                        {/* now yo page ko user lai right bar ma send garne */}
+                        <Rightbar user={user}/>
                     </div>
                 </div>
             </div>
@@ -54,3 +65,60 @@ function Profile() {
 }
 
 export default Profile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//CLIENT ONLY==========================>
+// import React from 'react'
+// import "./profile.scss"
+// import Topbar from '../../components/topbar/Topbar'
+// import Leftbar from '../../components/leftbar/Leftbar'
+// import Rightbar from '../../components/rightbar/Rightbar'
+// import Feed from '../../components/feed/Feed'
+
+
+
+// function Profile() {
+//     return (
+//         <>
+//             <Topbar />
+//             <div className="profile">
+//                 <Leftbar />
+//                 <div className="profileRight">
+//                     <div className="profileRightTop">
+//                         <div className="profileContainer">
+//                             <img className='coverPicture' src="/assets/post/default.jpeg" alt="" />
+//                             <img className='profilePicture' src="/assets/person/default.jpeg" alt="" />
+//                         </div>
+//                     </div>
+
+//                     <div className="profileInfo">
+//                         <h4 className='profileInfoName'>Lokendra Chaulagain</h4>
+//                         <span className="profileDescription">This is profile description</span>
+//                     </div>
+
+//                     <div className="profileRightBottom">
+//                         <Feed />
+//                         <Rightbar />
+//                     </div>
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
+
+// export default Profile

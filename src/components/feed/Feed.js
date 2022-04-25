@@ -7,21 +7,21 @@ import axios from 'axios'
 
 
 
-function Feed() {
+function Feed({ username }) {
 
   //When we render this Feed component  we want to get the posts from the database
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/posts/timeline/624da824013d67d405ab116e")
+      const res = username ? await axios.get("/posts/profile/" + username) : await axios.get("/posts/timeline/624da824013d67d405ab116e")
       setPosts(res.data)
     }
     fetchPosts()
 
     return () => {
     };
-  }, []);//run this useEffect only once when you render the Feed component
+  }, [username]);//run this useEffect only once when you render the Feed component
 
 
 

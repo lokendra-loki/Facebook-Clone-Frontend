@@ -91,13 +91,15 @@ import React, { useEffect, useState } from 'react'
 import "./post.scss"
 import { MoreVert } from "@material-ui/icons"
 import axios from 'axios';
+import { format } from 'timeago.js';
+import { Link } from 'react-router-dom';
 
 
 
 function Post({ post }) {
 
     //Like dislike handler--------------------->
-    const [like, setLike] = useState(post.like);
+    const [like, setLike] = useState(post.likes.length);//likes array ko length
     const [isLiked, setIsLikeed] = useState(false);
 
     const likeHandler = () => {
@@ -112,13 +114,12 @@ function Post({ post }) {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users/${post.userId}`)//post ko userId bata user fetch garey ko
+            const res = await axios.get(`/users/?userId=${post.userId}`)//post ko userId bata user fetch garey ko
+            console.log(res.data)
             setUser(res.data)
         }
         fetchUser()
 
-        return () => {
-        };
     }, [post.userId]);
 
 
@@ -129,9 +130,16 @@ function Post({ post }) {
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img className='postProfileImg' src={user.profilePicture || "assets/person/default.jpeg"} alt="" />
-                        <span className="postUsername" >{user.username}</span>
-                        <span className="postDate">4 days ago</span>
+
+                        <Link to={`profile/${user.username}`}>
+                            <img className='postProfileImg' src={user.profilePicture || "/assets/person/default.jpeg"} alt="" />
+                        </Link>
+
+                        <Link to={`profile/${user.username}`} className="link"  >
+                            <span className="postUsername" >{user.username}</span>
+                        </Link>
+
+                        <span className="postDate">{format(post.createdAt)} </span>
                     </div>
 
                     <div className="postTopRight">
@@ -140,8 +148,8 @@ function Post({ post }) {
                 </div>
 
                 <div className="postCenter">
-                    <span className="postText">{user.desc}</span>
-                    <img className='postImg' src={post.img || "assets/post/default.jpeg"} alt="" />
+                    <span className="postText">{post.desc}</span>
+                    <img className='postImg' src={post.img || "/assets/post/default.jpeg"} alt="" />
                 </div>
 
                 <div className="postBottom">
@@ -152,7 +160,7 @@ function Post({ post }) {
                     </div>
 
                     <div className="postBottomRight">
-                        <span className="postCommentText">45 comments</span>
+                        <span className="postCommentText">comments</span>
                     </div>
 
                 </div>
