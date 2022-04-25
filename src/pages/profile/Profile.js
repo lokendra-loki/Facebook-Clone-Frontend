@@ -6,23 +6,39 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
 import axios from 'axios'
 
+//url bata username lina ko lagi import
+import { useParams } from 'react-router'
+
+
 
 
 function Profile() {
+
+    //url bata username lina ko lagi
+    // const params = useParams()
+    // console.log(params);//we get username from here
+
+    const username = useParams().username;
+
+
+
+
+
+
 
     //fetching profile information (not user feed )
     const [user, setUser] = useState({})
 
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users?username=lokendra`)
-            console.log(res)
+            const res = await axios.get(`/users?username=${username}`)
+            // console.log(res)
             setUser(res.data)
 
         }
         fetchUser()
 
-    }, []);
+    }, [username]);
 
 
 
@@ -52,11 +68,11 @@ function Profile() {
 
                         {/* profile ma feed call garya xau but yo feed ma no timeline post only user ko post hunu paryo  */}
                         {/* you are not in timeline you are in profile page */}
-                        <Feed username="lokendra" />
+                        <Feed username={username} />
 
 
                         {/* now yo page ko user lai right bar ma send garne */}
-                        <Rightbar user={user}/>
+                        <Rightbar user={user} />
                     </div>
                 </div>
             </div>

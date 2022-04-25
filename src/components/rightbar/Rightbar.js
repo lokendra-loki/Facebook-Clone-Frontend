@@ -26,7 +26,7 @@ function Rightbar({user}) {
         <ul className="rightBarFriendList">
 
           {/* online friend  */}
-          <Online />
+          {/* <Online /> */}
 
         </ul>
       </>
