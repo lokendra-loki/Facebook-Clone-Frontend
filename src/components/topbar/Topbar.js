@@ -13,7 +13,7 @@ function Topbar() {
 
             {/* Topbar left */}
             <div className="topbarLeft">
-                <Link to="/" style={{ textDecoration: "none" }} >
+                <Link to="/" className="link" >
                     <span className="logo">Facebook</span>
                 </Link>
             </div>
@@ -27,7 +27,7 @@ function Topbar() {
             </div>
 
 
-            {/* Topbar left */}
+            {/* Topbar right */}
             <div className="topbarRight">
                 <div className="topbarLinks">
                     <span className="topbarLinks">HomePage</span>
@@ -35,17 +35,14 @@ function Topbar() {
                 </div>
 
                 <div className="topbarIcons">
-
                     <div className="topbarIconItem">
                         <PersonIcon />
                         <span className="topbarIconBadge">1</span>
                     </div>
-
                     <div className="topbarIconItem">
                         <ChatIcon />
                         <span className="topbarIconBadge">4</span>
                     </div>
-
                     <div className="topbarIconItem">
                         <NotificationsIcon />
                         <span className="topbarIconBadge">2</span>
@@ -54,7 +51,6 @@ function Topbar() {
 
                 <img src="assets/person/1.jpeg" alt="" className="profilePic" />
             </div>
-
         </div>
     )
 }

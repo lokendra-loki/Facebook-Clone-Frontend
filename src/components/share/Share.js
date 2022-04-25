@@ -4,8 +4,6 @@ import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons"
 
 
 
-import { AuthContext } from '../../context/AuthContext'
-import { useContext } from 'react'
 
 
 
@@ -13,7 +11,7 @@ const Share = () => {
 
 
 
-  const { user } = useContext(AuthContext)
+  
 
 
 
@@ -23,8 +21,8 @@ const Share = () => {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className='shareProfileImg' src={user.profilePicture || "assets/person/2.jpeg"} alt="" />
-          <input placeholder={"What's in your mind " + user.username + "?"} className="shareInput" />
+          <img className='shareProfileImg' src={"assets/person/2.jpeg"} alt="" />
+          <input placeholder= "What's in your mind"  className="shareInput" />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">

@@ -6,7 +6,7 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import Feed from '../../components/feed/Feed'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-//import useParams
+
 import { useParams } from 'react-router-dom'
 
 
@@ -52,4 +52,5 @@ function Profile() {
         </>
     )
 }
+
 export default Profile
