@@ -96,6 +96,9 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
+
 function Post({ post }) {
 
     //Like dislike handler--------------------->
@@ -103,6 +106,16 @@ function Post({ post }) {
     const [isLiked, setIsLikeed] = useState(false);
 
     const likeHandler = () => {
+        try {
+            axios.put("/posts/" + post._id / like, { userId: user._id })//yi id { userId: user._id } le like garey ko
+
+
+        } catch (error) {
+
+        }
+
+
+        //logic
         setLike(isLiked ? like - 1 : like + 1);
         setIsLikeed(!isLiked);
     }

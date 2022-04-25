@@ -1,13 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./topbar.scss"
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
+
 
 
 function Topbar() {
+
+    //current user 
+    const { user } = useContext(AuthContext)
+
+
     return (
         <div className='topbarContainer'>
 
@@ -49,9 +56,12 @@ function Topbar() {
                     </div>
                 </div>
 
-                <img src="assets/person/1.jpeg" alt="" className="profilePic" />
+                <Link to={`/profile/${user.username}`}>
+                    <img src={user.profilePicture || "assets/person/default.jpeg"} alt="" className="profilePic" />
+                </Link>
+
             </div>
-        </div>
+        </div >
     )
 }
 
