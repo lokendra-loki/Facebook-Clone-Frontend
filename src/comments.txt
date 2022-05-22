@@ -1,2 +1,0 @@
-starting from feed component
-axios is used to make requests to the api
