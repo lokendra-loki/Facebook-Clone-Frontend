@@ -13,6 +13,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
+    "formik": "^2.2.9",
     "javascript-time-ago": "^2.3.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -20,7 +21,8 @@
     "react-scripts": "5.0.0",
     "sass": "^1.49.9",
     "timeago.js": "^4.0.0-beta.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
