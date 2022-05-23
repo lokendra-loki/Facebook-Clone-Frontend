@@ -24,3 +24,17 @@ export const DeleteFeedPostSuccess = (id) => ({
 export const DeleteFeedPostFailure = () => ({
   type: "DELETE_FEED_POST_FAILURE",
 });
+
+//Create
+export const CreateFeedPostStart = () => ({
+  type: "CREATE_FEED_POST_START",
+});
+
+export const CreateFeedPostSuccess = (post) => ({
+  type: "CREATE_FEED_POST_SUCCESS",
+  payload: post,
+});
+
+export const CreateFeedPostFailure = () => ({
+  type: "CREATE_FEED_POST_FAILURE",
+});

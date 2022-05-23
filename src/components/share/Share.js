@@ -1,34 +1,50 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./share.scss";
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import { PermMedia, Room, EmojiEmotions } from "@material-ui/icons";
+import { createFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
+import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
 
 const Share = () => {
+  const [desc, setDesc] = useState("");
+  const { dispatch } = useContext(FeedPostsContext);
+
+  const feedPost = {
+    userID: 45,
+    desc: desc,
+    username: "loki",
+  };
+
+  const handleSubmitPost = (e) => {
+    e.preventDefault();
+    createFeedPost(feedPost, dispatch);
+  };
+
   return (
     <div className="share">
-      <div className="shareWrapper">
+      <form className="shareWrapper" onSubmit={handleSubmitPost}>
         <div className="shareTop">
-          <img className="shareProfileImg" src="/assets/person/2.jpeg" alt="" />
-
-          <input placeholder="What's in your mind " className="shareInput" />
+          <img className="shareProfileImg" src="/assets/profile.jpeg" alt="" />
+          <input
+            placeholder="What's in your mind "
+            className="shareInput"
+            onChange={(e) => setDesc(e.target.value)}
+          />
         </div>
         <hr className="shareHr" />
 
-        <form className="shareBottom">
+        <div className="shareBottom">
           <div className="shareOptions">
-            <label htmlFor="file" className="shareOption">
-              <PermMedia className="shareIcon PermMediaIcon" />
-              <span className="shareOptionText">Photo/Video</span>
-              <input
-                style={{ display: "none" }}
-                type="file"
-                id="file"
-                accept=".png,.jpeg.jpg"
-              />
-            </label>
-
             <div className="shareOption">
-              <Label className="shareIcon LabelIcon" />
-              <span className="shareOptionText">Tag</span>
+              <label htmlFor="file" className="shareOptionLabel">
+                <PermMedia className="shareIcon PermMediaIcon" />
+                <span className="shareOptionText">Photo/Video</span>
+                <input
+                  style={{ display: "none" }}
+                  type="file"
+                  id="file"
+                  accept=".png,.jpeg.jpg"
+                />
+              </label>
             </div>
 
             <div className="shareOption">
@@ -40,12 +56,12 @@ const Share = () => {
               <EmojiEmotions className="shareIcon EmojiEmotionsIcon" />
               <span className="shareOptionText">Feelings</span>
             </div>
+            <button className="shareButton1" type="submit">
+              Share
+            </button>
           </div>
-          <button className="shareButton" type="submit">
-            Share
-          </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

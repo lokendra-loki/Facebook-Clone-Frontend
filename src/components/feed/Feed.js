@@ -40,21 +40,11 @@
 // export default Feed
 
 //CLIENT SIDE ONLY==========================>
-import React, { useContext, useEffect } from "react";
 import Share from "../share/Share";
 import "./feed.scss";
 import Post from "../post/Post";
-import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
-import getFeedPosts from "../../context/feedPostContext/feedPostsApiCalls";
 
 function Feed() {
-  // //Fetch feedPosts
-  // const { feedPosts, dispatch } = useContext(FeedPostsContext);
-  // useEffect(() => {
-  //   getFeedPosts(dispatch);
-  // }, [dispatch]);
-  // console.log(feedPosts);
-
   return (
     <div className="feed">
       <div className="feedWrapper">

@@ -21,6 +21,28 @@ const FeedPostsReducer = (state, action) => {
         error: true,
       };
 
+    //Create
+    case "CREATE_FEED_POSTS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+
+    case "CREATE_FEED_POSTS_SUCCESS":
+      return {
+        feedPosts: [...state.feedPosts, action.payload], //adding new post//...state.feedPosts means all old posts
+        isFetching: false,
+        error: false,
+      };
+
+    case "CREATE_FEED_POSTS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+
     //Delete
     case "DELETE_FEED_POST_START":
       return {
