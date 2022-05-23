@@ -1,24 +1,22 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState } from "react";
 import "./login.scss";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import { loginCall } from "../../apiCalls";
-import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
 
 function Login() {
-  const email = useRef();
-  const password = useRef();
+  //Login
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const { dispatch, isFetching, error } = useContext(AuthContext);
-
-  const handleClick = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // console.log(email.current.value, password.current.value);
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    loginCall({ email, password }, dispatch);
+    navigate("/");
   };
-  // console.log(user)
+  console.log(user);
 
   return (
     <div className="login">
@@ -31,23 +29,23 @@ function Login() {
         </div>
 
         <div className="loginRight">
-          <form className="loginBox" onSubmit={handleClick}>
+          <form className="loginBox" onSubmit={handleLogin}>
             <input
               placeholder="Email"
               type="email"
               className="loginInput"
-              ref={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               placeholder="Password"
               type="password"
               className="loginInput"
               required
-              minLength={6}
-              ref={password}
+              autoComplete="off"
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="loginButton" type="submit" disabled={isFetching}>
-              {isFetching ? "loading" : "Login"}
+            <button className="loginButton" type="submit">
+              Login
             </button>
             <span className="forgot">Forgot Password ?</span>
 
@@ -62,80 +60,3 @@ function Login() {
 }
 
 export default Login;
-
-//CLIENT ONLY==========================>
-// import React from 'react'
-// import "./login.scss"
-
-// function Login() {
-//     return (
-//         <div className='login'>
-//             <div className="loginWrapper">
-
-//                 <div className="loginLeft">
-//                     <h3 className="loginLogo">Facebook</h3>
-//                     <span className="loginDescription">Connect with friends and the world around you on Facebook</span>
-//                 </div>
-
-//                 <div className="loginRight">
-//                     <form className="loginBox" >
-//                         <input placeholder="Email" type="email" className="loginInput" />
-//                         <input placeholder="Password" type="password" className="loginInput" required minLength={6} />
-//                         <button className="loginButton" type="submit">Login</button>
-//                         <span className="forgot">Forgot Password ?</span>
-//                         <button className="registerButton">Register</button>
-//                     </form>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Login
-
-// import React from 'react'
-// import "./login.scss"
-// // import { CircularProgress } from '@material-ui/core'
-// import { useRef } from 'react'
-// import { loginCall } from '../../apiCalls'
-// import { AuthContext } from '../../context/AuthContext'
-// import { useContext } from 'react'
-
-// function Login() {
-//     //sending data to the server
-//     const email = useRef()
-//     const password = useRef()
-
-//     //hook
-//     const [user, isFetching, error, dispatch] = useContext(AuthContext)
-
-//     const handleClick = (e) => {
-//         e.preventDefault()
-//         loginCall({ email: email.current.value, password: password.current.value }, dispatch)
-//         // console.log(email.current.value)
-//     }
-//     console.log(user)
-
-//     return (
-//         <div className='login'>
-//             <div className="loginWrapper">
-
-//                 <div className="loginLeft">
-//                     <h3 className="loginLogo">Facebook</h3>
-//                     <span className="loginDescription">Connect with friends and the world around you on Facebook</span>
-//                 </div>
-
-//                 <div className="loginRight">
-//                     <form className="loginBox" onSubmit={handleClick} >
-//                         <input placeholder="Email" type="email" className="loginInput" required ref={email} />
-//                         <input placeholder="Password" type="password" className="loginInput" required minLength={6} ref={password} />
-//                         <button className="loginButton" type="submit">{isFetching ? "loading" : "Login"}</button>
-//                         <span className="forgot">Forgot Password ?</span>
-//                         <button className="registerButton">Register</button>
-//                     </form>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-// export default Login

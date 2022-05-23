@@ -1,11 +1,11 @@
 import React from 'react'
 import "./closeFriend.scss"
 
-function CloseFriend({user}) {
+function CloseFriend() {
     return (
         <li className="leftBarFriend">
-            <img src={user.profilePicture} alt="" className="leftBarFriendImg" />
-            <span className="leftBarFriendName">{user.username}</span>
+            <img src="" alt="" className="leftBarFriendImg" />
+            <span className="leftBarFriendName">samir</span>
         </li>
     )
 }

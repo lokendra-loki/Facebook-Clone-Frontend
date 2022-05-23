@@ -12,7 +12,6 @@ import {
   WorkOutline,
 } from "@material-ui/icons";
 import CloseFriend from "../closeFriend/CloseFriend";
-import { Users } from "../../dummyData";
 
 function Leftbar() {
   return (
@@ -75,10 +74,8 @@ function Leftbar() {
             <span className="leftBarFriendName">Samir Kushmi</span>
           </li> */}
 
-          {/* <CloseFriend/> */}
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
+          
+          <CloseFriend />
         </ul>
       </div>
     </div>

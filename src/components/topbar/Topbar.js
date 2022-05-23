@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {AuthContext} from "../../context/authContext/AuthContext"
+
 
 function Topbar() {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+  //Logout
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  };
+
   return (
     <div className="topbarContainer">
       {/* Topbar left */}
@@ -15,6 +25,9 @@ function Topbar() {
           <span className="logo">Facebook</span>
         </Link>
       </div>
+      <span className="logOut" onClick={handleLogout}>
+        Logout
+      </span>
 
       {/* Topbar Center */}
       <div className="topbarCenter">
