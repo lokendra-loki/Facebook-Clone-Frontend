@@ -3,20 +3,43 @@ import "./share.scss";
 import { PermMedia, Room, EmojiEmotions } from "@material-ui/icons";
 import { createFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 const Share = () => {
-  const [desc, setDesc] = useState("");
-  const { dispatch } = useContext(FeedPostsContext);
+  // const { dispatch } = useContext(FeedPostsContext);
+  // const { user } = useContext(AuthContext);
+  // const currentUser = user;
 
+  //Create Pos
+  // const [desc, setDesc] = useState("");
+  // const feedPost = {
+  //   userID: currentUser?._id,
+  //   desc: desc,
+  //   username: currentUser?.username,
+  // };
+
+  // const handleSubmitPost = (e) => {
+  //   e.preventDefault();
+  //   createFeedPost(feedPost, dispatch);
+  //   console.log(feedPost);
+  // };
+
+  //working code
+  const { dispatch } = useContext(FeedPostsContext);
+  const { user } = useContext(AuthContext);
+
+  //Create Post
+  const [desc, setDesc] = useState("");
   const feedPost = {
-    userID: 45,
+    userID: user.others._id,
     desc: desc,
-    username: "loki",
+    username: user.others.username,
   };
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
     createFeedPost(feedPost, dispatch);
+    console.log(feedPost);
   };
 
   return (
@@ -25,7 +48,7 @@ const Share = () => {
         <div className="shareTop">
           <img className="shareProfileImg" src="/assets/profile.jpeg" alt="" />
           <input
-            placeholder="What's in your mind "
+            placeholder={`What's on your mind ${user.others.username} ?`}
             className="shareInput"
             onChange={(e) => setDesc(e.target.value)}
           />

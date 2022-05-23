@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./allUsers.scss";
 
@@ -12,19 +13,21 @@ function AllUsers() {
     };
     fetchAllUsers();
   }, []);
-  console.log(getAllUser);
+  // console.log(getAllUser);
 
   return (
     <>
       {getAllUser.map((user, index) => (
-        <li key={index} className="leftBarFriend">
-          <img
-            src={user.profilePic || "assets/profile.jpeg"}
-            alt=""
-            className="leftBarFriendImg"
-          />
-          <span className="leftBarFriendName">{user.username}</span>
-        </li>
+        <Link key={index} to={`/profile/${user._id}`} className="link">
+          <li  className="leftBarFriend">
+            <img
+              src={user.profilePic || "/assets/profile.jpeg"}
+              alt=""
+              className="leftBarFriendImg"
+            />
+            <span className="leftBarFriendName">{user.username}</span>
+          </li>
+        </Link>
       ))}
     </>
   );

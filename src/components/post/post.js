@@ -115,7 +115,7 @@ function Post() {
   useEffect(() => {
     getFeedPosts(dispatch);
   }, [dispatch]);
-  console.log(feedPosts);
+  // console.log(feedPosts);
 
   //Delete feedPost
   const handlePostDelete = (id) => {

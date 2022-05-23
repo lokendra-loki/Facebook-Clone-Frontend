@@ -1,84 +1,38 @@
-// import React, { useEffect, useState } from "react";
-// import "./profile.scss";
-// import Topbar from "../../components/topbar/Topbar";
-// import Leftbar from "../../components/leftbar/Leftbar";
-// import Rightbar from "../../components/rightbar/Rightbar";
-// import Feed from "../../components/feed/Feed";
-// import axios from "axios";
-
-// //url bata username lina ko lagi import
-// import { useParams } from "react-router";
-
-// function Profile() {
-//   //url bata username lina ko lagi
-//   // const params = useParams()
-//   // console.log(params);//we get username from here
-
-//   const username = useParams().username;
-
-//   //fetching profile information (not user feed )
-//   const [user, setUser] = useState({});
-
-//   useEffect(() => {
-//     const fetchUser = async () => {
-//       const res = await axios.get(`/users?username=${username}`);
-//       // console.log(res)
-//       setUser(res.data);
-//     };
-//     fetchUser();
-//   }, [username]);
-
-//   return (
-//     <>
-//       <Topbar />
-//       <div className="profile">
-//         <Leftbar />
-//         <div className="profileRight">
-//           <div className="profileRightTop">
-//             <div className="profileContainer">
-//               <img
-//                 className="coverPicture"
-//                 src={user.coverPicture || "/assets/post/default.jpeg"}
-//                 alt=""
-//               />
-//               <img
-//                 className="profilePicture"
-//                 src={user.profilePicture || "/assets/person/default.jpeg"}
-//                 alt=""
-//               />
-//             </div>
-//           </div>
-
-//           <div className="profileInfo">
-//             <h4 className="profileInfoName">{user.username}</h4>
-//             <span className="profileDescription">{user.desc}</span>
-//           </div>
-
-//           <div className="profileRightBottom">
-//             {/* profile ma feed call garya xau but yo feed ma no timeline post only user ko post hunu paryo  */}
-//             {/* you are not in timeline you are in profile page */}
-//             <Feed username={username} />
-
-//             {/* now yo page ko user lai right bar ma send garne */}
-//             <Rightbar user={user} />
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Profile;
-
-//CLIENT ONLY==========================>
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./profile.scss";
 import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Feed from "../../components/feed/Feed";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function Profile() {
+  const { user } = useContext(AuthContext);
+
+  //Fetching data from URl id
+  // const location = useLocation();
+  // const path = location.pathname.split("/")[2];
+  // console.log(path.others)
+
+  //Fetching userDetail according to userID element
+  const [currentUser, setCurrentUser] = useState({});
+  useEffect(() => {
+    const fetchUserDetail = async () => {
+      try {
+        const res = await axios.post("/userDetail/userDetailData", {
+          userID: user.others._id,
+        });
+        setCurrentUser(res.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserDetail();
+  }, [user.others._id]);
+  console.log(currentUser);
+
   return (
     <>
       <Topbar />
@@ -101,7 +55,7 @@ function Profile() {
           </div>
 
           <div className="profileInfo">
-            <h4 className="profileInfoName">Lokendra Chaulagain</h4>
+            <h4 className="profileInfoName">{currentUser.username}</h4>
             <span className="profileDescription">
               This is profile description
             </span>
