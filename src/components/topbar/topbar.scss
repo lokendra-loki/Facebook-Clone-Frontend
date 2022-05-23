@@ -1,25 +1,58 @@
 .topbarContainer {
-  height: 50px;
-  width: 100%;
-  background-color: #1877f2;
+  height: 56px;
+  display: flex;
+  align-items: center;
+
+  background-color: #242526;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 999;
+  padding: 0px 20px;
 
   .topbarLeft {
-    flex: 3;
+    flex: 2.8;
+    display: flex;
+    align-items: center;
+    // background-color: red;
 
-    .logo {
-      font-size: 24px;
-      margin-left: 20px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
+    .facebookLogo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-      &:hover {
-        color: #d9e0e7;
+    .topbarLeft__search {
+      width: 232px;
+      height: 40px;
+      background-color: #3a3b3c;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+
+      .topSearchInputIcon {
+        color: rgb(173, 171, 171);
+        margin-left: 8px;
+      }
+
+      .topSearchInput {
+        width: 84%;
+        height: 100%;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        color: rgb(240, 236, 236);
+
+        &::placeholder {
+          color: rgb(173, 171, 171);
+          padding-left: 5px;
+          font-size: 15px;
+          font-weight: 400;
+        }
       }
     }
   }
@@ -29,80 +62,86 @@
     cursor: pointer;
   }
 
+  // Top Center
   .topbarCenter {
-    flex: 5;
+    flex: 5.5;
+    display: flex;
+    align-items: center;
+    color: rgb(192, 191, 191);
+    // background-color: yellow;
+    justify-content: center;
+    gap: 25px;
 
-    .searchbar {
-      width: 100%;
-      height: 30px;
+    .IconCon {
       display: flex;
       align-items: center;
-      background-color: white;
-      border-radius: 30px;
+      justify-content: center;
+      width: 110px;
+      height: 48px;
+      cursor: pointer;
+      // background-color: #3a3b3c;
+      border-radius: 8px;
 
-      .searchIcon {
-        margin-left: 10px;
-        font-size: 20px;
-      }
-
-      .searchInput {
-        width: 70%;
-        margin-left: 10px;
-        margin-right: 20px;
-        border: none;
-        outline: none;
+      &:hover {
+        background-color: #3a3b3c;
       }
     }
   }
 
+  // Top Right
   .topbarRight {
-    flex: 4;
+    // background-color: pink;
+    flex: 3.4;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 
-    .topbarLinks {
-      margin-left: 10px;
-      margin-right: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      color: white;
-      font-weight: 500;
-    }
-
-    .topbarIcons {
+    .trProfileCon {
       display: flex;
       align-items: center;
-    }
-
-    .topbarIconItem {
-      margin-right: 15px;
-      color: white;
+      justify-content: center;
+      height: 36px;
+      width: 102px;
+      // background-color: #3a3b3c;
+      border-radius: 20px;
       cursor: pointer;
-      position: relative;
+      margin-left: 120px;
+
+      .trProfileImg {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: 2px;
+      }
+      .trProfileName {
+        color: rgb(232, 229, 229);
+        margin-left: 5px;
+        font-size: 14px;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        background-color: #3a3b3c;
+      }
     }
 
-    .topbarIconBadge {
-      width: 15px;
-      height: 15px;
-      background-color: red;
+    .trIconCon {
+      width: 45px;
+      height: 45px;
+      // background-color: #3a3b3c;
       border-radius: 50%;
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
-    }
-
-    .profilePic {
-      width: 32px;
-      height: 32px;
-      margin-right: 20px;
-      border-radius: 50%;
-      object-fit: cover;
       cursor: pointer;
+      color: rgb(173, 171, 171);
+
+      &:hover {
+        background-color: #3a3b3c;
+        color: rgb(220, 217, 217);
+      }
     }
   }
 }

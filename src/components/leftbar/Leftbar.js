@@ -11,7 +11,7 @@ import {
   School,
   WorkOutline,
 } from "@material-ui/icons";
-import CloseFriend from "../closeFriend/CloseFriend";
+import AllUsers from "../allUsers/AllUsers";
 
 function Leftbar() {
   return (
@@ -70,12 +70,15 @@ function Leftbar() {
         {/* --------------LeftBar Friend List----------------------------------------- */}
         <ul className="leftBarFriendList">
           {/* <li className="leftBarFriend">
-            <img src="/assets/person/2.jpeg" alt="" className="leftBarFriendImg" />
+            <img
+              src="/assets/person/2.jpeg"
+              alt=""
+              className="leftBarFriendImg"
+            />
             <span className="leftBarFriendName">Samir Kushmi</span>
           </li> */}
 
-          
-          <CloseFriend />
+          <AllUsers />
         </ul>
       </div>
     </div>

@@ -21,6 +21,30 @@ const FeedPostsReducer = (state, action) => {
         error: true,
       };
 
+    //Delete
+    case "DELETE_FEED_POST_START":
+      return {
+        ...state, //at the beginning we wont change anything so we can use the old state
+        isFetching: true,
+        error: false,
+      };
+
+    case "DELETE_FEED_POST_SUCCESS":
+      return {
+        feedPosts: state.feedPosts.filter(
+          (feedPost) => feedPost.id !== action.payload
+        ),
+        isFetching: false,
+        error: false,
+      };
+
+    case "DELETE_FEED_POST_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+
     default:
       return state;
   }

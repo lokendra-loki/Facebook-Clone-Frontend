@@ -104,7 +104,9 @@ import React, { useContext, useEffect } from "react";
 import "./post.scss";
 import { MoreVert } from "@material-ui/icons";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
-import getFeedPosts from "../../context/feedPostContext/feedPostsApiCalls";
+import getFeedPosts, {
+  deleteFeedPost,
+} from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
 
 function Post() {
@@ -114,6 +116,12 @@ function Post() {
     getFeedPosts(dispatch);
   }, [dispatch]);
   console.log(feedPosts);
+
+  //Delete feedPost
+  const handlePostDelete = (id) => {
+    deleteFeedPost(id, dispatch);
+    window.location.reload();
+  };
 
   return (
     <>
@@ -147,7 +155,9 @@ function Post() {
                 <img className="likeIcon" src="/assets/heart.png" alt="" />
                 <span className="postLikeCounter"> 9 people like it</span>
               </div>
-
+              <button onClick={() => handlePostDelete(feedPost._id)}>
+                delete
+              </button>
               <div className="postBottomRight">
                 <span className="postCommentText">45 comments</span>
               </div>

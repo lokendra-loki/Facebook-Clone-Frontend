@@ -5,8 +5,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link, useNavigate } from "react-router-dom";
-import {AuthContext} from "../../context/authContext/AuthContext"
-
+import { AuthContext } from "../../context/authContext/AuthContext";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
+import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
+import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
+import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 
 function Topbar() {
   const { dispatch } = useContext(AuthContext);
@@ -22,47 +28,65 @@ function Topbar() {
       {/* Topbar left */}
       <div className="topbarLeft">
         <Link to="/" className="link">
-          <span className="logo">Facebook</span>
+          <img src="assets/fbLogo.png" className="facebookLogo" alt="" />
         </Link>
+        <div className="topbarLeft__search">
+          <SearchIcon className="topSearchInputIcon" />
+          <input
+            className="topSearchInput"
+            type="text"
+            placeholder="Search Facebook"
+          />
+        </div>
       </div>
-      <span className="logOut" onClick={handleLogout}>
+      {/* <span className="logOut" onClick={handleLogout}>
         Logout
-      </span>
+      </span> */}
 
       {/* Topbar Center */}
       <div className="topbarCenter">
-        <div className="searchbar">
-          <SearchIcon className="searchIcon" />
-          <input
-            placeholder="Search for friends, post or video"
-            className="searchInput"
-          />
+        <div className="IconCon">
+          <HomeOutlinedIcon className="topbarCenterIcon" />
+        </div>
+
+        <div className="IconCon">
+          <OndemandVideoOutlinedIcon className="topbarCenterIcon" />
+        </div>
+
+        <div className="IconCon">
+          <StorefrontOutlinedIcon className="topbarCenterIcon" />
+        </div>
+        <div className="IconCon">
+          <GroupsOutlinedIcon className="topbarCenterIcon" />
+        </div>
+
+        <div className="IconCon">
+          <SportsEsportsOutlinedIcon className="topbarCenterIcon" />
         </div>
       </div>
 
       {/* Topbar right */}
       <div className="topbarRight">
-        <div className="topbarLinks">
-          <span className="topbarLinks">HomePage</span>
-          <span className="topbarLinks">Timeline</span>
+        <div className="trProfileCon">
+          <img className="trProfileImg" src="assets/profile.jpeg" alt="" />
+          <span className="trProfileName">Lokendra</span>
         </div>
 
-        <div className="topbarIcons">
-          <div className="topbarIconItem">
-            <PersonIcon />
-            <span className="topbarIconBadge">1</span>
-          </div>
-          <div className="topbarIconItem">
-            <ChatIcon />
-            <span className="topbarIconBadge">4</span>
-          </div>
-          <div className="topbarIconItem">
-            <NotificationsIcon />
-            <span className="topbarIconBadge">2</span>
-          </div>
+        <div className="trIconCon">
+          <WidgetsOutlinedIcon />
         </div>
 
-        <img src="assets/person/default.jpeg" alt="" className="profilePic" />
+        <div className="trIconCon">
+          <ChatIcon />
+        </div>
+
+        <div className="trIconCon">
+          <NotificationsIcon />
+        </div>
+
+        <div className="trIconCon">
+          <ArrowDropDownOutlinedIcon />
+        </div>
       </div>
     </div>
   );
