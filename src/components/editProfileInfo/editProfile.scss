@@ -1,12 +1,15 @@
 .editProfileInputCon {
   background-color: #242526;
-  height: 180vh;
-  width: 41.8vw;
+  height: 180vh; 
   margin: 0px 20px;
   border-radius: 8px;
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
+  z-index: 999;
+  position: sticky;
+  margin-top: -380px;
+
 
   .epiRow1 {
     display: flex;
@@ -64,8 +67,8 @@
   }
 
   .epiProfilePicAvatar {
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     border: 1px solid grey;
     overflow: hidden;
@@ -94,12 +97,12 @@
 
   .epiCoverPicAvatar {
     width: 450px;
-    height: 180px;
+    height: 150px;
     margin-top: 15px;
     border: 1px solid grey;
     overflow: hidden;
     object-fit: cover;
-    margin-left: 15%;
+    margin-left: 5%;
     border-radius: 12px;
   }
 

@@ -3,6 +3,7 @@
 
   .profileRight {
     flex: 9;
+    position: relative;
 
     .profileRightTop {
       .profileContainer {
@@ -85,6 +86,10 @@
 
     .profileRightBottom {
       display: flex;
+      // background-color: green;
+      position: absolute;
+      top:430px;
+      width: 100%;
     }
   }
 }

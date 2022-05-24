@@ -67,7 +67,7 @@ function Topbar() {
       {/* Topbar right */}
       <div className="topbarRight">
         <div className="trProfileCon">
-          <img className="trProfileImg" src="assets/profile.jpeg" alt="" />
+          <img className="trProfileImg" src="/assets/profile.jpeg" alt="" />
           <span className="trProfileName">Lokendra</span>
         </div>
 

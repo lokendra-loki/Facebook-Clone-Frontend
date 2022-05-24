@@ -83,7 +83,6 @@ function Profile() {
 
           <div className="profileRightBottom">
             <Feed />
-
             <Rightbar viewUser={viewUser} />
           </div>
         </div>

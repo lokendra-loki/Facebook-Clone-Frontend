@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -8,50 +9,10 @@ import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
 import axios from "axios";
 import "./editProfile.scss";
-import { AuthContext } from "../../context/authContext/AuthContext";
 
 function EditProfile({ viewUser }) {
   const userDetailId = viewUser._id;
-  console.log(userDetailId);
 
-  ///////////////////////////////////
-  // const { user } = useContext(AuthContext);
-
-  //Fetching data from URl id
-  // const location = useLocation();
-  // const path = location.pathname.split("/")[2];
-  // console.log(path);
-
-  //At first user create profile with username and email
-  //suppose user has not created any user detail yet then we cant be able to show name on profile
-  //so we will show username from id not from detail
-  // const [getUser, setGetUser] = useState({});
-  // useEffect(() => {
-  //   const fetchInfo = async () => {
-  //     const res = await axios.get(`/users/get/${path}`);
-  //     setGetUser(res.data);
-  //   };
-  //   fetchInfo();
-  // }, [path]);
-
-  // //Fetching userDetail according to userID element
-  // const [viewUser, setViewUser] = useState({});
-  // useEffect(() => {
-  //   const fetchUserDetail = async () => {
-  //     try {
-  //       const res = await axios.post("/userDetail/userDetailData", {
-  //         userID: path,
-  //       });
-  //       setViewUser(res.data[0]);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchUserDetail();
-  // }, [path]);
-  // console.log(viewUser);
-
-  ///////////////////////////////////////////
   //Edit Profile info
   const [currentJobPosition1, setCurrentJobPosition1] = useState("");
   const [currentJobCompany1, setCurrentJobCompany1] = useState("");
@@ -99,7 +60,6 @@ function EditProfile({ viewUser }) {
       console.log(error);
     }
   };
-  
 
   return (
     <form className="editProfileInputCon" onSubmit={handleUserInfoSave}>

@@ -5,17 +5,15 @@
 }
 .rightBarInfoContainer {
   margin-bottom: 30px;
-  .rightBarInfoItem {
-    margin-bottom: 8px;
-    .rightBarInfoKey {
-      font-size: 16px;
-      font-weight: 500;
-      margin-right: 10px;
-      color: #555;
-    }
-    .rightBarInfoValue {
-      font-size: 16px;
-      font-weight: 400;
+
+  .ppUserInfoItemCon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+
+    .ppInfoIcon {
+      color: grey;
     }
   }
 }
