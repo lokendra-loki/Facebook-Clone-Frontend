@@ -12,26 +12,38 @@ function Profile() {
   const { user } = useContext(AuthContext);
 
   //Fetching data from URl id
-  // const location = useLocation();
-  // const path = location.pathname.split("/")[2];
-  // console.log(path.others)
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  console.log(path);
+
+  //At first user create profile with username and email
+  //suppose user has not created any user detail yet then we cant be able to show name on profile
+  //so we will show username from id not from detail
+  const [getUser, setGetUser] = useState({});
+  useEffect(() => {
+    const fetchInfo = async () => {
+      const res = await axios.get(`/users/get/${path}`);
+      setGetUser(res.data);
+    };
+    fetchInfo();
+  }, [path]);
 
   //Fetching userDetail according to userID element
-  const [currentUser, setCurrentUser] = useState({});
+  const [viewUser, setViewUser] = useState({});
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
         const res = await axios.post("/userDetail/userDetailData", {
-          userID: user.others._id,
+          userID: path,
         });
-        setCurrentUser(res.data[0]);
+        setViewUser(res.data[0]);
       } catch (error) {
         console.log(error);
       }
     };
     fetchUserDetail();
-  }, [user.others._id]);
-  console.log(currentUser);
+  }, [path]);
+  console.log(viewUser);
 
   return (
     <>
@@ -41,29 +53,21 @@ function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileContainer">
-              <img
-                className="coverPicture"
-                src="/assets/post/default.jpeg"
-                alt=""
-              />
-              <img
-                className="profilePicture"
-                src="/assets/person/default.jpeg"
-                alt=""
-              />
+              <img className="coverPicture" src="" alt="" />
+              <img className="profilePicture" src="" alt="" />
             </div>
           </div>
 
           <div className="profileInfo">
-            <h4 className="profileInfoName">{currentUser.username}</h4>
-            <span className="profileDescription">
-              This is profile description
-            </span>
+            <h4 className="profileInfoName">
+              {getUser.username} ({viewUser.nickName}){" "}
+            </h4>
+            <span className="profileDescription">{viewUser.bio}</span>
           </div>
 
           <div className="profileRightBottom">
             <Feed />
-            <Rightbar />
+            <Rightbar viewUser={viewUser} />
           </div>
         </div>
       </div>

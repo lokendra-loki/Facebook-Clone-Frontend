@@ -6,40 +6,21 @@ import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext"
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 const Share = () => {
-  // const { dispatch } = useContext(FeedPostsContext);
-  // const { user } = useContext(AuthContext);
-  // const currentUser = user;
-
-  //Create Pos
-  // const [desc, setDesc] = useState("");
-  // const feedPost = {
-  //   userID: currentUser?._id,
-  //   desc: desc,
-  //   username: currentUser?.username,
-  // };
-
-  // const handleSubmitPost = (e) => {
-  //   e.preventDefault();
-  //   createFeedPost(feedPost, dispatch);
-  //   console.log(feedPost);
-  // };
-
-  //working code
   const { dispatch } = useContext(FeedPostsContext);
   const { user } = useContext(AuthContext);
+  // console.log(user?.others);
 
   //Create Post
   const [desc, setDesc] = useState("");
   const feedPost = {
-    userID: user.others._id,
+    userID: user?.others._id,
     desc: desc,
-    username: user.others.username,
+    username: user?.others.username,
   };
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
     createFeedPost(feedPost, dispatch);
-    console.log(feedPost);
   };
 
   return (
@@ -48,7 +29,7 @@ const Share = () => {
         <div className="shareTop">
           <img className="shareProfileImg" src="/assets/profile.jpeg" alt="" />
           <input
-            placeholder={`What's on your mind ${user.others.username} ?`}
+            placeholder={`What's on your mind ${user?.others.username} ?`}
             className="shareInput"
             onChange={(e) => setDesc(e.target.value)}
           />
