@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./topbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -12,8 +12,9 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
+import axios from "axios";
 
-function Topbar() {
+function Topbar({ setSearchResult }) {
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   //Logout
@@ -21,6 +22,28 @@ function Topbar() {
     dispatch({ type: "LOGOUT" });
     navigate("/login");
   };
+
+  //get all user for search
+  const [allUsers, setAllUsers] = useState([]);
+  useEffect(() => {
+    const fetchAllUsers = async () => {
+      const res = await axios.get("/users/getAll");
+      setAllUsers(res.data);
+    };
+    fetchAllUsers();
+  }, []);
+  // console.log(allUsers);
+
+  //Search user
+  // const [searchQuery, setSearchQuery] = useState("");
+  // console.log(allUsers.filter(user=>user.username.toLowerCase().includes(searchQuery)));
+
+  // const searchUserResultData = (data) => {
+  //   return data.filter((item) =>
+  //     item.username.toLowerCase().includes(searchQuery.toLowerCase())
+  //   );
+  // };
+  // console.log(searchUserResultData(allUsers));
 
   return (
     <div className="topbarContainer">
@@ -35,6 +58,7 @@ function Topbar() {
             className="topSearchInput"
             type="text"
             placeholder="Search Facebook"
+            onChange={(e) => setSearchResult(e.target.value)}
           />
         </div>
       </div>

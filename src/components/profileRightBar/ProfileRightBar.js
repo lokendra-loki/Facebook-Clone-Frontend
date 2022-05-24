@@ -18,35 +18,27 @@ function ProfileRightBar({ viewUser }) {
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon"/>
           <span className="ppUserInfoItemTxt">
-            {viewUser.currentJobPosition1} at {viewUser.currentJobCompany1}
+            {viewUser?.currentJobPosition1} at {viewUser?.currentJobCompany1}
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            {viewUser.currentJobPosition2} at {viewUser.currentJobCompany2}
+            {viewUser?.currentJobPosition2} at {viewUser?.currentJobCompany2}
           </span>
         </div>
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            Founder at {viewUser.founderOf1}
-          </span>
-        </div>
-
-        <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon" />
-          <span className="ppUserInfoItemTxt">
-            Co-founder at {viewUser.founderOf1}
+            Founder at {viewUser?.founderOf1}
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            Former Web Development Trainee at Innovative Techno Consultant Pvt.
-            Ltd.
+            Co-founder at {viewUser?.founderOf1}
           </span>
         </div>
 
@@ -59,26 +51,34 @@ function ProfileRightBar({ viewUser }) {
         </div>
 
         <div className="ppUserInfoItemCon">
-          <SchoolIcon className="ppInfoIcon" />
+          <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            Studies {viewUser.currentStudyingCourse} at
-            {viewUser.currentStudyingUniversity}
+            Former Web Development Trainee at Innovative Techno Consultant Pvt.
+            Ltd.
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <SchoolIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            +2 Completed from {viewUser.plus2CompletedCollege}{" "}
-            {viewUser.plus2CompletedCollegeLocation}
+            Studies {viewUser?.currentStudyingCourse} at
+            {viewUser?.currentStudyingUniversity}
           </span>
         </div>
 
         <div className="ppUserInfoItemCon">
           <SchoolIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            SEE completed from{viewUser.sEECompletedCollege}{" "}
-            {viewUser.sEECompletedCollegeLocation}
+            +2 Completed from {viewUser?.plus2CompletedCollege}{" "}
+            {viewUser?.plus2CompletedCollegeLocation}
+          </span>
+        </div>
+
+        <div className="ppUserInfoItemCon">
+          <SchoolIcon className="ppInfoIcon" />
+          <span className="ppUserInfoItemTxt">
+            SEE completed from{viewUser?.sEECompletedCollege}{" "}
+            {viewUser?.sEECompletedCollegeLocation}
           </span>
         </div>
 
@@ -100,7 +100,7 @@ function ProfileRightBar({ viewUser }) {
         <div className="ppUserInfoItemCon">
           <MoreHorizIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
-            See more about {viewUser.username}
+            See more about {viewUser?.username}
           </span>
         </div>
 

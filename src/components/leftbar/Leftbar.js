@@ -12,8 +12,11 @@ import {
   WorkOutline,
 } from "@material-ui/icons";
 import AllUsers from "../allUsers/AllUsers";
+import SearchUserResult from "../searchUserResult/SearchUserResult";
 
-function Leftbar() {
+function Leftbar({ searchUserResultData }) {
+  console.log(searchUserResultData);
+
   return (
     <div className="leftBar">
       <div className="sideBarWrapper">
@@ -68,7 +71,11 @@ function Leftbar() {
         <hr className="leftBarhr" />
 
         <ul className="leftBarFriendList">
-          <AllUsers />
+          {searchUserResultData ? (
+            <SearchUserResult searchUserResultData={searchUserResultData} />
+          ) : (
+            <AllUsers />
+          )}
         </ul>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./post.scss";
 import { MoreVert } from "@material-ui/icons";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
