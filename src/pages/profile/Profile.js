@@ -4,9 +4,11 @@ import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Feed from "../../components/feed/Feed";
+import EditIcon from "@mui/icons-material/Edit";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -45,6 +47,8 @@ function Profile() {
   }, [path]);
   console.log(viewUser);
 
+  //To open Edit Profile Container
+  const [openEditCon, setOpenEditCon] = useState(false);
   return (
     <>
       <Topbar />
@@ -59,14 +63,27 @@ function Profile() {
           </div>
 
           <div className="profileInfo">
-            <h4 className="profileInfoName">
-              {getUser.username} ({viewUser.nickName}){" "}
-            </h4>
-            <span className="profileDescription">{viewUser.bio}</span>
+            <div className="profileInfoContainer">
+              <h4 className="profileInfoName">
+                {getUser.username} ({viewUser.nickName}){" "}
+              </h4>
+              <span className="profileDescription">{viewUser.bio}</span>
+            </div>
+            <button
+              className="profileEditBut"
+              onClick={() => setOpenEditCon(!openEditCon)}
+            >
+              <EditIcon />
+              <span className="editProfileTxt">
+                {openEditCon ? " Cancel" : " Edit Profile"}
+              </span>
+            </button>
           </div>
+          {openEditCon && <EditProfile viewUser={viewUser} />}
 
           <div className="profileRightBottom">
             <Feed />
+
             <Rightbar viewUser={viewUser} />
           </div>
         </div>

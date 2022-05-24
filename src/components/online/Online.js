@@ -1,15 +1,14 @@
 import React from 'react'
 import "./online.scss"
 
-function Online({user}) {
+function Online() {
   return (
     <li className="rightBarFriend">
             <div className="rightBarProfileImageContainer">
-              <img src={user.profilePicture} alt="" className="rightBarprofileImg" />
+              <img src="" alt="" className="rightBarprofileImg" />
               <span className="rightBarOnline"></span>
             </div>
-            <span className="rightBarUsername">{user.username}</span>
-
+            <span className="rightBarUsername">loki</span>
           </li>
   )
 }

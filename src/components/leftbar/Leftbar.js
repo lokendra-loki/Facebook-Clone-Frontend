@@ -67,17 +67,7 @@ function Leftbar() {
         <button className="leftBarButton">Show More</button>
         <hr className="leftBarhr" />
 
-        {/* --------------LeftBar Friend List----------------------------------------- */}
         <ul className="leftBarFriendList">
-          {/* <li className="leftBarFriend">
-            <img
-              src="/assets/person/2.jpeg"
-              alt=""
-              className="leftBarFriendImg"
-            />
-            <span className="leftBarFriendName">Samir Kushmi</span>
-          </li> */}
-
           <AllUsers />
         </ul>
       </div>

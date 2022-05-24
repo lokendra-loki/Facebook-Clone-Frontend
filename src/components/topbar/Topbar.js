@@ -27,7 +27,7 @@ function Topbar() {
       {/* Topbar left */}
       <div className="topbarLeft">
         <Link to="/" className="link">
-          <img src="assets/fbLogo.png" className="facebookLogo" alt="" />
+          <img src="/assets/fbLogo.png" className="facebookLogo" alt="" />
         </Link>
         <div className="topbarLeft__search">
           <SearchIcon className="topSearchInputIcon" />

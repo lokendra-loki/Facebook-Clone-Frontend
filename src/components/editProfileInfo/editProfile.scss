@@ -1,0 +1,130 @@
+.editProfileInputCon {
+  background-color: #242526;
+  height: 180vh;
+  width: 41.8vw;
+  margin: 0px 20px;
+  border-radius: 8px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+
+  .epiRow1 {
+    display: flex;
+    align-items: center;
+
+    margin-left: 43%;
+    justify-content: space-between;
+
+    .epiEditProfile {
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .epiClearCon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(196, 196, 196);
+      background-color: #575758;
+
+      &:hover {
+        background-color: #3a3b3c;
+        color: white;
+      }
+    }
+  }
+  .epiHr1 {
+    margin-top: 20px;
+    height: 0.1px;
+    background-color: grey;
+  }
+
+  .epiRow2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .epiProfilePic {
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+    }
+    .epiEdit {
+      font-size: 16px;
+      color: blue;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .epiProfilePicAvatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    overflow: hidden;
+    object-fit: cover;
+    margin-left: 34%;
+  }
+
+  .epiRow3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .epiCoverPic {
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+    }
+    .epiEdit3 {
+      font-size: 16px;
+      color: blue;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .epiCoverPicAvatar {
+    width: 450px;
+    height: 180px;
+    margin-top: 15px;
+    border: 1px solid grey;
+    overflow: hidden;
+    object-fit: cover;
+    margin-left: 15%;
+    border-radius: 12px;
+  }
+
+  .epiBio {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .epiBioInput {
+    height: 80px;
+  }
+
+  .userInfoInputConTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin-top: 20px;
+  }
+
+  .userInfoInputCon {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

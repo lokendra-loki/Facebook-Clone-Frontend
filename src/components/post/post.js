@@ -132,7 +132,7 @@ function Post() {
               <div className="postTopLeft">
                 <img
                   className="postProfileImg"
-                  src="assets/person/7.jpeg"
+                  src=""
                   alt=""
                 />
                 <span className="postUsername">{feedPost.username}</span>
@@ -146,7 +146,7 @@ function Post() {
 
             <div className="postCenter">
               <span className="postText">{feedPost.desc}</span>
-              <img className="postImg" src="assets/post/10.jpeg" alt="" />
+              <img className="postImg" src="" alt="" />
             </div>
 
             <div className="postBottom">
