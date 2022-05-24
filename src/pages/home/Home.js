@@ -31,7 +31,7 @@ function Home() {
     <>
       <Topbar setSearchResult={setSearchResult} />
       <div className="homeContainer">
-        <Leftbar searchUserResultData={searchUserResultData(allUsers)}  />
+        <Leftbar searchUserResultData={searchUserResultData(allUsers)} />
         <Feed />
         <Rightbar />
       </div>

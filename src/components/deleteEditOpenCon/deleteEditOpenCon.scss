@@ -1,0 +1,46 @@
+.deleteEditOpenContainer {
+  height: 260px;
+  width: 300px;
+  background-color: #242526;
+  border-radius: 4px;
+  color: rgb(214, 209, 209);
+  padding: 10px;
+  border: 1px solid rgb(62, 62, 62);
+  
+  .deoClearCon {
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 87%;
+
+    &:hover {
+      background-color: #3a3b3c;
+    }
+  }
+
+  .deocEdit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    width: 70%;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3a3b3c;
+    }
+  }
+
+  .deo1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

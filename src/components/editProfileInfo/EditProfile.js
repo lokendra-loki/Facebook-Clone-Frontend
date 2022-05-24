@@ -10,7 +10,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import axios from "axios";
 import "./editProfile.scss";
 
-function EditProfile({ viewUser }) {
+function EditProfile({ viewUser, closeEditCon }) {
   const userDetailId = viewUser._id;
 
   //Edit Profile info
@@ -65,7 +65,7 @@ function EditProfile({ viewUser }) {
     <form className="editProfileInputCon" onSubmit={handleUserInfoSave}>
       <div className="epiRow1">
         <span className="epiEditProfile">Edit Profile</span>
-        <div className="epiClearCon">
+        <div className="epiClearCon" onClick={() => closeEditCon(false)}>
           <ClearIcon className="epiClearIcon" />
         </div>
       </div>

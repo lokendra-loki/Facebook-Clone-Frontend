@@ -71,11 +71,12 @@ function Leftbar({ searchUserResultData }) {
         <hr className="leftBarhr" />
 
         <ul className="leftBarFriendList">
-          {searchUserResultData ? (
+          {/* {searchUserResultData ? (
             <SearchUserResult searchUserResultData={searchUserResultData} />
           ) : (
             <AllUsers />
-          )}
+          )} */}
+          <AllUsers />
         </ul>
       </div>
     </div>

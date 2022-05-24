@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./post.scss";
-import { MoreVert } from "@material-ui/icons";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
 import getFeedPosts, {
   deleteFeedPost,
 } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
+import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 
 function Post() {
   //Fetch all feedPosts
@@ -21,6 +22,9 @@ function Post() {
     window.location.reload();
   };
 
+  //open deleteEditOpenCon
+  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
+
   return (
     <>
       {feedPosts.map((feedPost, index) => (
@@ -33,9 +37,18 @@ function Post() {
                 <span className="postDate">{format(feedPost.createdAt)}</span>
               </div>
 
-              <div className="postTopRight">
-                <MoreVert />
+              <div
+                className="postTopRight"
+                onClick={() => setOpenEditDeleteCon(!openEditDeleteCon)}
+              >
+                <MoreHorizIcon />
               </div>
+            </div>
+
+            <div className="deleteEditConWrapper">
+              {openEditDeleteCon && (
+                <DeleteEditOpenCon closeEditDeleteCon={setOpenEditDeleteCon} />
+              )}
             </div>
 
             <div className="postCenter">

@@ -49,6 +49,7 @@ function Profile() {
 
   //To open Edit Profile Container
   const [openEditCon, setOpenEditCon] = useState(false);
+
   return (
     <>
       <Topbar />
@@ -79,7 +80,9 @@ function Profile() {
               </span>
             </button>
           </div>
-          {openEditCon && <EditProfile viewUser={viewUser} />}
+          {openEditCon && (
+            <EditProfile viewUser={viewUser} closeEditCon={setOpenEditCon} />
+          )}
 
           <div className="profileRightBottom">
             <Feed />
