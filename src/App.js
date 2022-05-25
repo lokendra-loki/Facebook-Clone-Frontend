@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/profile/:id" element={<Profile />} />
-        <Route exact path="/settings" element={<Setting />} />
+        <Route exact path="/settings/:id" element={<Setting />} />
       </Routes>
     </Router>
   );

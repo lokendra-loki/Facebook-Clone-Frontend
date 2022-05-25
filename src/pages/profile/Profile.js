@@ -12,6 +12,7 @@ import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Profile() {
   const { user } = useContext(AuthContext);
+  console.log(user);
 
   //Fetching data from URl id
   const location = useLocation();
@@ -47,6 +48,27 @@ function Profile() {
   }, [path]);
   console.log(viewUser);
 
+  //Follow user
+  const [followed, setFollowed] = useState(false);
+
+  const handleFollow = async () => {
+    try {
+      if (followed) {
+        await axios.put(`/users/follow/${path}`, { userId: user.others._id });
+        setFollowed(false);
+      } else {
+        await axios.put(`/users/unfollow/${path}`, {
+          userId: user.others._id,
+        });
+        setFollowed(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setFollowed(!followed);
+  };
+  console.log(followed);
+
   //To open Edit Profile Container
   const [openEditCon, setOpenEditCon] = useState(false);
 
@@ -60,16 +82,33 @@ function Profile() {
             <div className="profileContainer">
               <img className="coverPicture" src="" alt="" />
               <img className="profilePicture" src="" alt="" />
+              <button className="followButton" onClick={handleFollow}>
+                Follow
+              </button>
             </div>
           </div>
 
           <div className="profileInfo">
+            <div className="followersFollowingCount">
+              <div className="followersCount">
+                <span className="followersCountTxt">Followers</span>
+                <span className="followerNumber">644</span>
+              </div>
+
+              <hr className="piHr" />
+              <div className="followersCount">
+                <span className="followersCountTxt">Following</span>
+                <span className="followerNumber">644</span>
+              </div>
+            </div>
+
             <div className="profileInfoContainer">
               <h4 className="profileInfoName">
                 {getUser.username} ({viewUser.nickName}){" "}
               </h4>
               <span className="profileDescription">{viewUser.bio}</span>
             </div>
+
             <button
               className="profileEditBut"
               onClick={() => setOpenEditCon(!openEditCon)}
@@ -80,6 +119,7 @@ function Profile() {
               </span>
             </button>
           </div>
+
           {openEditCon && (
             <EditProfile viewUser={viewUser} closeEditCon={setOpenEditCon} />
           )}

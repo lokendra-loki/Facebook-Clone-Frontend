@@ -45,12 +45,14 @@ function SettingContainer({ currentUser, currentUserDetail }) {
 
       <hr className="sc1" />
 
-      <div className="scEdit">
-        <div className="scIconCon">
-          <SettingsIcon className="scIcon" />
+      <Link to={`/settings/${currentUser.others._id}`} className="link">
+        <div className="scEdit">
+          <div className="scIconCon">
+            <SettingsIcon className="scIcon" />
+          </div>
+          <span className="sccTxt">Settings & privacy</span>
         </div>
-        <span className="sccTxt">Settings & privacy</span>
-      </div>
+      </Link>
 
       <div className="scEdit" onClick={handleLogout}>
         <div className="scIconCon">

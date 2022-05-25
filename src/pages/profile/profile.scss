@@ -6,6 +6,7 @@
     position: relative;
 
     .profileRightTop {
+      // background-color: green;
       .profileContainer {
         height: 320px;
         position: relative;
@@ -29,20 +30,56 @@
           top: 150px;
           border: 3px solid #fff;
         }
+        .followButton {
+          height: 40px;
+          width: 100px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: 600;
+          margin-left: 70%;
+          margin-top: 10px;
+        }
       }
     }
 
     .profileInfo {
-    //   background-color: yellow;
+      // background-color: yellow;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .followersFollowingCount {
+        display: flex;
+        gap: 40px;
+        // padding-left: 20px;
+        margin-top: -15px;
+
+        .followersCount {
+          display: flex;
+          flex-direction: column;
+
+          .followersCountTxt {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+          .followerNumber {
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            padding-left: 20px;
+          }
+        }
+      }
 
       .profileInfoContainer {
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin-left: 310px;
+        margin-left: 50px;
       }
 
       .profileInfoName {
@@ -88,7 +125,7 @@
       display: flex;
       // background-color: green;
       position: absolute;
-      top:430px;
+      top: 430px;
       width: 100%;
     }
   }
