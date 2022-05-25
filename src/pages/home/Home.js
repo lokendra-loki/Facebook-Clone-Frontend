@@ -30,6 +30,7 @@ function Home() {
   return (
     <>
       <Topbar setSearchResult={setSearchResult} />
+      
       <div className="homeContainer">
         <Leftbar searchUserResultData={searchUserResultData(allUsers)} />
         <Feed />

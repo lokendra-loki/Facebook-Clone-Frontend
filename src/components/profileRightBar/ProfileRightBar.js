@@ -6,17 +6,19 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SchoolIcon from "@mui/icons-material/School";
 import EmailIcon from "@mui/icons-material/Email";
 import "./profileRightBar.scss";
+import SettingContainer from "../settingContainer/SettingContainer";
 
 function ProfileRightBar({ viewUser }) {
   console.log(viewUser);
 
   return (
     <>
+      <SettingContainer />
       <h4 className="userInfo">User Information</h4>
 
       <div className="rightBarInfoContainer">
         <div className="ppUserInfoItemCon">
-          <BusinessCenterIcon className="ppInfoIcon"/>
+          <BusinessCenterIcon className="ppInfoIcon" />
           <span className="ppUserInfoItemTxt">
             {viewUser?.currentJobPosition1} at {viewUser?.currentJobCompany1}
           </span>
