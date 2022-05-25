@@ -3,6 +3,14 @@
   align-items: center;
   margin-bottom: 15px;
   cursor: pointer;
+  height: 45px;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: #3a3b3c;
+    color: rgb(223, 221, 221);
+    transition: all 0.3s ease;
+  }
 
   .leftBarFriendImg {
     width: 32px;
@@ -10,5 +18,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    object-fit: cover;
+    margin-left: 10px;
   }
 }

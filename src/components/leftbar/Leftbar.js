@@ -1,5 +1,8 @@
 import React from "react";
-import "./leftbar.scss";
+
+import SearchIcon from "@mui/icons-material/Search";
+import AllUsers from "../allUsers/AllUsers";
+import SearchUserResult from "../searchUserResult/SearchUserResult";
 import {
   Bookmark,
   Chat,
@@ -11,8 +14,7 @@ import {
   School,
   WorkOutline,
 } from "@material-ui/icons";
-import AllUsers from "../allUsers/AllUsers";
-import SearchUserResult from "../searchUserResult/SearchUserResult";
+import "./leftbar.scss";
 
 function Leftbar({ searchUserResultData }) {
   console.log(searchUserResultData);
@@ -71,6 +73,12 @@ function Leftbar({ searchUserResultData }) {
         <hr className="leftBarhr" />
 
         <ul className="leftBarFriendList">
+          <span className="allUser">All Users .</span>
+          <input
+            type="text"
+            className="allUserSearch"
+            placeholder="Search user"
+          />
           {/* {searchUserResultData ? (
             <SearchUserResult searchUserResultData={searchUserResultData} />
           ) : (

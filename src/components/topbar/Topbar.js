@@ -56,7 +56,7 @@ function Topbar({ setSearchResult }) {
     const fetchUserDetail = async () => {
       try {
         const res = await axios.post("/userDetail/userDetailData", {
-          userID: user.others._id,
+          userID: user?.others._id,
         });
         setUserDetail(res.data);
       } catch (error) {
@@ -64,7 +64,7 @@ function Topbar({ setSearchResult }) {
       }
     };
     fetchUserDetail();
-  }, [user.others._id]);
+  }, [user?.others._id]);
   console.log(userDetail);
 
   //
@@ -116,11 +116,11 @@ function Topbar({ setSearchResult }) {
 
         {/* Topbar right */}
         <div className="topbarRight">
-          <Link to={`/profile/${user.others._id}`} className="link">
+          <Link to={`/profile/${user?.others._id}`} className="link">
             <div className="trProfileCon">
               <img className="trProfileImg" src="/assets/profile.jpeg" alt="" />
               <span className="trProfileName">
-                {user.others.username.split(" ")[0]}
+                {user?.others.username.split(" ")[0]}
               </span>
             </div>
           </Link>

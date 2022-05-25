@@ -4,7 +4,7 @@ import axios from "axios";
 import "./allUsers.scss";
 
 function AllUsers() {
-  //Fetch allUsers
+  //Fetch allUsers to show in leftbar
   const [getAllUser, setGetAllUser] = useState([]);
   useEffect(() => {
     const fetchAllUsers = async () => {
@@ -13,15 +13,26 @@ function AllUsers() {
     };
     fetchAllUsers();
   }, []);
-  // console.log(getAllUser);
+  console.log(getAllUser);
+
+  //Get all userDetails for profile pic
+  const [getAllUserDetails, setGetAllUserDetails] = useState([]);
+  useEffect(() => {
+    const fetchAllUserDetails = async () => {
+      const res = await axios.get("/userDetail/all");
+      setGetAllUserDetails(res.data);
+    };
+    fetchAllUserDetails();
+  }, []);
+  console.log(getAllUserDetails);
 
   return (
     <>
       {getAllUser.map((user, index) => (
         <Link key={index} to={`/profile/${user._id}`} className="link">
-          <li  className="leftBarFriend">
+          <li className="leftBarFriend">
             <img
-              src={user.profilePic || "/assets/profile.jpeg"}
+              src={getAllUserDetails[index]?.profilePic}
               alt=""
               className="leftBarFriendImg"
             />

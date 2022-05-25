@@ -1,10 +1,143 @@
 .userSettingInfoCon {
+  background-color: #242526;
   display: flex;
+  color: rgb(197, 195, 195);
+  height: 500vh;
 
   .usiLeft {
     flex: 2;
   }
   .useRight {
     flex: 8;
+    background-color: #000000;
+
+    .userCredentialEditCon {
+      background-color: #000000;
+      height: 500px;
+      width: 70%;
+      margin-left: 15%;
+      margin-top: 60px;
+
+      .usiRow1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .usiTitle {
+          font-size: 22px;
+          font-weight: 600;
+        }
+
+        .usiEditBut {
+          height: 40px;
+          width: 100px;
+          border-radius: 5px;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+
+      .suiHr1 {
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .suiHr2 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border: none;
+        height: 1px;
+        background-color: #333;
+      }
+      .usiItemCon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 50px;
+        background-color: #242526;
+        height: 50px;
+
+        .usiItemTitle {
+          font-size: 18px;
+          color: white;
+        }
+      }
+    }
+
+    // User Credential Edit Mode Container
+    .userCredentialEditModeCon {
+      background-color: #000000;
+      height: 500px;
+      width: 70%;
+      margin-left: 15%;
+      margin-top: 60px;
+
+      .ucemcRow1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .ucemcTitle {
+          font-size: 22px;
+          font-weight: 600;
+        }
+
+        .ucemcEditBut {
+          height: 40px;
+          width: 100px;
+          border-radius: 5px;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+
+      .ucemcHr1 {
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .ucemcHr2 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border: none;
+        height: 1px;
+        background-color: #333;
+      }
+      .ucemcSaveBut {
+        height: 40px;
+        width: 100px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-left: 87%;
+      }
+      .ucemcItemCon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 50px;
+        background-color: #242526;
+        height: 50px;
+
+        .ucemcItemTitle {
+          font-size: 18px;
+          color: white;
+        }
+        .ucemcItemTitleValueInput {
+          height: 35px;
+          width: 250px;
+          border-radius: 2px;
+          outline: none;
+          padding-left: 10px;
+          border: none;
+          font-size: 16px;
+
+          &::placeholder {
+            font-size: 16px;
+          }
+        }
+      }
+    }
   }
 }
