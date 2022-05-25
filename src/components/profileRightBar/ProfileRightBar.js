@@ -13,7 +13,7 @@ function ProfileRightBar({ viewUser }) {
 
   return (
     <>
-      <SettingContainer />
+      {/* <SettingContainer /> */}
       <h4 className="userInfo">User Information</h4>
 
       <div className="rightBarInfoContainer">
