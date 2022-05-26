@@ -29,7 +29,7 @@ function Home() {
 
   //masterCurrentUser
   const { user } = useContext(AuthContext);
-  const masterCurrentUser = user.others;
+  const masterCurrentUser = user?.others;
 
   //masterCurrentUserDetail
   const [masterCurrentUserDetail, setMasterCurrentUserDetail] = useState({});
@@ -37,7 +37,7 @@ function Home() {
     try {
       const fetchMasterCurrentUserDetail = async () => {
         const res = await axios.post("/userDetail/userDetailData", {
-          userID: masterCurrentUser._id,
+          userID: masterCurrentUser?._id,
         });
         setMasterCurrentUserDetail(res.data[0]);
       };
@@ -45,7 +45,7 @@ function Home() {
     } catch (error) {
       console.log(error);
     }
-  }, [masterCurrentUser._id]);
+  }, [masterCurrentUser?._id]);
 
   return (
     <>
@@ -68,7 +68,13 @@ function Home() {
           masterCurrentUserDetail={masterCurrentUserDetail}
           masterCurrentUser={masterCurrentUser}
         />
-        <Rightbar />
+
+        <Rightbar
+          searchUserResultData={searchUserResultData(allUsers)}
+          masterCurrentUserDetail={masterCurrentUserDetail}
+          masterCurrentUser={masterCurrentUser}
+          allUsers={allUsers}
+        />
       </div>
     </>
   );

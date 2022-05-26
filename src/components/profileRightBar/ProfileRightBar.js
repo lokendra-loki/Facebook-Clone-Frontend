@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -9,12 +9,11 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./profileRightBar.scss";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import FollowerUser from "../followerUser/FollowerUser";
 
 function ProfileRightBar({ viewUser }) {
-  console.log(viewUser);
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-
   const { user } = useContext(AuthContext);
 
   //Fetching all followers (id)
@@ -23,7 +22,7 @@ function ProfileRightBar({ viewUser }) {
     const fetchAllFollowers = async () => {
       try {
         const res = await axios.get(`/users/allFollowers/${user.others._id}`);
-        console.log(res);
+        // console.log(res.data);
         setAllFollowersId(res.data);
       } catch (error) {
         console.log(error);
@@ -31,15 +30,15 @@ function ProfileRightBar({ viewUser }) {
     };
     fetchAllFollowers();
   }, [user?.others?._id]);
-  console.log(allFollowersId);
+  // console.log(allFollowersId);
 
   //fetching userCredential from id causer username is in credential so get user from id
   // const [followerInfo, setAllFollowerInfo] = React.useState({});
   // useEffect(() => {
   //   const fetchUserInfo = async () => {
   //     try {
-  //       const res = await axios.get (`/users/get/${allFollowersId[0]}`);
-  //       setAllFollowerInfo(res);
+  //       const res = await axios.get(`/users/get/${allFollowersId}`);
+  //       setAllFollowerInfo(res.data);
   //     } catch (error) {
   //       console.log(error);
   //     }
@@ -47,6 +46,23 @@ function ProfileRightBar({ viewUser }) {
   //   fetchUserInfo();
   // }, [allFollowersId]);
   // console.log(followerInfo);
+
+  //Fetching userDetails from id
+  const [followerUserDetail, setFollowerUserDetail] = useState({});
+  useEffect(() => {
+    try {
+      const fetchFollowerUserDetail = async () => {
+        const res = await axios.post("/userDetail/userDetailData", {
+          userID: allFollowersId,
+        });
+        setFollowerUserDetail(res.data);
+      };
+      fetchFollowerUserDetail();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [allFollowersId]);
+  console.log(followerUserDetail);
 
   return (
     <>
@@ -91,8 +107,8 @@ function ProfileRightBar({ viewUser }) {
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 Former{" "}
-                <span className="boldSpan">{viewUser?.pastJob1Position}</span> at{" "}
-                {viewUser?.pastJob1Company}
+                <span className="boldSpan">{viewUser?.pastJob1Position}</span>{" "}
+                at {viewUser?.pastJob1Company}
               </span>
             </div>
 
@@ -100,8 +116,8 @@ function ProfileRightBar({ viewUser }) {
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 Former{" "}
-                <span className="boldSpan">{viewUser?.pastJob2Position}</span> at{" "}
-                {viewUser?.pastJob2Company}
+                <span className="boldSpan">{viewUser?.pastJob2Position}</span>{" "}
+                at {viewUser?.pastJob2Company}
               </span>
             </div>
 
@@ -178,75 +194,17 @@ function ProfileRightBar({ viewUser }) {
       ) : null}
       {/*  Followers ===================================*/}
       <h4 className="followerHeading">Followers</h4>
-
-      <div className="followerListItemCon">
-        <div className="followerListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followerListImg" />
-          <div className="followerListNameAndViewProfile">
-            <span className="followerListName">Lokendra Chaulagain</span>
-            <span className="followerListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followerListFollowBack">Follow back</button>
-      </div>
-
-      <div className="followerListItemCon">
-        <div className="followerListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followerListImg" />
-          <div className="followerListNameAndViewProfile">
-            <span className="followerListName">Lokendra Chaulagain</span>
-            <span className="followerListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followerListFollowBack">Follow back</button>
-      </div>
-
-      <div className="followerListItemCon">
-        <div className="followerListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followerListImg" />
-          <div className="followerListNameAndViewProfile">
-            <span className="followerListName">Lokendra Chaulagain</span>
-            <span className="followerListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followerListFollowBack">Follow back</button>
-      </div>
+      {allFollowersId?.map((followerId, i) => (
+        <FollowerUser
+          key={i}
+          followerId={followerId}
+          index={i}
+          followerUserDetail={followerUserDetail}
+        />
+      ))}
 
       {/*  Following ===================================*/}
       <h4 className="followingHeading">Following</h4>
-      <div className="followingListItemCon">
-        <div className="followingListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followingListImg" />
-          <div className="followingListNameAndViewProfile">
-            <span className="followingListName">Lokendra Chaulagain</span>
-            <span className="followingListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followingListFollowBack">Unfollow</button>
-      </div>
-
-      <div className="followingListItemCon">
-        <div className="followingListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followingListImg" />
-          <div className="followingListNameAndViewProfile">
-            <span className="followingListName">Lokendra Chaulagain</span>
-            <span className="followingListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followingListFollowBack">Unfollow</button>
-      </div>
-
-      <div className="followingListItemCon">
-        <div className="followingListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followingListImg" />
-          <div className="followingListNameAndViewProfile">
-            <span className="followingListName">Lokendra Chaulagain</span>
-            <span className="followingListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followingListFollowBack">Unfollow</button>
-      </div>
-
       <div className="followingListItemCon">
         <div className="followingListImgAndName">
           <img src="/assets/profile.jpeg" alt="" className="followingListImg" />

@@ -13,7 +13,7 @@ function AllUsers({ allUsers }) {
     };
     fetchAllUsers();
   }, []);
-  console.log(getAllUser);
+  // console.log(getAllUser);
 
   //Get all userDetails for profile pic
   const [getAllUserDetails, setGetAllUserDetails] = useState([]);
@@ -24,7 +24,7 @@ function AllUsers({ allUsers }) {
     };
     fetchAllUserDetails();
   }, []);
-  console.log(getAllUserDetails);
+  // console.log(getAllUserDetails);
 
   return (
     <>
