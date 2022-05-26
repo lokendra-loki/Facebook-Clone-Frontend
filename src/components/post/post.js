@@ -7,8 +7,12 @@ import getFeedPosts, {
 } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function Post() {
+  const { user } = useContext(AuthContext);
+
   //Fetch all feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
   useEffect(() => {
@@ -20,6 +24,24 @@ function Post() {
   const handlePostDelete = (id) => {
     deleteFeedPost(id, dispatch);
     window.location.reload();
+  };
+
+  //Bookmark  save
+  const [bookmarked, setBookmarked] = useState(false);
+  const saveBookmarkPost = async () => {
+    try {
+      // setBookmarked(true);
+      const res = await axios.put(
+        `/users/bookmark/${"628daedd04d844e9a971cd22"}`,
+        {
+          userId: user.others._id,
+        }
+      );
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //open deleteEditOpenCon
@@ -64,6 +86,10 @@ function Post() {
               </div>
               <button onClick={() => handlePostDelete(feedPost._id)}>
                 delete
+              </button>
+
+              <button className="bookmark" onClick={saveBookmarkPost}>
+                Bookmark
               </button>
               <div className="postBottomRight">
                 <span className="postCommentText">45 comments</span>
