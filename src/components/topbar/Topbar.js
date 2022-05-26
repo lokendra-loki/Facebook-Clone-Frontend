@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./topbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
+import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
@@ -12,31 +11,15 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
-import axios from "axios";
 import SettingContainer from "../settingContainer/SettingContainer";
 import ClearIcon from "@mui/icons-material/Clear";
 
-function Topbar({ setSearchResult }) {
-  const { user, dispatch } = useContext(AuthContext);
-  console.log(user);
-  const navigate = useNavigate();
-  //Logout
-  // const handleLogout = () => {
-  //   dispatch({ type: "LOGOUT" });
-  //   navigate("/login");
-  // };
-
-  //get all user for search
-  const [allUsers, setAllUsers] = useState([]);
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      const res = await axios.get("/users/getAll");
-      setAllUsers(res.data);
-    };
-    fetchAllUsers();
-  }, []);
-  // console.log(allUsers);
-
+function Topbar({
+  setSearchResult,
+  masterCurrentUser,
+  masterCurrentUserDetail,
+  allUsers,
+}) {
   //Search user
   // const [searchQuery, setSearchQuery] = useState("");
   // console.log(allUsers.filter(user=>user.username.toLowerCase().includes(searchQuery)));
@@ -48,26 +31,6 @@ function Topbar({ setSearchResult }) {
   // };
   // console.log(searchUserResultData(allUsers));
 
-  ///////get current user
-
-  //Fetching userDetail according to userID element
-  const [userDetail, setUserDetail] = useState({});
-  useEffect(() => {
-    const fetchUserDetail = async () => {
-      try {
-        const res = await axios.post("/userDetail/userDetailData", {
-          userID: user?.others._id,
-        });
-        setUserDetail(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUserDetail();
-  }, [user?.others._id]);
-  console.log(userDetail);
-
-  //
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (
@@ -88,15 +51,17 @@ function Topbar({ setSearchResult }) {
             />
           </div>
         </div>
-        {/* <span className="logOut" onClick={handleLogout}>
-        Logout
-      </span> */}
 
         {/* Topbar Center */}
         <div className="topbarCenter">
-          <div className="IconCon">
-            <HomeOutlinedIcon className="topbarCenterIcon" />
-          </div>
+          <Link to="/" className="link">
+            <div
+              className="IconCon"
+              onClick={(e) => window.location.reload("/")}
+            >
+              <HomeOutlinedIcon className="topbarCenterIcon" />
+            </div>
+          </Link>
 
           <div className="IconCon">
             <OndemandVideoOutlinedIcon className="topbarCenterIcon" />
@@ -116,11 +81,15 @@ function Topbar({ setSearchResult }) {
 
         {/* Topbar right */}
         <div className="topbarRight">
-          <Link to={`/profile/${user?.others._id}`} className="link">
+          <Link to={`/profile/${masterCurrentUser?._id}`} className="link">
             <div className="trProfileCon">
-              <img className="trProfileImg" src="/assets/profile.jpeg" alt="" />
+              <img
+                className="trProfileImg"
+                src={masterCurrentUserDetail?.profilePic}
+                alt=""
+              />
               <span className="trProfileName">
-                {user?.others.username.split(" ")[0]}
+                {masterCurrentUser?.username.split(" ")[0]}
               </span>
             </div>
           </Link>
@@ -146,9 +115,9 @@ function Topbar({ setSearchResult }) {
         </div>
       </div>
       <div className="settingContainerWrapper">
-        {openSettingCon && (
+        {/* {openSettingCon && (
           <SettingContainer currentUser={user} currentUserDetail={userDetail} />
-        )}
+        )} */}
       </div>
     </>
   );

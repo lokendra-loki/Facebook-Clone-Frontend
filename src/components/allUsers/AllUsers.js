@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./allUsers.scss";
 
-function AllUsers() {
+function AllUsers({ allUsers }) {
   //Fetch allUsers to show in leftbar
   const [getAllUser, setGetAllUser] = useState([]);
   useEffect(() => {

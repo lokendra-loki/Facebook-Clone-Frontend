@@ -1,32 +1,37 @@
 import React from "react";
-
-import SearchIcon from "@mui/icons-material/Search";
 import AllUsers from "../allUsers/AllUsers";
-import SearchUserResult from "../searchUserResult/SearchUserResult";
+import { Link } from "react-router-dom";
 import {
   Bookmark,
   Chat,
   Event,
-  Group,
   HelpOutline,
   PlayCircleFilledOutlined,
-  RssFeed,
-  School,
   WorkOutline,
+  Home,
 } from "@material-ui/icons";
 import "./leftbar.scss";
 
-function Leftbar({ searchUserResultData }) {
-  console.log(searchUserResultData);
-
+function Leftbar({
+  searchUserResultData,
+  masterCurrentUser,
+  allUsers,
+  masterCurrentUserDetail,
+}) {
   return (
     <div className="leftBar">
       <div className="sideBarWrapper">
         <ul className="leftBarList">
-          <li className="leftBarListItem">
-            <RssFeed className="leftBarIcon" />
-            <span className="leftBarListItemText">Feed</span>
-          </li>
+          <Link
+            to="/"
+            className="link"
+            onClick={(e) => window.location.replace("/")}
+          >
+            <li className="leftBarListItem">
+              <Home className="leftBarIcon" />
+              <span className="leftBarListItemText">Home</span>
+            </li>
+          </Link>
 
           <li className="leftBarListItem">
             <Chat className="leftBarIcon" />
@@ -38,15 +43,12 @@ function Leftbar({ searchUserResultData }) {
             <span className="leftBarListItemText">Videos</span>
           </li>
 
-          <li className="leftBarListItem">
-            <Group className="leftBarIcon" />
-            <span className="leftBarListItemText">Groups</span>
-          </li>
-
-          <li className="leftBarListItem">
-            <Bookmark className="leftBarIcon" />
-            <span className="leftBarListItemText">Bookmarks</span>
-          </li>
+          <Link to={`/bookMark/${masterCurrentUser?._id}`} className="link">
+            <li className="leftBarListItem">
+              <Bookmark className="leftBarIcon" />
+              <span className="leftBarListItemText">Bookmarks</span>
+            </li>
+          </Link>
 
           <li className="leftBarListItem">
             <HelpOutline className="leftBarIcon" />
@@ -62,14 +64,8 @@ function Leftbar({ searchUserResultData }) {
             <Event className="leftBarIcon" />
             <span className="leftBarListItemText">Events</span>
           </li>
-
-          <li className="leftBarListItem">
-            <School className="leftBarIcon" />
-            <span className="leftBarListItemText">Courses</span>
-          </li>
         </ul>
 
-        <button className="leftBarButton">Show More</button>
         <hr className="leftBarhr" />
 
         <ul className="leftBarFriendList">
@@ -84,7 +80,7 @@ function Leftbar({ searchUserResultData }) {
           ) : (
             <AllUsers />
           )} */}
-          <AllUsers />
+          <AllUsers allUsers={allUsers} />
         </ul>
       </div>
     </div>

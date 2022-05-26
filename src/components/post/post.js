@@ -10,15 +10,12 @@ import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
-function Post() {
-  const { user } = useContext(AuthContext);
-
+function Post({ masterCurrentUser }) {
   //Fetch all feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
   useEffect(() => {
     getFeedPosts(dispatch);
   }, [dispatch]);
-  // console.log(feedPosts);
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -26,25 +23,20 @@ function Post() {
     window.location.reload();
   };
 
-  //Bookmark  save
+  //Bookmark
   const [bookmarked, setBookmarked] = useState(false);
-  const saveBookmarkPost = async () => {
+  const saveBookmarkPost = async (id) => {
     try {
-      // setBookmarked(true);
-      const res = await axios.put(
-        `/users/bookmark/${"628daedd04d844e9a971cd22"}`,
-        {
-          userId: user.others._id,
-        }
-      );
-
-      console.log(res);
+      await axios.put(`/users/bookmark/${id}`, {
+        userId: masterCurrentUser?._id,
+      });
+      setBookmarked(true);
     } catch (error) {
       console.log(error);
     }
   };
 
-  //open deleteEditOpenCon
+  //Open Close deleteEditCon
   const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
 
   return (
@@ -84,11 +76,17 @@ function Post() {
                 <img className="likeIcon" src="/assets/heart.png" alt="" />
                 <span className="postLikeCounter"> 9 people like it</span>
               </div>
-              <button onClick={() => handlePostDelete(feedPost._id)}>
+              <button
+                className="postDeleteBut"
+                onClick={() => handlePostDelete(feedPost._id)}
+              >
                 delete
               </button>
 
-              <button className="bookmark" onClick={saveBookmarkPost}>
+              <button
+                className="bookmark"
+                onClick={() => saveBookmarkPost(feedPost._id)}
+              >
                 Bookmark
               </button>
               <div className="postBottomRight">

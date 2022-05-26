@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./profile.scss";
+import "./bookMark.scss";
 import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Rightbar from "../../components/rightbar/Rightbar";
@@ -10,7 +10,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 
-function Profile() {
+function BookMark() {
   const { user, dispatch } = useContext(AuthContext);
   console.log(user);
 
@@ -175,6 +175,7 @@ function Profile() {
 
           <div className="profileRightBottom">
             <Feed />
+          
             <Rightbar viewUser={viewUser} />
           </div>
         </div>
@@ -183,4 +184,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default BookMark;

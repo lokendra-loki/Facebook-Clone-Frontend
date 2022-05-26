@@ -32,6 +32,9 @@
         border-radius: 20px;
         background-color: #3a3b3c;
         cursor: pointer;
+        color: rgb(211, 209, 209);
+        padding-left: 15px;
+        font-size: 17px;
 
         &:hover {
           background-color: #515151;
@@ -39,7 +42,7 @@
 
         &::placeholder {
           color: #bbbaba;
-          padding-left: 14px;
+          // padding-left: 8px;
           font-size: 16px;
         }
       }
@@ -109,9 +112,11 @@
           font-weight: 600;
           justify-content: center;
           border-radius: 5px;
+          background-color: #3a3b3c;
 
           &:hover {
-            background-color: #3a3b3c;
+            background-color: #000000;
+            transition: all 0.3s ease-in;
           }
         }
       }

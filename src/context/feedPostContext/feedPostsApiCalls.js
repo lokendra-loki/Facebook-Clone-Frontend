@@ -5,6 +5,10 @@ const getFeedPosts = async (dispatch) => {
   dispatch({ type: "GET_FEED_POSTS_START" });
   try {
     const res = await axios.get("/posts/getAll");
+    //sort by date
+    res.data.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
     dispatch({ type: "GET_FEED_POSTS_SUCCESS", payload: res.data });
   } catch (error) {
     dispatch({ type: "GET_FEED_POSTS_FAILURE" });

@@ -93,13 +93,53 @@
           font-size: 15px;
         }
       }
+      .postDeleteBut {
+        width: 90px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #3a3b3c;
+        border: none;
+        outline: none;
+        color: rgb(241, 236, 236);
+        font-size: 16px;
 
-      //PostButtomRight--------------------------------
+        &:hover {
+          background-color: #000000;
+          color: rgb(241, 236, 236);
+          transition: all 0.3s ease-in;
+        }
+      }
+
+      //PostButtomRight
       .postBottomRight {
         .postCommentText {
           font-size: 15px;
           cursor: pointer;
           border-bottom: 1px dashed grey;
+        }
+      }
+      .bookmark {
+        width: 90px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #3a3b3c;
+        border: none;
+        outline: none;
+        color: rgb(241, 236, 236);
+        font-size: 16px;
+
+        &:hover {
+          background-color: #000000;
+          color: rgb(241, 236, 236);
+          transition: all 0.3s ease-in;
         }
       }
     }

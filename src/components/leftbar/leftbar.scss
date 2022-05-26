@@ -16,20 +16,22 @@
       .leftBarListItem {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
+        height: 44px;
+        padding-left: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+
+        &:hover {
+          background-color: #3a3b3c;
+          color: #f3f1f1;
+          transition: all 0.3s ease;
+        }
 
         .leftBarIcon {
           margin-right: 15px;
         }
       }
-    }
-
-    .leftBarButton {
-      width: 150px;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      font-weight: 500;
     }
 
     .leftBarhr {

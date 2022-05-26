@@ -2,12 +2,15 @@ import Share from "../share/Share";
 import "./feed.scss";
 import Post from "../post/Post";
 
-function Feed() {
+function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Share />
-        <Post />
+        <Share
+          masterCurrentUser={masterCurrentUser}
+          masterCurrentUserDetail={masterCurrentUserDetail}
+        />
+        <Post masterCurrentUser={masterCurrentUser} />
       </div>
     </div>
   );

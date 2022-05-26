@@ -3,33 +3,35 @@ import "./share.scss";
 import { PermMedia, Room, EmojiEmotions } from "@material-ui/icons";
 import { createFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
-import { AuthContext } from "../../context/authContext/AuthContext";
 
-const Share = () => {
+const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
   const { dispatch } = useContext(FeedPostsContext);
-  const { user } = useContext(AuthContext);
-  // console.log(user?.others);
 
   //Create Post
   const [desc, setDesc] = useState("");
   const feedPost = {
-    userID: user?.others._id,
+    userID: masterCurrentUser?._id,
     desc: desc,
-    username: user?.others.username,
+    username: masterCurrentUser?.username,
   };
-
   const handleSubmitPost = (e) => {
     e.preventDefault();
     createFeedPost(feedPost, dispatch);
+    window.location.reload();
   };
 
   return (
     <div className="share">
       <form className="shareWrapper" onSubmit={handleSubmitPost}>
         <div className="shareTop">
-          <img className="shareProfileImg" src="/assets/profile.jpeg" alt="" />
+          <img
+            className="shareProfileImg"
+            src={masterCurrentUserDetail?.profilePic}
+            alt="profilePic"
+          />
           <input
-            placeholder={`What's on your mind ${user?.others.username} ?`}
+            required
+            placeholder={`What's on your mind ${masterCurrentUser?.username} ?`}
             className="shareInput"
             onChange={(e) => setDesc(e.target.value)}
           />
@@ -61,7 +63,7 @@ const Share = () => {
               <span className="shareOptionText">Feelings</span>
             </div>
             <button className="shareButton1" type="submit">
-              Share
+              Post
             </button>
           </div>
         </div>
