@@ -15,3 +15,15 @@ export const LoginFailure = () => ({
 export const Logout = () => ({
   type: "LOGOUT",
 });
+
+//Follow
+// export const Follow = (userId) => ({
+//   type: "FOLLOW",
+//   payload: userId,
+// });
+
+// //
+// export const Unfollow = (userId) => ({
+//   type: "UNFOLLOW",
+//   payload: userId,
+// });

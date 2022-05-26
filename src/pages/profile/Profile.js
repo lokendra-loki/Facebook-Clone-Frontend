@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Profile() {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
   console.log(user);
 
   //Fetching data from URl id
@@ -49,25 +49,67 @@ function Profile() {
   console.log(viewUser);
 
   //Follow user
+  // const [followed, setFollowed] = useState(false);
+  // const handleFollow = async () => {
+  //   try {
+  //     if (followed) {
+  //       await axios.put(`/users/unfollow/${path}`, { userId: user.others._id });
+  //     } else {
+  //       await axios.put(`/users/follow/${path}`, {
+  //         userId: user.others._id,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setFollowed(!followed);
+  // };
+  // console.log(followed);
+
+  //Test drive
   const [followed, setFollowed] = useState(false);
+  const [unfollowed, setUnfollowed] = useState(false);
 
   const handleFollow = async () => {
     try {
-      if (followed) {
-        await axios.put(`/users/follow/${path}`, { userId: user.others._id });
-        setFollowed(false);
-      } else {
-        await axios.put(`/users/unfollow/${path}`, {
-          userId: user.others._id,
-        });
-        setFollowed(true);
-      }
+      await axios.put(`/users/follow/${path}`, {
+        userId: user.others._id,
+      });
+      setFollowed(true);
     } catch (error) {
       console.log(error);
     }
-    setFollowed(!followed);
   };
-  console.log(followed);
+
+  const handleUnFollow = async () => {
+    try {
+      await axios.put(`/users/unfollow/${path}`, {
+        userId: user.others._id,
+      });
+      setUnfollowed(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //follower and following count
+  const [followers, setFollowers] = useState(0);
+  const [followings, setFollowings] = useState(0);
+  useEffect(() => {
+    const fetchFollowers = async () => {
+      try {
+        const res1 = await axios.get(`/users/followers/${path}`);
+        const res2 = await axios.get(`/users/followings/${path}`);
+        setFollowers(res1.data);
+        setFollowings(res2.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFollowers();
+  }, [path]);
+  console.log(followers);
+  console.log(followings);
 
   //To open Edit Profile Container
   const [openEditCon, setOpenEditCon] = useState(false);
@@ -82,8 +124,15 @@ function Profile() {
             <div className="profileContainer">
               <img className="coverPicture" src="" alt="" />
               <img className="profilePicture" src="" alt="" />
+
               <button className="followButton" onClick={handleFollow}>
+                {/* {followed ? "Unfollow" : "Follow"} */}
                 Follow
+              </button>
+
+              <button className="followButton" onClick={handleUnFollow}>
+                {/* {followed ? "Unfollow" : "Follow"} */}
+                UnFollow
               </button>
             </div>
           </div>
@@ -92,13 +141,13 @@ function Profile() {
             <div className="followersFollowingCount">
               <div className="followersCount">
                 <span className="followersCountTxt">Followers</span>
-                <span className="followerNumber">644</span>
+                <span className="followerNumber">{followers}</span>
               </div>
 
               <hr className="piHr" />
               <div className="followersCount">
                 <span className="followersCountTxt">Following</span>
-                <span className="followerNumber">644</span>
+                <span className="followerNumber">{followings}</span>
               </div>
             </div>
 
