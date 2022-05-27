@@ -11,13 +11,11 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Profile() {
-  const { user, dispatch } = useContext(AuthContext);
-  console.log(user);
+  const { user } = useContext(AuthContext);
 
   //Fetching data from URl id
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
 
   //At first user create profile with username and email
   //suppose user has not created any user detail yet then we cant be able to show name on profile
@@ -46,18 +44,19 @@ function Profile() {
     };
     fetchUserDetail();
   }, [path]);
-  console.log(viewUser);
 
   //Follow user
   // const [followed, setFollowed] = useState(false);
   // const handleFollow = async () => {
   //   try {
   //     if (followed) {
+  //       setFollowed(false);
   //       await axios.put(`/users/unfollow/${path}`, { userId: user.others._id });
   //     } else {
   //       await axios.put(`/users/follow/${path}`, {
   //         userId: user.others._id,
   //       });
+  //       setFollowed(true);
   //     }
   //   } catch (error) {
   //     console.log(error);
@@ -66,10 +65,9 @@ function Profile() {
   // };
   // console.log(followed);
 
-  //Test drive
+  //Alternative
   const [followed, setFollowed] = useState(false);
   const [unfollowed, setUnfollowed] = useState(false);
-
   const handleFollow = async () => {
     try {
       await axios.put(`/users/follow/${path}`, {
@@ -126,14 +124,14 @@ function Profile() {
             <div className="profileContainer">
               <img className="coverPicture" src="" alt="" />
               <img className="profilePicture" src="" alt="" />
-
-              <button className="followButton" onClick={handleUnFollow}>
-                UnFollow
-              </button>
-
-              <button className="followButton" onClick={handleFollow}>
-                Follow
-              </button>
+              <div className="ButtonCon">
+                <button className="followButton" onClick={handleUnFollow}>
+                  UnFollow
+                </button>
+                <button className=" followingButton" onClick={handleFollow}>
+                  Follow
+                </button>
+              </div>
             </div>
           </div>
 
