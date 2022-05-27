@@ -22,7 +22,7 @@ function ProfileRightBar({ viewUser }) {
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
-        const res = await axios.get(`/users/allFollowers/${user.others._id}`);
+        const res = await axios.get(`/users/allFollowers/${user.others?._id}`);
         setAllFollowersId(res.data);
       } catch (error) {
         console.log(error);

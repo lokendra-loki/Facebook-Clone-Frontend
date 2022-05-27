@@ -1,12 +1,12 @@
 .profile {
   display: flex;
+  background-color: #18191a;
 
   .profileRight {
     flex: 9;
     position: relative;
 
     .profileRightTop {
-      // background-color: green;
       .profileContainer {
         height: 320px;
         position: relative;
@@ -29,6 +29,7 @@
           margin: auto;
           top: 150px;
           border: 3px solid #fff;
+          overflow: hidden;
         }
 
         .ButtonCon {
@@ -75,16 +76,15 @@
     }
 
     .profileInfo {
-      // background-color: yellow;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      // justify-content: space-between;
+      margin-top: -80px;
 
       .followersFollowingCount {
         display: flex;
         gap: 40px;
-        // padding-left: 20px;
-        margin-top: -15px;
+        margin-top: 40px;
+        margin-left: -800px;
 
         .followersCount {
           display: flex;
@@ -115,6 +115,7 @@
         font-size: 34px;
         font-weight: bold;
         margin-bottom: 10px;
+        margin-top: -20px;
       }
 
       .profileDescription {
@@ -138,6 +139,8 @@
       width: 130px;
       gap: 5px;
       color: rgb(179, 177, 177);
+      margin-left: 850px !important;
+      margin-top: -60px;
 
       &:hover {
         background-color: #4f4f4f;
@@ -152,10 +155,14 @@
 
     .profileRightBottom {
       display: flex;
-      // background-color: green;
       position: absolute;
       top: 430px;
       width: 100%;
+
+      .profileRightBottomUserPosts{
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

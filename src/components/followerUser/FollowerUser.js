@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./followerUser.scss";
 
 function FollowerUser({ followerId }) {
-  console.log(followerId);
   //Fetching userCredentials from id
   const [followerInfo, setAllFollowerInfo] = React.useState({});
   useEffect(() => {

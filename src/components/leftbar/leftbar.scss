@@ -21,6 +21,7 @@
         border-radius: 10px;
         cursor: pointer;
         margin-bottom: 10px;
+        color: rgb(206, 202, 202);
 
         &:hover {
           background-color: #3a3b3c;
@@ -47,11 +48,12 @@
       .allUser {
         font-size: 18px;
         font-weight: 600;
+        color: #d2d1d1;
       }
 
       .allUserSearch {
         height: 44px;
-        width: 300px;
+        width: 258px;
         margin-top: 6px;
         border-radius: 20px;
         outline: none;

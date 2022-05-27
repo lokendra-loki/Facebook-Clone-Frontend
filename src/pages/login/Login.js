@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { loginCall } from "../../apiCalls";
+import "./login.scss";
 
 function Login() {
   //Login
@@ -16,7 +16,7 @@ function Login() {
     loginCall({ email, password }, dispatch);
     navigate("/");
   };
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="login">

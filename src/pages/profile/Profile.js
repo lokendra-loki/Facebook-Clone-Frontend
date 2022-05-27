@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
+import ParticularUserPost from "../../components/particularUserPost/ParticularUserPost";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,7 @@ function Profile() {
   //Fetching data from URl id
   const location = useLocation();
   const path = location.pathname.split("/")[2];
+  console.log(path);
 
   //At first user create profile with username and email
   //suppose user has not created any user detail yet then we cant be able to show name on profile
@@ -44,6 +46,24 @@ function Profile() {
     };
     fetchUserDetail();
   }, [path]);
+
+  //Fetch all posts of particular user only from URL id
+  const [particularUserAllPosts, setParticularUserAllPosts] = useState([{}]);
+  useEffect(() => {
+    try {
+      const fetchParticularUserAllPosts = async () => {
+        const res = await axios.post("/posts/getUserPosts", {
+          userID: path,
+        });
+        setParticularUserAllPosts(res.data);
+      };
+      fetchParticularUserAllPosts();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [path]);
+  console.log(particularUserAllPosts.length);
+  console.log(particularUserAllPosts);
 
   //Follow user
   // const [followed, setFollowed] = useState(false);
@@ -172,7 +192,17 @@ function Profile() {
           )}
 
           <div className="profileRightBottom">
-            <Feed />
+            {/* <Feed /> */}
+            <div className="profileRightBottomUserPosts">
+              {particularUserAllPosts?.map((particularPosts, i) => (
+                <ParticularUserPost
+                  key={i}
+                  index={i}
+                  particularPosts={particularPosts}
+                />
+              ))}
+            </div>
+
             <Rightbar viewUser={viewUser} />
           </div>
         </div>

@@ -28,7 +28,7 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
           <img
             className="shareProfileImg"
             src={masterCurrentUserDetail?.profilePic}
-            alt="profilePic"
+            alt=""
           />
           <input
             required

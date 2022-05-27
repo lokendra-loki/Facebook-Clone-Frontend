@@ -1,12 +1,15 @@
 .profile {
   display: flex;
+  background-color: #18191a;
+  color: rgb(204, 201, 201);
+  height: 2000vh;
 
   .profileRight {
     flex: 9;
     position: relative;
+    background-color: #18191a;
 
     .profileRightTop {
-      // background-color: green;
       .profileContainer {
         height: 320px;
         position: relative;
@@ -29,6 +32,7 @@
           margin: auto;
           top: 150px;
           border: 3px solid #fff;
+          overflow: hidden;
         }
         .followButton {
           height: 40px;
@@ -46,9 +50,9 @@
     }
 
     .profileInfo {
-      // background-color: yellow;
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: center;
 
       .profileInfoContainer {
@@ -56,6 +60,11 @@
         align-items: center;
         flex-direction: column;
         margin-left: 50px;
+      }
+      .totalBookmarkPost {
+        font-size: 25px;
+        font-weight: 600;
+        margin-left: -950px;
       }
 
       .profileInfoName {
@@ -99,15 +108,14 @@
 
     .profileRightBottom {
       display: flex;
-      // background-color: green;
       position: absolute;
       top: 430px;
-      // width: 100%;
 
       .profileRightBookmarkPostCon {
         display: flex;
         flex-direction: column;
         width: 100%;
+        padding: 0px 20px;
       }
     }
   }

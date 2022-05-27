@@ -25,7 +25,8 @@ function Home() {
       item.username.toLowerCase().includes(searchResult.toLowerCase())
     );
   };
-  // console.log(searchUserResultData(allUsers));
+  console.log(searchUserResultData(allUsers));
+  console.log(searchResult);
 
   //masterCurrentUser
   const { user } = useContext(AuthContext);
@@ -62,6 +63,7 @@ function Home() {
           masterCurrentUserDetail={masterCurrentUserDetail}
           masterCurrentUser={masterCurrentUser}
           allUsers={allUsers}
+          searchResult={searchResult}
         />
 
         <Feed

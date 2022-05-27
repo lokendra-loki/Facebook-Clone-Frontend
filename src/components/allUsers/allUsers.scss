@@ -5,10 +5,11 @@
   cursor: pointer;
   height: 45px;
   border-radius: 7px;
+  color: rgb(224, 221, 221);
 
   &:hover {
     background-color: #3a3b3c;
-    color: rgb(223, 221, 221);
+    color: rgb(232, 226, 226);
     transition: all 0.3s ease;
   }
 

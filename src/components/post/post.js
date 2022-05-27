@@ -16,9 +16,6 @@ function Post({ masterCurrentUser }) {
   useEffect(() => {
     getFeedPosts(dispatch);
   }, [dispatch]);
-  console.log(feedPosts);
-  console.log(feedPosts.length);
-  console.log(feedPosts[2]?.username);
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -50,11 +47,11 @@ function Post({ masterCurrentUser }) {
             <div className="postTop">
               <div className="postTopLeft">
                 {/* <Link to={`/profile/feedPosts.userID`}> */}
-                  <img
-                    className="postProfileImg"
-                    src={feedPost.profilePic}
-                    alt=""
-                  />
+                <img
+                  className="postProfileImg"
+                  src={feedPost.profilePic}
+                  alt=""
+                />
                 {/* </Link> */}
                 <span className="postUsername">{feedPost.username}</span>
 

@@ -1,43 +1,35 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./bookMarkPost.scss";
+import "./particularUserPost.scss";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
+import { deleteFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
-import { AuthContext } from "../../context/authContext/AuthContext";
 
-function BookMarkPost({ bookmarkPostId }) {
-  const { user } = useContext(AuthContext);
-  const currentUser = user.others;
-  //get bookmark posts detail from id
-  const [bookmarkPosts, setBookmarkPosts] = useState({});
-  useEffect(() => {
-    const fetchBookmarkPosts = async () => {
-      try {
-        const res = await axios.get(`/posts/bookmarkPosts/${bookmarkPostId}`);
-        setBookmarkPosts(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchBookmarkPosts();
-  }, [bookmarkPostId]);
-  console.log(bookmarkPosts);
+function ParticularUserPost({ masterCurrentUser ,particularPosts}) {
+  console.log(particularPosts);
+  //Fetch all feedPosts
+  const { dispatch } = useContext(FeedPostsContext);
+
+  //Delete feedPost
+  const handlePostDelete = (id) => {
+    deleteFeedPost(id, dispatch);
+    window.location.reload();
+  };
 
   //Bookmark
-  const [removedBookmarked, setRemovedBookmarked] = useState(true);
-  const removeBookmarkPost = async (id) => {
+  const [bookmarked, setBookmarked] = useState(false);
+  const saveBookmarkPost = async (id) => {
     try {
-      await axios.put(`/users/bookmark/${bookmarkPostId}`, {
-        userId: currentUser?._id,
+      await axios.put(`/users/bookmark/${id}`, {
+        userId: masterCurrentUser?._id,
       });
-      setRemovedBookmarked(false);
-      window.location.reload();
+      setBookmarked(true);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(removedBookmarked);
 
   //Open Close deleteEditCon
   const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
@@ -48,15 +40,12 @@ function BookMarkPost({ bookmarkPostId }) {
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              <img
-                className="postProfileImg"
-                src={bookmarkPosts?.profilePic}
-                alt=""
-              />
-              <span className="postUsername">{bookmarkPosts?.username}</span>
-              <span className="postDate">
-                {format(bookmarkPosts?.createdAt)}
-              </span>
+              {/* <Link to={`/profile/feedPosts.userID`}> */}
+              <img className="postProfileImg" src={particularPosts?.profilePic} alt="" />
+              {/* </Link> */}
+              <span className="postUsername">{particularPosts?.username}</span>
+
+              <span className="postDate">{format(particularPosts?.createdAt)}</span>
             </div>
 
             <div
@@ -74,7 +63,7 @@ function BookMarkPost({ bookmarkPostId }) {
           </div>
 
           <div className="postCenter">
-            <span className="postText">{bookmarkPosts?.desc}</span>
+            <span className="postText">{particularPosts?.desc}</span>
             <img className="postImg" src="" alt="" />
           </div>
 
@@ -84,9 +73,18 @@ function BookMarkPost({ bookmarkPostId }) {
               <img className="likeIcon" src="/assets/heart.png" alt="" />
               <span className="postLikeCounter"> 9 people like it</span>
             </div>
+            <button
+              className="postDeleteBut"
+              // onClick={() => handlePostDelete(feedPost._id)}
+            >
+              delete
+            </button>
 
-            <button className="bookmark" onClick={removeBookmarkPost}>
-              Remove
+            <button
+              className="bookmark"
+              // onClick={() => saveBookmarkPost(feedPost._id)}
+            >
+              Bookmark
             </button>
             <div className="postBottomRight">
               <span className="postCommentText">45 comments</span>
@@ -98,4 +96,4 @@ function BookMarkPost({ bookmarkPostId }) {
   );
 }
 
-export default BookMarkPost;
+export default ParticularUserPost;

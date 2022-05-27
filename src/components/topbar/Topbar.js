@@ -94,14 +94,14 @@ function Topbar({ setSearchResult, allUsers }) {
 
         {/* Topbar right */}
         <div className="topbarRight">
-          <Link to={`/profile/${userInfo?._id}`} className="link">
-            <div className="trProfileCon">
+          <div className="trProfileCon">
+            <Link to={`/profile/${userInfo?._id}`} className="link">
               <img className="trProfileImg" src={userInfo?.profilePic} alt="" />
               <span className="trProfileName">
                 {userInfo?.username?.split(" ")[0]}
               </span>
-            </div>
-          </Link>
+            </Link>
+          </div>
 
           <div className="trIconCon">
             <WidgetsOutlinedIcon />

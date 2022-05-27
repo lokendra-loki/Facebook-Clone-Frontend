@@ -30,6 +30,7 @@ function BookMark() {
     };
     fetchUserDetail();
   }, [path]);
+  console.log(viewUser);
 
   //Fetch all bookmark postId
   const [bookmarkPostsId, setBookmarkPostsId] = useState([]);
@@ -44,6 +45,7 @@ function BookMark() {
     };
     fetchBookmarkPostsId();
   }, [user.others._id]);
+  console.log(bookmarkPostsId);
 
   return (
     <>
@@ -65,6 +67,9 @@ function BookMark() {
               </h4>
               <span className="profileDescription">{viewUser?.bio}</span>
             </div>
+            <span className="totalBookmarkPost">
+              {bookmarkPostsId.length} Saved Posts
+            </span>
           </div>
 
           <div className="profileRightBottom">

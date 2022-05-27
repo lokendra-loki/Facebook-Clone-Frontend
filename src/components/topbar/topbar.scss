@@ -15,7 +15,6 @@
     flex: 2.8;
     display: flex;
     align-items: center;
-    // background-color: red;
 
     .facebookLogo {
       width: 40px;
@@ -68,7 +67,6 @@
     display: flex;
     align-items: center;
     color: rgb(192, 191, 191);
-    // background-color: yellow;
     justify-content: center;
     gap: 25px;
 
@@ -79,7 +77,6 @@
       width: 110px;
       height: 48px;
       cursor: pointer;
-      // background-color: #3a3b3c;
       border-radius: 8px;
 
       &:hover {
@@ -90,46 +87,47 @@
 
   // Top Right
   .topbarRight {
-    // background-color: pink;
     flex: 3.4;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // background-color: yellow;
 
     .trProfileCon {
       display: flex;
       align-items: center;
-      justify-content: center;
       height: 36px;
-      width: 90px;
-      // background-color: #3a3b3c;
+      width: 120px;
       border-radius: 20px;
       cursor: pointer;
-      margin-left: 120px;
+      margin-left: 100px;
 
-      .trProfileImg {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-left: 2px;
-      }
-      .trProfileName {
-        color: rgb(232, 229, 229);
-        margin-left: 5px;
-        font-size: 14px;
-        margin-right: 5px;
-      }
+      .link {
+        display: flex;
+        align-items: center;
 
+        .trProfileImg {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-left: 0px;
+          overflow: hidden;
+        }
+        .trProfileName {
+          color: rgb(232, 229, 229);
+          margin-left: 5px;
+          font-size: 14px;
+          margin-right: 2px;
+        }
+      }
       &:hover {
         background-color: #3a3b3c;
       }
     }
-
     .trIconCon {
       width: 45px;
       height: 45px;
-      // background-color: #3a3b3c;
       border-radius: 50%;
       display: flex;
       align-items: center;

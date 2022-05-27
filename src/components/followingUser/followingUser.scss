@@ -4,10 +4,13 @@
   padding: 5px 10px;
   border-radius: 6px;
   margin-top: 10px;
+  color: rgb(198, 195, 195);
+  width: 340px;
+  justify-content: space-between;
 
   &:hover {
     background-color: #3a3b3c;
-    color: rgb(210, 208, 208);
+    color: rgb(227, 225, 225);
     transition: all 0.3s ease;
   }
 
@@ -15,7 +18,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    width: 300px;
+  
 
     .followingListImg {
       width: 40px;
@@ -33,9 +36,9 @@
         font-weight: 600;
       }
       .followingListViewProfileTxt {
-        font-size: 13px;
+        font-size: 12px;
         margin-top: 2px;
-        color: white;
+        color: rgb(219, 216, 216);
       }
     }
   }

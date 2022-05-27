@@ -11,13 +11,17 @@ import {
   Home,
 } from "@material-ui/icons";
 import "./leftbar.scss";
+import SearchUserResult from "../searchUserResult/SearchUserResult";
 
 function Leftbar({
   searchUserResultData,
   masterCurrentUser,
   allUsers,
   masterCurrentUserDetail,
+  searchResult,
 }) {
+  console.log(searchUserResultData);
+
   return (
     <div className="leftBar">
       <div className="sideBarWrapper">
@@ -75,12 +79,12 @@ function Leftbar({
             className="allUserSearch"
             placeholder="Search user"
           />
-          {/* {searchUserResultData ? (
+
+          {searchResult ? (
             <SearchUserResult searchUserResultData={searchUserResultData} />
           ) : (
-            <AllUsers />
-          )} */}
-          <AllUsers allUsers={allUsers} />
+            <AllUsers allUsers={allUsers} />
+          )}
         </ul>
       </div>
     </div>
