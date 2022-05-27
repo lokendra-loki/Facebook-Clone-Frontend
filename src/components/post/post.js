@@ -8,7 +8,7 @@ import getFeedPosts, {
 import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
-import { AuthContext } from "../../context/authContext/AuthContext";
+import { Link } from "react-router-dom";
 
 function Post({ masterCurrentUser }) {
   //Fetch all feedPosts
@@ -16,6 +16,9 @@ function Post({ masterCurrentUser }) {
   useEffect(() => {
     getFeedPosts(dispatch);
   }, [dispatch]);
+  console.log(feedPosts);
+  console.log(feedPosts.length);
+  console.log(feedPosts[2]?.username);
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -42,12 +45,19 @@ function Post({ masterCurrentUser }) {
   return (
     <>
       {feedPosts.map((feedPost, index) => (
-        <div key={index} className="post">
+        <div key={index} index={index} className="post">
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <img className="postProfileImg" src="" alt="" />
+                {/* <Link to={`/profile/feedPosts.userID`}> */}
+                  <img
+                    className="postProfileImg"
+                    src={feedPost.profilePic}
+                    alt=""
+                  />
+                {/* </Link> */}
                 <span className="postUsername">{feedPost.username}</span>
+
                 <span className="postDate">{format(feedPost.createdAt)}</span>
               </div>
 

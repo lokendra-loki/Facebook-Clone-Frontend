@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./topbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -13,13 +13,25 @@ import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import SettingContainer from "../settingContainer/SettingContainer";
 import ClearIcon from "@mui/icons-material/Clear";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-function Topbar({
-  setSearchResult,
-  masterCurrentUser,
-  masterCurrentUserDetail,
-  allUsers,
-}) {
+function Topbar({ setSearchResult, allUsers }) {
+  const { user } = useContext(AuthContext);
+  //Fetch userCredential for profile pic
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const res = await axios.get(`/users/get/${user.others?._id}`);
+        setUserInfo(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserInfo();
+  }, [user?.others?._id]);
+
   //Search user
   // const [searchQuery, setSearchQuery] = useState("");
   // console.log(allUsers.filter(user=>user.username.toLowerCase().includes(searchQuery)));
@@ -31,6 +43,7 @@ function Topbar({
   // };
   // console.log(searchUserResultData(allUsers));
 
+  //To open Close Setting Container
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (
@@ -81,15 +94,11 @@ function Topbar({
 
         {/* Topbar right */}
         <div className="topbarRight">
-          <Link to={`/profile/${masterCurrentUser?._id}`} className="link">
+          <Link to={`/profile/${userInfo?._id}`} className="link">
             <div className="trProfileCon">
-              <img
-                className="trProfileImg"
-                src={masterCurrentUserDetail?.profilePic}
-                alt=""
-              />
+              <img className="trProfileImg" src={userInfo?.profilePic} alt="" />
               <span className="trProfileName">
-                {masterCurrentUser?.username.split(" ")[0]}
+                {userInfo?.username?.split(" ")[0]}
               </span>
             </div>
           </Link>
@@ -118,6 +127,8 @@ function Topbar({
         {/* {openSettingCon && (
           <SettingContainer currentUser={user} currentUserDetail={userDetail} />
         )} */}
+
+        {openSettingCon && <SettingContainer userInfo={userInfo} />}
       </div>
     </>
   );

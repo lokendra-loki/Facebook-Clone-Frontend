@@ -1,27 +1,28 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Feed from "../../components/feed/Feed";
 import Leftbar from "../../components/leftbar/Leftbar";
-import Rightbar from "../../components/rightbar/Rightbar";
 import Topbar from "../../components/topbar/Topbar";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import "./setting.scss";
 
 function Setting() {
-  //To open userCredential edit container
+  const { user } = useContext(AuthContext);
+  const currentUser = user.others;
+
+  //To open  edit container
   const [openUserCredentialEditCon, setOpenUserCredentialEditCon] =
     useState(false);
 
-  //
+  // user id from URL
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
 
   //update userCredentials
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(username, email, password);
+  // console.log(username, email, password);
 
   const updateThis = {
     username,
@@ -32,8 +33,8 @@ function Setting() {
   const handleUpdateUserCredentialSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`/users/update/${path}`, updateThis);
-      console.log(res.data);
+      await axios.put(`/users/update/${path}`, updateThis);
+      // localStorage.setItem("user", JSON.stringify(res.data));
     } catch (error) {
       console.log(error);
     }
@@ -64,13 +65,13 @@ function Setting() {
             <hr className="suiHr1" />
             <div className="usiItemCon">
               <span className="usiItemTitle">Username</span>
-              <span className="usiItemTitleValue">Loki chaulagain</span>
+              <span className="usiItemTitleValue">{currentUser.username}</span>
             </div>
             <hr className="suiHr2" />
 
             <div className="usiItemCon">
               <span className="usiItemTitle">Email</span>
-              <span className="usiItemTitleValue">lokendra@gmail.com</span>
+              <span className="usiItemTitleValue">{currentUser.email}</span>
             </div>
             <hr className="suiHr2" />
 

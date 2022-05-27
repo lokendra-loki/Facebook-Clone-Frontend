@@ -13,6 +13,7 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
     userID: masterCurrentUser?._id,
     desc: desc,
     username: masterCurrentUser?.username,
+    profilePic: masterCurrentUser?.profilePic,
   };
   const handleSubmitPost = (e) => {
     e.preventDefault();

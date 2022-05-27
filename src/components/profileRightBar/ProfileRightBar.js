@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -29,7 +29,7 @@ function ProfileRightBar({ viewUser }) {
       }
     };
     fetchAllFollowers();
-  }, [user?.others?._id]);
+  }, [user?.others._id]);
 
   //Fetching all followings Id
   const [allFollowingsId, setAllFollowingsId] = React.useState([]);
@@ -43,7 +43,7 @@ function ProfileRightBar({ viewUser }) {
       }
     };
     fetchAllFollowings();
-  }, [user.others?._id]);
+  }, [user?.others._id]);
 
   return (
     <>

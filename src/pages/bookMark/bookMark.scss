@@ -51,30 +51,6 @@
       align-items: center;
       justify-content: center;
 
-      .followersFollowingCount {
-        display: flex;
-        gap: 40px;
-        // padding-left: 20px;
-        margin-top: -15px;
-
-        .followersCount {
-          display: flex;
-          flex-direction: column;
-
-          .followersCountTxt {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-          }
-          .followerNumber {
-            font-size: 18px;
-            font-weight: 500;
-            display: flex;
-            padding-left: 20px;
-          }
-        }
-      }
-
       .profileInfoContainer {
         display: flex;
         align-items: center;
@@ -126,7 +102,13 @@
       // background-color: green;
       position: absolute;
       top: 430px;
-      width: 100%;
+      // width: 100%;
+
+      .profileRightBookmarkPostCon {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
     }
   }
 }

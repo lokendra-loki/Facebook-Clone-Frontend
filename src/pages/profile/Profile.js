@@ -151,7 +151,7 @@ function Profile() {
 
             <div className="profileInfoContainer">
               <h4 className="profileInfoName">
-                {getUser.username} ({viewUser?.nickName}){" "}
+                {getUser?.username} ({viewUser?.nickName}){" "}
               </h4>
               <span className="profileDescription">{viewUser?.bio}</span>
             </div>
