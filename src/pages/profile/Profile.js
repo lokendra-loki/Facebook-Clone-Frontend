@@ -76,6 +76,7 @@ function Profile() {
         userId: user.others._id,
       });
       setFollowed(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -87,6 +88,7 @@ function Profile() {
         userId: user.others._id,
       });
       setUnfollowed(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -125,14 +127,12 @@ function Profile() {
               <img className="coverPicture" src="" alt="" />
               <img className="profilePicture" src="" alt="" />
 
-              <button className="followButton" onClick={handleFollow}>
-                {/* {followed ? "Unfollow" : "Follow"} */}
-                Follow
+              <button className="followButton" onClick={handleUnFollow}>
+                UnFollow
               </button>
 
-              <button className="followButton" onClick={handleUnFollow}>
-                {/* {followed ? "Unfollow" : "Follow"} */}
-                UnFollow
+              <button className="followButton" onClick={handleFollow}>
+                Follow
               </button>
             </div>
           </div>

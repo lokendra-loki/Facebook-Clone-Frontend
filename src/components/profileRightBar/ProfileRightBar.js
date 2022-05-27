@@ -10,19 +10,19 @@ import axios from "axios";
 import "./profileRightBar.scss";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import FollowerUser from "../followerUser/FollowerUser";
+import FollowingUser from "../followingUser/FollowingUser";
 
 function ProfileRightBar({ viewUser }) {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
 
-  //Fetching all followers (id)
+  //Fetching all followers Id
   const [allFollowersId, setAllFollowersId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
         const res = await axios.get(`/users/allFollowers/${user.others._id}`);
-        // console.log(res.data);
         setAllFollowersId(res.data);
       } catch (error) {
         console.log(error);
@@ -30,39 +30,20 @@ function ProfileRightBar({ viewUser }) {
     };
     fetchAllFollowers();
   }, [user?.others?._id]);
-  // console.log(allFollowersId);
 
-  //fetching userCredential from id causer username is in credential so get user from id
-  // const [followerInfo, setAllFollowerInfo] = React.useState({});
-  // useEffect(() => {
-  //   const fetchUserInfo = async () => {
-  //     try {
-  //       const res = await axios.get(`/users/get/${allFollowersId}`);
-  //       setAllFollowerInfo(res.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchUserInfo();
-  // }, [allFollowersId]);
-  // console.log(followerInfo);
-
-  //Fetching userDetails from id
-  const [followerUserDetail, setFollowerUserDetail] = useState({});
+  //Fetching all followings Id
+  const [allFollowingsId, setAllFollowingsId] = React.useState([]);
   useEffect(() => {
-    try {
-      const fetchFollowerUserDetail = async () => {
-        const res = await axios.post("/userDetail/userDetailData", {
-          userID: allFollowersId,
-        });
-        setFollowerUserDetail(res.data);
-      };
-      fetchFollowerUserDetail();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [allFollowersId]);
-  console.log(followerUserDetail);
+    const fetchAllFollowings = async () => {
+      try {
+        const res = await axios.get(`/users/allFollowings/${user.others._id}`);
+        setAllFollowingsId(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllFollowings();
+  }, [user.others?._id]);
 
   return (
     <>
@@ -195,26 +176,14 @@ function ProfileRightBar({ viewUser }) {
       {/*  Followers ===================================*/}
       <h4 className="followerHeading">Followers</h4>
       {allFollowersId?.map((followerId, i) => (
-        <FollowerUser
-          key={i}
-          followerId={followerId}
-          index={i}
-          followerUserDetail={followerUserDetail}
-        />
+        <FollowerUser key={i} followerId={followerId} index={i} />
       ))}
 
       {/*  Following ===================================*/}
       <h4 className="followingHeading">Following</h4>
-      <div className="followingListItemCon">
-        <div className="followingListImgAndName">
-          <img src="/assets/profile.jpeg" alt="" className="followingListImg" />
-          <div className="followingListNameAndViewProfile">
-            <span className="followingListName">Lokendra Chaulagain</span>
-            <span className="followingListViewProfileTxt">View Profile</span>
-          </div>
-        </div>
-        <button className="followingListFollowBack">Unfollow</button>
-      </div>
+      {allFollowingsId?.map((followingId, i) => (
+        <FollowingUser key={i} index={i} followingId={followingId} />
+      ))}
     </>
   );
 }
