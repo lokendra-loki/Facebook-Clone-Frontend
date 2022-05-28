@@ -78,7 +78,9 @@
     .profileInfo {
       display: flex;
       // justify-content: space-between;
-      margin-top: -80px;
+      margin-top: -70px;
+      background-color: rgb(75, 71, 72);
+      height: 180px;
 
       .followersFollowingCount {
         display: flex;
@@ -155,13 +157,29 @@
 
     .profileRightBottom {
       display: flex;
+      flex-direction: column;
       position: absolute;
       top: 430px;
       width: 100%;
 
-      .profileRightBottomUserPosts{
+      .yourTotalPostsCon {
+        height: 50px;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        // background-color: red;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: -20px;
+        padding-left: 20px;
+      }
+
+      .profileRightBottomUserPostsWrapper {
+        display: flex;
+
+        .profileRightBottomUserPosts {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
   }

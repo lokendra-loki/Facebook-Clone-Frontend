@@ -46,6 +46,7 @@ function BookMark() {
     fetchBookmarkPostsId();
   }, [user.others._id]);
   console.log(bookmarkPostsId);
+ 
 
   return (
     <>

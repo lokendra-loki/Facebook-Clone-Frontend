@@ -15,7 +15,37 @@ import FollowingUser from "../followingUser/FollowingUser";
 function ProfileRightBar({ viewUser }) {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
+  console.log(path);
   const { user } = useContext(AuthContext);
+
+  // //////////////\===========================
+  const [userKoAllFollowersId, setUserKoAllFollowersId] = React.useState([]);
+  useEffect(() => {
+    const fetchAllFollowers = async () => {
+      try {
+        const res = await axios.get(`/users/allFollowers/${path}`);
+        setUserKoAllFollowersId(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllFollowers();
+  }, [path]);
+
+  //Fetching all followings Id
+  const [userKoAllFollowingsId, setUserKoAllFollowingsId] = React.useState([]);
+  useEffect(() => {
+    const fetchAllFollowings = async () => {
+      try {
+        const res = await axios.get(`/users/allFollowings/${path}`);
+        setUserKoAllFollowingsId(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllFollowings();
+  }, [path]);
+  /////////=============================
 
   //Fetching all followers Id
   const [allFollowersId, setAllFollowersId] = React.useState([]);
@@ -174,16 +204,35 @@ function ProfileRightBar({ viewUser }) {
         </>
       ) : null}
       {/*  Followers ===================================*/}
-      <h4 className="followerHeading">Followers</h4>
-      {allFollowersId?.map((followerId, i) => (
-        <FollowerUser key={i} followerId={followerId} index={i} />
-      ))}
 
-      {/*  Following ===================================*/}
-      <h4 className="followingHeading">Following</h4>
-      {allFollowingsId?.map((followingId, i) => (
-        <FollowingUser key={i} index={i} followingId={followingId} />
-      ))}
+      {/* ============ */}
+      {path ? (
+        <>
+          <h4 className="followerHeading">Followers</h4>
+          {userKoAllFollowersId?.map((followerId, i) => (
+            <FollowerUser key={i} followerId={followerId} index={i} />
+          ))}
+
+          {/*  Following ===================================*/}
+          <h4 className="followingHeading">Following</h4>
+          {userKoAllFollowingsId?.map((followingId, i) => (
+            <FollowingUser key={i} index={i} followingId={followingId} />
+          ))}
+        </>
+      ) : (
+        <>
+          <h4 className="followerHeading">Followers</h4>
+          {allFollowersId?.map((followerId, i) => (
+            <FollowerUser key={i} followerId={followerId} index={i} />
+          ))}
+
+          {/*  Following ===================================*/}
+          <h4 className="followingHeading">Following</h4>
+          {allFollowingsId?.map((followingId, i) => (
+            <FollowingUser key={i} index={i} followingId={followingId} />
+          ))}
+        </>
+      )}
     </>
   );
 }
