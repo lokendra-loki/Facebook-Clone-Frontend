@@ -6,11 +6,17 @@ import { deleteFeedPost } from "../../context/feedPostContext/feedPostsApiCalls"
 import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-function ParticularUserPost({ masterCurrentUser ,particularPosts}) {
+function ParticularUserPost({ masterCurrentUser, particularPosts }) {
+  console.log(masterCurrentUser);
   console.log(particularPosts);
   //Fetch all feedPosts
   const { dispatch } = useContext(FeedPostsContext);
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const currentUser = user?.others;
+  console.log(currentUser);
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -22,8 +28,8 @@ function ParticularUserPost({ masterCurrentUser ,particularPosts}) {
   const [bookmarked, setBookmarked] = useState(false);
   const saveBookmarkPost = async (id) => {
     try {
-      await axios.put(`/users/bookmark/${id}`, {
-        userId: masterCurrentUser?._id,
+      await axios.put(`/users/bookmark/${particularPosts?._id}`, {
+        userId: currentUser?._id,
       });
       setBookmarked(true);
     } catch (error) {
@@ -41,11 +47,17 @@ function ParticularUserPost({ masterCurrentUser ,particularPosts}) {
           <div className="postTop">
             <div className="postTopLeft">
               {/* <Link to={`/profile/feedPosts.userID`}> */}
-              <img className="postProfileImg" src={particularPosts?.profilePic} alt="" />
+              <img
+                className="postProfileImg"
+                src={particularPosts?.profilePic}
+                alt=""
+              />
               {/* </Link> */}
               <span className="postUsername">{particularPosts?.username}</span>
 
-              <span className="postDate">{format(particularPosts?.createdAt)}</span>
+              <span className="postDate">
+                {format(particularPosts?.createdAt)}
+              </span>
             </div>
 
             <div
@@ -75,14 +87,14 @@ function ParticularUserPost({ masterCurrentUser ,particularPosts}) {
             </div>
             <button
               className="postDeleteBut"
-              // onClick={() => handlePostDelete(feedPost._id)}
+              onClick={() => handlePostDelete(particularPosts?._id)}
             >
               delete
             </button>
 
             <button
               className="bookmark"
-              // onClick={() => saveBookmarkPost(feedPost._id)}
+              onClick={() => saveBookmarkPost(particularPosts?._id)}
             >
               Bookmark
             </button>
