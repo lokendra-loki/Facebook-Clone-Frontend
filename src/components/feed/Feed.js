@@ -2,9 +2,12 @@ import Share from "../share/Share";
 import "./feed.scss";
 import Post from "../post/Post";
 import ParticularUserPost from "../particularUserPost/ParticularUserPost";
+import { useState } from "react";
+import axios from "axios";
+import { ClassSharp } from "@material-ui/icons";
 
 function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
-  //Fetch all posts that belongs particular user from element userID
+  console.log(masterCurrentUser);
 
   return (
     <div className="feed">

@@ -39,6 +39,22 @@ function Post({ masterCurrentUser }) {
   //Open Close deleteEditCon
   const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
 
+  //Like and dislike
+  const [liked, setLiked] = useState(false);
+  const handleLike = async (id) => {
+    try {
+      const res = await axios.put(`/posts/like/${id}`, {
+        userId: masterCurrentUser._id,
+      });
+      setLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+    setLiked(liked ? liked - 1 : liked + 1);
+    setLiked(!liked);
+  };
+  console.log(liked);
+
   return (
     <>
       {feedPosts.map((feedPost, index) => (
@@ -78,11 +94,26 @@ function Post({ masterCurrentUser }) {
             </div>
 
             <div className="postBottom">
+              {/* Like dislike */}
               <div className="postBottomLeft">
-                <img className="likeIcon" src="/assets/like.png" alt="" />
-                <img className="likeIcon" src="/assets/heart.png" alt="" />
-                <span className="postLikeCounter"> 9 people like it</span>
+                <img
+                  className="likeIcon"
+                  src="/assets/like.png"
+                  alt=""
+                  onClick={() => handleLike(feedPost._id)}
+                />
+                <img
+                  className="likeIcon"
+                  src="/assets/heart.png"
+                  alt=""
+                  onClick={() => handleLike(feedPost._id)}
+                />
+                <span className="postLikeCounter">
+                  {feedPost.likes.length} people like it
+                </span>
               </div>
+
+              {/* Delete */}
               <button
                 className="postDeleteBut"
                 onClick={() => handlePostDelete(feedPost._id)}
