@@ -4,6 +4,7 @@
   overflow-y: scroll;
   position: sticky;
   top: 50px;
+  // background-color: red;
 
   .sideBarWrapper {
     padding: 20px;
@@ -53,7 +54,7 @@
 
       .allUserSearch {
         height: 44px;
-        width: 258px;
+        width: 220px;
         margin-top: 6px;
         border-radius: 20px;
         outline: none;
@@ -63,6 +64,9 @@
         font-size: 18px;
         padding-left: 15px;
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
 
         &::placeholder {
           color: rgb(145, 144, 144);

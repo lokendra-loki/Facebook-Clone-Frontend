@@ -58,25 +58,31 @@ function Home() {
       />
 
       <div className="homeContainer">
-        <Leftbar
-          searchUserResultData={searchUserResultData(allUsers)}
-          masterCurrentUserDetail={masterCurrentUserDetail}
-          masterCurrentUser={masterCurrentUser}
-          allUsers={allUsers}
-          searchResult={searchResult}
-        />
+        <div className="lbw">
+          <Leftbar
+            searchUserResultData={searchUserResultData(allUsers)}
+            masterCurrentUserDetail={masterCurrentUserDetail}
+            masterCurrentUser={masterCurrentUser}
+            allUsers={allUsers}
+            searchResult={searchResult}
+          />
+        </div>
 
-        <Feed
-          masterCurrentUserDetail={masterCurrentUserDetail}
-          masterCurrentUser={masterCurrentUser}
-        />
+        <div className="fw">
+          <Feed
+            masterCurrentUserDetail={masterCurrentUserDetail}
+            masterCurrentUser={masterCurrentUser}
+          />
+        </div>
 
-        <Rightbar
-          searchUserResultData={searchUserResultData(allUsers)}
-          masterCurrentUserDetail={masterCurrentUserDetail}
-          masterCurrentUser={masterCurrentUser}
-          allUsers={allUsers}
-        />
+        <div className="rbw">
+          <Rightbar
+            searchUserResultData={searchUserResultData(allUsers)}
+            masterCurrentUserDetail={masterCurrentUserDetail}
+            masterCurrentUser={masterCurrentUser}
+            allUsers={allUsers}
+          />
+        </div>
       </div>
     </>
   );

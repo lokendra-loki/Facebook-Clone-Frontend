@@ -59,7 +59,7 @@ function ProfileRightBar({ viewUser }) {
       }
     };
     fetchAllFollowers();
-  }, [user?.others._id]);
+  }, [user?.others?._id]);
 
   //Fetching all followings Id
   const [allFollowingsId, setAllFollowingsId] = React.useState([]);
@@ -73,7 +73,7 @@ function ProfileRightBar({ viewUser }) {
       }
     };
     fetchAllFollowings();
-  }, [user?.others._id]);
+  }, [user?.others?._id]);
 
   return (
     <>

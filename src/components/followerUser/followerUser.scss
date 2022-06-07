@@ -1,11 +1,10 @@
 .followerListItemCon {
   display: flex;
   align-items: center;
-  padding: 5px 10px;
+  padding: 2px;
   border-radius: 6px;
   margin-top: 10px;
   color: rgb(198, 195, 195);
-  width: 340px;
   justify-content: space-between;
 
   &:hover {
@@ -42,7 +41,6 @@
     }
   }
   .followerListFollowBack {
-    width: 110px;
     height: 40px;
     border: none;
     outline: none;
@@ -50,12 +48,30 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    padding: 5px;
+    padding: 7px;
     background-color: #000000;
     color: rgb(210, 208, 208);
 
     &:hover {
       color: rgb(210, 208, 208);
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .followerListItemCon {
+    .followerListImgAndName {
+      .followerListNameAndViewProfile {
+        .followerListName {
+          font-size: 14px;
+        }
+        .followerListViewProfileTxt {
+          font-size: 12px;
+        }
+      }
+    }
+    .followerListFollowBack {
+      font-size: 12px;
     }
   }
 }
