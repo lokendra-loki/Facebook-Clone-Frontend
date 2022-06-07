@@ -138,7 +138,10 @@ function Profile() {
     <>
       <Topbar />
       <div className="profile">
-        <Leftbar />
+        <div className="profileLeftWrapper">
+          <Leftbar />
+        </div>
+
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileContainer">
@@ -194,23 +197,24 @@ function Profile() {
           <div className="profileRightBottom">
             <div className="yourTotalPostsCon">
               <span className="yourTotalPosts">
-                You have created {particularUserAllPosts?.length} posts till now
+                {/* You have created {particularUserAllPosts?.length} posts till now */}
               </span>
             </div>
             {/* <Feed /> */}
             <div className="profileRightBottomUserPostsWrapper">
               <div className="profileRightBottomUserPosts">
-                {particularUserAllPosts?.map((particularPosts, i) => (
+                 {/* {particularUserAllPosts?.map((particularPosts, i) => (
                   <ParticularUserPost
                     key={i}
                     index={i}
                     particularPosts={particularPosts}
                   />
-                ))}
+                ))}  */}
               </div>
-              <Rightbar viewUser={viewUser} />
+              {/* <Rightbar viewUser={viewUser} /> */}
             </div>
           </div>
+          
         </div>
       </div>
     </>
