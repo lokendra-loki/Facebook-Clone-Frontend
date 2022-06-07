@@ -146,4 +146,88 @@
   }
 }
 
+@media only screen and (max-width: 490px) {
+  .post {
+    .postWrapper {
+      .postBottom {
+        .postDeleteBut {
+          position: absolute;
+          left: 350px;
+          margin-top: -140px;
+        }
 
+        .bookmark {
+          position: absolute;
+          left: 350px;
+          margin-top: -60px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .post {
+    .postWrapper {
+      .postBottom {
+        .postDeleteBut {
+          left: 330px;
+        }
+
+        .bookmark {
+          left: 330px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .post {
+    .postWrapper {
+      .postBottom {
+        .postDeleteBut {
+          left: 290px;
+        }
+
+        .bookmark {
+          left: 290px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .post {
+    .postWrapper {
+      .postBottom {
+        .postDeleteBut {
+          left: 370px;
+        }
+
+        .bookmark {
+          left: 370px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .post {
+    width: 470px;
+
+    .postWrapper {
+      .postBottom {
+        .postDeleteBut {
+          left: 380px;
+        }
+
+        .bookmark {
+          left: 380px;
+        }
+      }
+    }
+  }
+}

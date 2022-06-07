@@ -123,3 +123,72 @@
     }
   }
 }
+
+@media only screen and (max-width: 1400px) {
+  .share {
+    .shareWrapper {
+      .shareHr {
+        margin-left: 10px;
+        width: 450px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .share {
+    .shareWrapper {
+      .shareHr {
+        margin-left: 10px;
+        width: 410px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .share {
+    .shareWrapper {
+      .shareHr {
+        margin-left: 10px;
+        width: 360px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .share {
+    .shareWrapper {
+      .shareHr {
+        margin-left: 10px;
+        width: 350px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .share {
+    .shareWrapper {
+      .shareHr {
+        margin-left: 10px;
+        width: 300px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .share {
+    .shareWrapper {
+      .shareBottom {
+        .shareOptions {
+          .feelingShareOption {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

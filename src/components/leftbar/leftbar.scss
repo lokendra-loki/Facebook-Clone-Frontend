@@ -2,9 +2,8 @@
   flex: 3;
   height: calc(100vh - 50px);
   overflow-y: scroll;
-  position: sticky;
-  top: 50px;
-  // background-color: red;
+  position: fixed;
+  top: 45px;
 
   .sideBarWrapper {
     padding: 20px;

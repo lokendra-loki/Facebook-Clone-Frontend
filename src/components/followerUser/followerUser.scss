@@ -57,6 +57,24 @@
     }
   }
 }
+@media only screen and (max-width: 1700px) {
+  .followerListItemCon {
+    .followerListImgAndName {
+      .followerListNameAndViewProfile {
+        .followerListName {
+          font-size: 16px;
+        }
+        .followerListViewProfileTxt {
+          font-size: 14px;
+        }
+      }
+    }
+    .followerListFollowBack {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+  }
+}
 
 @media only screen and (max-width: 1400px) {
   .followerListItemCon {

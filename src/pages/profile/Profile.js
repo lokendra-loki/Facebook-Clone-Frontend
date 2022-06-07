@@ -197,24 +197,26 @@ function Profile() {
           <div className="profileRightBottom">
             <div className="yourTotalPostsCon">
               <span className="yourTotalPosts">
-                {/* You have created {particularUserAllPosts?.length} posts till now */}
+                You have created {particularUserAllPosts?.length} posts till now
               </span>
             </div>
+
             {/* <Feed /> */}
             <div className="profileRightBottomUserPostsWrapper">
               <div className="profileRightBottomUserPosts">
-                 {/* {particularUserAllPosts?.map((particularPosts, i) => (
+                {particularUserAllPosts?.map((particularPosts, i) => (
                   <ParticularUserPost
                     key={i}
                     index={i}
                     particularPosts={particularPosts}
                   />
-                ))}  */}
+                ))}
               </div>
-              {/* <Rightbar viewUser={viewUser} /> */}
+              <div className="profileRightWrapper">
+                <Rightbar viewUser={viewUser} />
+              </div>
             </div>
           </div>
-          
         </div>
       </div>
     </>

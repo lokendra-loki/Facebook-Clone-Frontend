@@ -225,12 +225,14 @@ function ProfileRightBar({ viewUser }) {
           {allFollowersId?.map((followerId, i) => (
             <FollowerUser key={i} followerId={followerId} index={i} />
           ))}
+          <FollowerUser/>
 
           {/*  Following ===================================*/}
           <h4 className="followingHeading">Following</h4>
           {allFollowingsId?.map((followingId, i) => (
             <FollowingUser key={i} index={i} followingId={followingId} />
           ))}
+          <FollowerUser/>
         </>
       )}
     </>

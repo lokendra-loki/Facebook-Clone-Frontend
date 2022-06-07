@@ -1,8 +1,38 @@
 .homeContainer {
   display: flex;
-  width: 100%;
   background-color: #18191a;
   overflow-x: hidden !important;
+  margin-top: -10px;
+}
+
+@media only screen and (max-width: 1700px) {
+  .homeContainer {
+    padding: 0px 50px;
+    .lbw {
+      width: 300px;
+    }
+    .fw {
+      width: 750px;
+    }
+    .rbw {
+      width: 310px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .homeContainer {
+    padding: 0px 50px;
+    .lbw {
+      width: 300px;
+    }
+    .fw {
+      width: 700px;
+    }
+    .rbw {
+      width: 310px !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 1400px) {
@@ -47,15 +77,15 @@
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 580px) {
   .homeContainer {
     .fw {
-      margin-left: -40px;
+      margin-left: -50px;
     }
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   .homeContainer {
     .fw {
       margin-left: -60px;
@@ -63,7 +93,60 @@
   }
 }
 
+@media only screen and (max-width: 525px) {
+  .homeContainer {
+    .fw {
+      width: 510px;
+    }
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .homeContainer {
+    .fw {
+      width: 480px;
+    }
+  }
+}
+
 @media only screen and (max-width: 465px) {
+  .homeContainer {
+    .fw {
+      width: 450px;
+      margin-left: -50px;
+    }
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .homeContainer {
+    .fw {
+      width: 420px;
+      margin-left: -60px;
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .homeContainer {
+    background-color: #18191a;
+    width: 400px;
+
+    .fw {
+      width: 500px;
+    }
+  }
+}
+// @media only screen and (max-width: 360px) {
+//   .homeContainer {
+//     .fw {
+//       margin-left: -10px !important;
+//       padding-left: -30px !important;
+//     }
+//   }
+// }
+
+@media only screen and (max-width: 330px) {
   .homeContainer {
     .fw {
       width: 500px;
@@ -71,34 +154,10 @@
   }
 }
 
-@media only screen and (max-width: 420px) {
-  .homeContainer {
-    .fw {
-      width: 450px;
-    }
-  }
-}
-
-@media only screen and (max-width: 360px) {
-  .homeContainer {
-    .fw {
-      width: 420px;
-    }
-  }
-}
-
-@media only screen and (max-width: 330px) {
-  .homeContainer {
-    .fw {
-      width: 400px;
-    }
-  }
-}
-
 @media only screen and (max-width: 310px) {
   .homeContainer {
     .fw {
-      width: 390px;
+      width: 490px !important;
     }
   }
 }

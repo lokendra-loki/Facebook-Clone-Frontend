@@ -2,30 +2,21 @@
   display: flex;
   background-color: #18191a;
   overflow-x: hidden;
-  // padding-right: 10px;
 
   .profileRight {
-    // flex: 9;
     position: relative;
 
     .profileRightTop {
-      // padding-left: 20px;
-
       .profileContainer {
         height: 320px;
         position: relative;
 
-        // .coverPicture {
-        //   width: 100%;
-        // }
         .coverPicture {
-          // width: 100%;
           height: 250px;
           object-fit: cover;
         }
 
         .profilePicture {
-          // width: 150px;
           height: 150px;
           border-radius: 50%;
           object-fit: cover;
@@ -40,18 +31,18 @@
 
         .ButtonCon {
           display: flex;
-          // gap: 20px;
+          gap: 20px;
 
           .followButton {
             height: 40px;
-            // width: 100px;
+            width: 100px;
             border: none;
             outline: none;
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
             font-weight: 600;
-            // margin-left: 65%;
+
             margin-top: 10px;
             background-color: #000000;
             color: white;
@@ -63,7 +54,7 @@
 
           .followingButton {
             height: 40px;
-            // width: 100px;
+            width: 100px;
             border: none;
             outline: none;
             cursor: pointer;
@@ -84,13 +75,9 @@
 
     .profileInfo {
       display: flex;
-      // justify-content: space-between;
       margin-top: -70px;
       background-color: rgb(75, 71, 72);
       height: 180px;
-      // background-color: green;
-      // width: 1200px;
-      // margin-left: 20px;
 
       .followersFollowingCount {
         display: flex;
@@ -111,7 +98,6 @@
             font-size: 18px;
             font-weight: 500;
             display: flex;
-            // padding-left: 20px;
           }
         }
       }
@@ -120,7 +106,6 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        // margin-left: 50px;
       }
 
       .profileInfoName {
@@ -138,7 +123,6 @@
     }
 
     .profileEditBut {
-      // margin-left: 180px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -148,10 +132,10 @@
       height: 40px;
       background-color: #3a3b3c;
       border-radius: 6px;
-      // width: 130px;
+      width: 130px;
       gap: 2px;
       color: rgb(179, 177, 177);
-      // margin-left: 850px !important;
+      margin-left: 850px !important;
       margin-top: -60px;
 
       &:hover {
@@ -170,25 +154,31 @@
       flex-direction: column;
       position: absolute;
       top: 430px;
-      // width: 100%;
 
       .yourTotalPostsCon {
         height: 50px;
         display: flex;
         align-items: center;
-        // background-color: red;
         font-size: 18px;
         font-weight: 600;
         margin-bottom: -20px;
-        // padding-left: 20px;
+        padding-left: 20px;
+        margin-top: 30px;
+        margin-bottom: 10px !important;
       }
 
       .profileRightBottomUserPostsWrapper {
         display: flex;
+        position: absolute;
+        top: 50px;
 
         .profileRightBottomUserPosts {
-          display: flex;
-          flex-direction: column;
+          padding-right: 10px;
+          width: 800px;
+          padding-left: 20px;
+        }
+        .profileRightWrapper {
+          padding-left: 7px;
         }
       }
     }
@@ -199,7 +189,6 @@
   .profile {
     .profileLeftWrapper {
       width: 300px;
-      background-color: red;
       margin-right: 20px;
     }
     .profileRight {
@@ -239,7 +228,45 @@
         font-size: 13px;
         margin-left: 600px !important;
       }
+
+      .profileRightBottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 930px;
+        margin-right: 20px;
+
+        .yourTotalPostsCon {
+          margin-top: 60px;
+          margin-bottom: 40px;
+          margin-left: -500px;
+          font-size: 24px;
+        }
+
+        .profileRightBottomUserPostsWrapper {
+          position: absolute;
+          top: 100px;
+          left: 0px;
+
+          .profileRightBottomUserPosts {
+            padding-right: 10px;
+            width: 500px;
+          }
+          .profileRightWrapper {
+            padding-left: 7px;
+          }
+        }
+      }
     }
+  }
+}
+
+@media only screen and (max-width: 1170px) {
+  .profileRightBottomUserPosts {
+    width: 700px !important;
+  }
+  .profileRightWrapper {
+    display: none;
   }
 }
 
@@ -260,7 +287,7 @@
         }
 
         .profileInfoContainer {
-          margin-top: -50px;
+          margin-top: -60px;
 
           .profileInfoName {
             margin-left: -20px;
@@ -279,14 +306,26 @@
   }
 }
 
+@media only screen and (max-width: 1030px) {
+  .profileRightBottomUserPosts {
+    width: 600px !important;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .profileRightBottomUserPosts {
+    width: 550px !important;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   .profile {
     .profileRight {
       .profileInfo {
         .followersFollowingCount {
           position: absolute;
-          top: 250px;
-          margin-left: -340px;
+          top: 220px;
+          margin-left: -420px;
         }
 
         .profileInfoContainer {
@@ -305,10 +344,34 @@
       .profileEditBut {
         width: 120px !important;
         font-size: 10px !important;
-        margin-left: 400px !important;
+        margin-left: 450px !important;
         margin-top: 40px;
         position: absolute;
-        top: 280px;
+        top: 345px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 945px) {
+  .profile {
+    .profileRight {
+      .profileInfo {
+        .followersFollowingCount {
+          margin-left: -350px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .profile {
+    .profileRight {
+      .profileEditBut {
+        width: 120px !important;
+        font-size: 10px !important;
+        margin-left: 400px !important;
       }
     }
   }
@@ -333,6 +396,12 @@
   }
 }
 
+@media only screen and (max-width: 580px) {
+  .profileRightBottomUserPosts {
+    width: 500px !important;
+  }
+}
+
 @media only screen and (max-width: 565px) {
   .profile {
     .profileRight {
@@ -342,13 +411,12 @@
             gap: 50px;
             position: absolute;
             top: 390px;
-            // left: -10px;
             right: 270px;
           }
         }
       }
       .profileInfo {
-        height: 320px;
+        height: 30px;
         padding-right: 10px;
 
         .followersFollowingCount {
@@ -368,7 +436,15 @@
           left: -200px;
         }
       }
+      .profileRightBottom {
+        margin-top: 150px;
+      }
     }
+  }
+}
+@media only screen and (max-width: 530px) {
+  .profileRightBottomUserPosts {
+    width: 400px !important;
   }
 }
 
@@ -400,6 +476,12 @@
   }
 }
 
+@media only screen and (max-width: 530px) {
+  .profileRightBottomUserPosts {
+    width: 370px !important;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .profile {
     .profileRight {
@@ -409,6 +491,32 @@
             right: 190px;
           }
         }
+      }
+      .profileEditBut {
+        margin-left: 340px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .profile {
+    .profileRight {
+      .profileRightTop {
+        .profileContainer {
+          .ButtonCon {
+            right: 190px;
+          }
+        }
+      }
+      .profileInfo {
+        .followersFollowingCount {
+          left: 440px;
+        }
+      }
+
+      .profileEditBut {
+        margin-left: 320px !important;
       }
     }
   }
@@ -423,6 +531,45 @@
             right: 170px;
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 345px) {
+  .profile {
+    .profileRight {
+      .profileRightTop {
+        .profileContainer {
+          .ButtonCon {
+            right: 170px;
+          }
+        }
+      }
+      .profileInfo {
+        .followersFollowingCount {
+          left: 420px;
+        }
+      }
+
+      .profileEditBut {
+        margin-left: 300px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .profile {
+    .profileRight {
+      .profileInfo {
+        .followersFollowingCount {
+          left: 400px;
+        }
+      }
+
+      .profileEditBut {
+        margin-left: 280px !important;
       }
     }
   }

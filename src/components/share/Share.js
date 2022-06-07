@@ -54,14 +54,14 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
               </label>
             </div>
 
-            <div className="shareOption">
+            <div className="shareOption feelingShareOption">
               <Room className="shareIcon RoomIcon" />
               <span className="shareOptionText">Location</span>
             </div>
 
-            <div className="shareOption">
+            <div className="shareOption ">
               <EmojiEmotions className="shareIcon EmojiEmotionsIcon" />
-              <span className="shareOptionText">Feelings</span>
+              <span className="shareOptionText ">Feelings</span>
             </div>
             <button className="shareButton1" type="submit">
               Post

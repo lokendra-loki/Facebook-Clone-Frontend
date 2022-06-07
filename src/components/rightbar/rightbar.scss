@@ -1,10 +1,13 @@
 .rightBar {
-  width: 100%;
+  // width: 100%;
   flex: 3.5;
-  // background-color: red;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  position: fixed;
+  top: 45px;
 
   .rightBarWrapper {
-    padding: 20px 0px;
+    padding: 20px 20px 0px 0px;
 
     .rightBarAd {
       width: 100%;
