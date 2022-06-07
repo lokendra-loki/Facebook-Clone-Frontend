@@ -10,6 +10,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 import ParticularUserPost from "../../components/particularUserPost/ParticularUserPost";
+import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -213,7 +214,9 @@ function Profile() {
                 ))}
               </div>
               <div className="profileRightWrapper">
-                <Rightbar viewUser={viewUser} />
+                {/* <Rightbar viewUser={viewUser} /> */}
+                <ProfileRightBar/>
+                dfdgfssss
               </div>
             </div>
           </div>

@@ -185,11 +185,12 @@
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1700px) {
   .profile {
     .profileLeftWrapper {
       width: 300px;
       margin-right: 20px;
+      margin-left: 100px;
     }
     .profileRight {
       padding-right: 20px;
@@ -250,16 +251,209 @@
 
           .profileRightBottomUserPosts {
             padding-right: 10px;
-            width: 500px;
+            width: 800px;
           }
           .profileRightWrapper {
             padding-left: 7px;
+            background-color: red;
+            width: 320px;
+            margin-right: 10px;
           }
         }
       }
     }
   }
 }
+
+@media only screen and (max-width: 1585px) {
+  .profile {
+    .profileLeftWrapper {
+      margin-left: 50px;
+    }
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 700px;
+          }
+          .profileRightWrapper {
+            width: 320px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .profile {
+    .profileLeftWrapper {
+      margin-left: 10px;
+    }
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 600px;
+          }
+          .profileRightWrapper {
+            width: 320px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .profile {
+    .profileLeftWrapper {
+      margin-left: 0px;
+    }
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 500px;
+          }
+          .profileRightWrapper {
+            width: 320px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 500px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 700px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 745px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 600px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 645px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 500px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 450px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 450px !important;
+            margin-left: -30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 430px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .profile {
+    .profileRight {
+      .profileRightBottom {
+        .profileRightBottomUserPostsWrapper {
+          .profileRightBottomUserPosts {
+            width: 400px !important;
+            margin-left: -30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 420px) {
+//   .profile {
+//     .profileRight {
+//       .profileRightBottom {
+//         .profileRightBottomUserPostsWrapper {
+//           .profileRightBottomUserPosts {
+//             width: 400px !important;
+//             margin-right: -30px;
+
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media only screen and (max-width: 1170px) {
   .profileRightBottomUserPosts {
@@ -306,13 +500,13 @@
   }
 }
 
-@media only screen and (max-width: 1030px) {
+@media only screen and (max-width: 1045px) {
   .profileRightBottomUserPosts {
     width: 600px !important;
   }
 }
 
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 945px) {
   .profileRightBottomUserPosts {
     width: 550px !important;
   }
