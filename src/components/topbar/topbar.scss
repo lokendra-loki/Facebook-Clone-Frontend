@@ -23,6 +23,17 @@
       border-radius: 50%;
       object-fit: cover;
     }
+    .navMoreIcon {
+      color: rgb(158, 156, 156);
+      margin-left: 20px;
+      font-size: 28px;
+      cursor: pointer;
+     display: none;
+
+      &:hover {
+        color: #fff;
+      }
+    }
 
     .topbarLeft__search {
       width: 232px;
@@ -162,3 +173,185 @@
   margin-top: 5px;
   z-index: 999;
 }
+
+@media only screen and (max-width: 1360px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 10px;
+      }
+      .trIconCon1 {
+        display: none;
+      }
+      .trIconCon {
+        background-color: red;
+        // margin-right: 100px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 10px;
+      }
+
+      .trIconCon {
+        background-color: red;
+        margin-left: -100px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  .topbarContainer {
+    .topbarCenter {
+      gap: 2px;
+    }
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .topbarContainer {
+    .topbarLeft {
+      .topbarLeft__search {
+        display: none;
+      }
+    }
+    .topbarCenter {
+      display: none;
+    }
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 300px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 910px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 250px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .topbarContainer {
+    .topbarLeft {
+      .navMoreIcon {
+        display: block;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 100px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .topbarContainer {
+    .topbarRight {
+      .trProfileCon {
+        margin-left: 0px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .topbarContainer {
+    // width: 100%;
+    margin-right: -100px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .topbarContainer {
+    // width: 100%;
+    margin-right: -120px;
+    .topbarRight {
+      .trIconCon {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 380px) {
+  .topbarContainer {
+    // width: 100%;
+    margin-right: -150px;
+    .topbarRight {
+      .trIconCon {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .topbarContainer {
+    // width: 100%;
+    margin-right: -180px;
+    .topbarRight {
+      .trIconCon {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .topbarContainer {
+    // width: 100%;
+    margin-right: -200px;
+    .topbarRight {
+      .trIconCon {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 800px) {
+//   .topbarContainer {
+//     .topbarLeft {
+//       .topbarLeft__search {
+//         display: none;
+//       }
+//     }
+//   }
+// }

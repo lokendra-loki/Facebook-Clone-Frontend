@@ -12,6 +12,7 @@ import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import SettingContainer from "../settingContainer/SettingContainer";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import ClearIcon from "@mui/icons-material/Clear";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
@@ -54,6 +55,9 @@ function Topbar({ setSearchResult, allUsers }) {
           <Link to="/" className="link">
             <img src="/assets/fbLogo.png" className="facebookLogo" alt="" />
           </Link>
+
+          <DensityMediumIcon className="navMoreIcon" />
+
           <div className="topbarLeft__search">
             <SearchIcon className="topSearchInputIcon" />
             <input
@@ -103,15 +107,15 @@ function Topbar({ setSearchResult, allUsers }) {
             </Link>
           </div>
 
-          <div className="trIconCon">
-            <WidgetsOutlinedIcon />
+          <div className="trIconCon trIconCon1">
+            <WidgetsOutlinedIcon className="widgetIcon" />
           </div>
 
-          <div className="trIconCon">
+          <div className="trIconCon trIconCon1">
             <ChatIcon />
           </div>
 
-          <div className="trIconCon">
+          <div className="trIconCon trIconCon1">
             <NotificationsIcon />
           </div>
 
