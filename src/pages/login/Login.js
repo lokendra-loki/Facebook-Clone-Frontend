@@ -8,7 +8,7 @@ function Login() {
   //Login
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, dispatch } = useContext(AuthContext);
+  const { error, isFetching, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -16,7 +16,6 @@ function Login() {
     loginCall({ email, password }, dispatch);
     navigate("/");
   };
-  // console.log(user);
 
   return (
     <div className="login">
@@ -30,22 +29,36 @@ function Login() {
 
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleLogin}>
+            <span className={!email ? "activeErrorStarSpan" : " errorStarSpan"}>
+              *
+            </span>
             <input
               placeholder="Email"
-              type="email"
               className="loginInput"
+              autoSave="on"
+              autoComplete="on"
               onChange={(e) => setEmail(e.target.value)}
             />
+
+            <span
+              className={!password ? "activeErrorStarSpan" : " errorStarSpan"}
+            >
+              *
+            </span>
             <input
               placeholder="Password"
               type="password"
               className="loginInput"
-              required
               autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            <span className={error ? "activeErrorSpan" : "errorSpan"}>
+              Email or Password wrong
+            </span>
+
             <button className="loginButton" type="submit">
-              Login
+              {isFetching ? "Loading" : "Login"}
             </button>
             <span className="forgot">Forgot Password ?</span>
 

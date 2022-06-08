@@ -20,7 +20,7 @@ function Leftbar({
   masterCurrentUserDetail,
   searchResult,
 }) {
-  console.log(searchUserResultData);
+
 
   return (
     <div className="leftBar">

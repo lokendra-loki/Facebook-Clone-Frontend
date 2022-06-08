@@ -48,3 +48,27 @@ form {
   margin-top: 20px;
   font-size: 18px;
 }
+
+.orLogin {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+
+}
+
+.toLoginBut {
+  width: 95%;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: teal;
+  height: 42px;
+  margin-top: 20px;
+  font-size: 18px;
+
+
+}

@@ -7,7 +7,7 @@ import axios from "axios";
 import { ClassSharp } from "@material-ui/icons";
 
 function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
-  console.log(masterCurrentUser);
+
 
   return (
     <div className="feed">

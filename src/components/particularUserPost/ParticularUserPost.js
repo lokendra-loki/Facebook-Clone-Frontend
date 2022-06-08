@@ -9,14 +9,11 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 function ParticularUserPost({ masterCurrentUser, particularPosts }) {
-  console.log(masterCurrentUser);
-  console.log(particularPosts);
+ 
   //Fetch all feedPosts
   const { dispatch } = useContext(FeedPostsContext);
   const { user } = useContext(AuthContext);
-  console.log(user);
   const currentUser = user?.others;
-  console.log(currentUser);
 
   //Delete feedPost
   const handlePostDelete = (id) => {

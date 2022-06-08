@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { registerSchema } from "./formValidationSchema";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 import "./register.css";
-import { AuthContext } from "../../context/authContext/AuthContext";
 const { useFormik } = require("formik");
 
 function Register() {
@@ -135,6 +136,11 @@ function Register() {
       >
         Register
       </button>
+      <span className="orLogin">Or Login ?</span>
+
+      <Link to="/login" className="link">
+        <button className=" toLoginBut">Login</button>
+      </Link>
     </form>
   );
 }

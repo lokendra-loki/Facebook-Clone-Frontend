@@ -15,7 +15,6 @@ import FollowingUser from "../followingUser/FollowingUser";
 function ProfileRightBar({ viewUser }) {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
   const { user } = useContext(AuthContext);
 
   // //////////////\===========================
@@ -45,14 +44,14 @@ function ProfileRightBar({ viewUser }) {
     };
     fetchAllFollowings();
   }, [path]);
-  /////////=============================
+  
 
   //Fetching all followers Id
   const [allFollowersId, setAllFollowersId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
-        const res = await axios.get(`/users/allFollowers/${user.others?._id}`);
+        const res = await axios.get(`/users/allFollowers/${user?.others?._id}`);
         setAllFollowersId(res.data);
       } catch (error) {
         console.log(error);
@@ -66,7 +65,7 @@ function ProfileRightBar({ viewUser }) {
   useEffect(() => {
     const fetchAllFollowings = async () => {
       try {
-        const res = await axios.get(`/users/allFollowings/${user.others._id}`);
+        const res = await axios.get(`/users/allFollowings/${user?.others?._id}`);
         setAllFollowingsId(res.data);
       } catch (error) {
         console.log(error);
