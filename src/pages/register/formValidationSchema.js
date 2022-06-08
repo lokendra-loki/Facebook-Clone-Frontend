@@ -1,39 +1,3 @@
-// import * as yup from "yup";
-
-// const passwordRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;
-
-// export const formValidationSchema = yup.object().shape({
-//   fullName: yup
-//     .string()
-//     .required("Full name is required")
-//     .min(6, "Full name must be at least 6 characters long")
-//     .max(50, "Full name must be less than 50 characters long")
-//     .matches(/^[a-zA-Z ]+$/, "Full name must contain only letters")
-//     .trim(),
-
-//   email: yup
-//     .string()
-//     .email("Invalid email")
-//     .required("Email is required")
-//     .min(10, "Email must be at least 10 characters")
-//     .max(50, "Email must be less than 50 characters"),
-
-//   password: yup
-//     .string()
-//     .required("Password is required")
-//     .min(5, "Password must be at least 5 characters long")
-//     .max(20, "Password must be less than 20 characters long")
-//     .matches(
-//       passwordRule,
-//       "Password must contain at least one number, one lowercase and one uppercase letter"
-//     ),
-
-//   confirmPassword: yup
-//     .string()
-//     .required("Confirm password is required")
-//     .oneOf([yup.ref("password"), null], "Passwords must match"),
-// });
-
 import * as yup from "yup";
 
 const passwordRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;

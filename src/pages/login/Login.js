@@ -58,7 +58,7 @@ function Login() {
             </span>
 
             <button className="loginButton" type="submit">
-              {isFetching ? "Loading" : "Login"}
+              {isFetching ? "Loading..." : "Login"}
             </button>
             <span className="forgot">Forgot Password ?</span>
 
