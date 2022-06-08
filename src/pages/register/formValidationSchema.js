@@ -5,10 +5,10 @@ const passwordRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{5,}$/;
 export const registerSchema = yup.object().shape({
   username: yup
     .string()
-    .required("Username is required")
-    .min(4, "Username must be at least 4 characters")
-    .max(20, "Username must be less than 20 characters")
-    .matches(/^[a-zA-Z0-9]+$/, "Username must be alphanumeric")
+    .required("FullName is required")
+    .min(8, "FullName must be at least 8 characters")
+    .max(20, "FullName must be less than 20 characters")
+    .matches(/^[a-zA-Z]+(?:\s[a-zA-Z]+)+$/, "First name and Last name required")
     .trim()
     .lowercase(),
 

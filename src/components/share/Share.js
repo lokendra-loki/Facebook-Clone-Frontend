@@ -1,24 +1,61 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./share.scss";
 import { PermMedia, Room, EmojiEmotions } from "@material-ui/icons";
-import { createFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
-import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase";
+import axios from "axios";
 
 const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
-  const { dispatch } = useContext(FeedPostsContext);
-
   //Create Post
   const [desc, setDesc] = useState("");
-  const feedPost = {
-    userID: masterCurrentUser?._id,
-    desc: desc,
-    username: masterCurrentUser?.username,
-    profilePic: masterCurrentUser?.profilePic,
-  };
+  const [file, setFile] = React.useState(null);
+
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    createFeedPost(feedPost, dispatch);
-    window.location.reload();
+    const fileName = new Date().getTime() + file.name;
+    const storage = getStorage(app);
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+        }
+      },
+      (error) => {},
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          try {
+            axios.post("/posts/create/", {
+              userID: masterCurrentUser?._id,
+              desc: desc,
+              username: masterCurrentUser?.username,
+              profilePic: masterCurrentUser?.profilePic,
+              img: downloadURL,
+            });
+            window.location.reload();
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      }
+    );
   };
 
   return (
@@ -50,6 +87,7 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
                   type="file"
                   id="file"
                   accept=".png,.jpeg.jpg"
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
               </label>
             </div>

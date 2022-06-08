@@ -90,7 +90,7 @@ function Post({ masterCurrentUser }) {
 
             <div className="postCenter">
               <span className="postText">{feedPost.desc}</span>
-              <img className="postImg" src="" alt="" />
+              <img className="postImg" src={feedPost.img} alt="" />
             </div>
 
             <div className="postBottom">

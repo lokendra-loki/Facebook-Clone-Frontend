@@ -26,8 +26,6 @@ function Home() {
     );
   };
 
- 
-
   //masterCurrentUser
   const { user } = useContext(AuthContext);
   const masterCurrentUser = user?.others;
@@ -65,6 +63,7 @@ function Home() {
             masterCurrentUser={masterCurrentUser}
             allUsers={allUsers}
             searchResult={searchResult}
+            setSearchResult={setSearchResult}
           />
         </div>
 

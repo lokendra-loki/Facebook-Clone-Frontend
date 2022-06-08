@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import BookMarkPost from "../../components/bookMarkPost/BookMarkPost";
+import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
 
 function BookMark() {
   const { user } = useContext(AuthContext);
@@ -46,7 +47,6 @@ function BookMark() {
     fetchBookmarkPostsId();
   }, [user.others._id]);
   console.log(bookmarkPostsId);
- 
 
   return (
     <>
@@ -83,7 +83,8 @@ function BookMark() {
                 />
               ))}
             </div>
-            <Rightbar viewUser={viewUser} />
+            {/* <Rightbar viewUser={viewUser} /> */}
+            <ProfileRightBar />
           </div>
         </div>
       </div>

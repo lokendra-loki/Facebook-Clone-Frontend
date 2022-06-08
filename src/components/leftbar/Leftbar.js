@@ -1,27 +1,18 @@
 import React from "react";
+import SearchUserResult from "../searchUserResult/SearchUserResult";
+import SettingsIcon from "@mui/icons-material/Settings";
 import AllUsers from "../allUsers/AllUsers";
 import { Link } from "react-router-dom";
-import {
-  Bookmark,
-  Chat,
-  Event,
-  HelpOutline,
-  PlayCircleFilledOutlined,
-  WorkOutline,
-  Home,
-} from "@material-ui/icons";
+import { Bookmark, Chat, WorkOutline, Home } from "@material-ui/icons";
 import "./leftbar.scss";
-import SearchUserResult from "../searchUserResult/SearchUserResult";
 
 function Leftbar({
   searchUserResultData,
   masterCurrentUser,
   allUsers,
-  masterCurrentUserDetail,
   searchResult,
+  setSearchResult,
 }) {
-
-
   return (
     <div className="leftBar">
       <div className="sideBarWrapper">
@@ -39,12 +30,7 @@ function Leftbar({
 
           <li className="leftBarListItem">
             <Chat className="leftBarIcon" />
-            <span className="leftBarListItemText">Chats</span>
-          </li>
-
-          <li className="leftBarListItem">
-            <PlayCircleFilledOutlined className="leftBarIcon" />
-            <span className="leftBarListItemText">Videos</span>
+            <span className="leftBarListItemText">Profile</span>
           </li>
 
           <Link to={`/bookMark/${masterCurrentUser?._id}`} className="link">
@@ -55,18 +41,13 @@ function Leftbar({
           </Link>
 
           <li className="leftBarListItem">
-            <HelpOutline className="leftBarIcon" />
-            <span className="leftBarListItemText">Questions</span>
+            <SettingsIcon className="leftBarIcon" />
+            <span className="leftBarListItemText">Settings</span>
           </li>
 
           <li className="leftBarListItem">
             <WorkOutline className="leftBarIcon" />
             <span className="leftBarListItemText">Jobs</span>
-          </li>
-
-          <li className="leftBarListItem">
-            <Event className="leftBarIcon" />
-            <span className="leftBarListItemText">Events</span>
           </li>
         </ul>
 
@@ -78,6 +59,7 @@ function Leftbar({
             type="text"
             className="allUserSearch"
             placeholder="Search user"
+            onChange={(e) => setSearchResult(e.target.value)}
           />
 
           {searchResult ? (
@@ -85,6 +67,8 @@ function Leftbar({
           ) : (
             <AllUsers allUsers={allUsers} />
           )}
+
+         
         </ul>
       </div>
     </div>

@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./topbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
@@ -13,12 +11,15 @@ import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import SettingContainer from "../settingContainer/SettingContainer";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
-import ClearIcon from "@mui/icons-material/Clear";
-import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import ClearIcon from "@mui/icons-material/Clear";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./topbar.scss";
 
 function Topbar({ setSearchResult, allUsers }) {
   const { user } = useContext(AuthContext);
+
   //Fetch userCredential for profile pic
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
@@ -33,18 +34,6 @@ function Topbar({ setSearchResult, allUsers }) {
     fetchUserInfo();
   }, [user?.others?._id]);
 
-  //Search user
-  // const [searchQuery, setSearchQuery] = useState("");
-  // console.log(allUsers.filter(user=>user.username.toLowerCase().includes(searchQuery)));
-
-  // const searchUserResultData = (data) => {
-  //   return data.filter((item) =>
-  //     item.username.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  // };
-  // console.log(searchUserResultData(allUsers));
-
-  //To open Close Setting Container
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (
