@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./share.scss";
 import { PermMedia, Room, EmojiEmotions } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import {
   getStorage,
   ref,
@@ -9,15 +10,20 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
+  const { user } = useContext(AuthContext);
   //Create Post
   const [desc, setDesc] = useState("");
-  const [file, setFile] = React.useState(null);
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    const fileName = new Date().getTime() + file.name;
+    const fileName = new Date().getTime() + "-" + file.name;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -27,7 +33,9 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
         console.log("Upload is " + progress + "% done");
+        setUploading(true);
         switch (snapshot.state) {
           case "paused":
             console.log("Upload is paused");
@@ -38,17 +46,23 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
           default:
         }
       },
-      (error) => {},
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log(error);
+        setError(true);
+      },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            axios.post("/posts/create/", {
+            const res = axios.post("/posts/create/", {
               userID: masterCurrentUser?._id,
               desc: desc,
               username: masterCurrentUser?.username,
               profilePic: masterCurrentUser?.profilePic,
               img: downloadURL,
             });
+            setSuccess(true);
+            console.log(res.data);
             window.location.reload();
           } catch (error) {
             console.log(error);
@@ -62,17 +76,27 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
     <div className="share">
       <form className="shareWrapper" onSubmit={handleSubmitPost}>
         <div className="shareTop">
-          <img
-            className="shareProfileImg"
-            src={masterCurrentUserDetail?.profilePic}
-            alt=""
-          />
+          <Link to={`/profile/${user.others._id}`} className=" link">
+            <img
+              className="shareProfileImg"
+              src={masterCurrentUserDetail?.profilePic}
+              alt=""
+            />
+          </Link>
           <input
-            required
-            placeholder={`What's on your mind ${masterCurrentUser?.username} ?`}
+            placeholder={`What's on your mind ${masterCurrentUser?.username} ? `}
             className="shareInput"
             onChange={(e) => setDesc(e.target.value)}
           />
+          {!desc && <span className="inputRequiredStar">*</span>}
+          {success && (
+            <span className="youUploadedPost">Post has been Uploaded </span>
+          )}
+          {error && (
+            <span className="youUploadedPostError">
+              Oops! something went wrong{" "}
+            </span>
+          )}
         </div>
         <hr className="shareHr" />
 
@@ -90,6 +114,7 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
                   onChange={(e) => setFile(e.target.files[0])}
                 />
               </label>
+              {!file && <span className="inputRequiredStar">(required)</span>}
             </div>
 
             <div className="shareOption feelingShareOption">
@@ -102,7 +127,7 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
               <span className="shareOptionText ">Feelings</span>
             </div>
             <button className="shareButton1" type="submit">
-              Post
+              {uploading ? "Posting..." : "Post"}
             </button>
           </div>
         </div>

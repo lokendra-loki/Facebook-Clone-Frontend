@@ -215,7 +215,7 @@ function Profile() {
               </div>
               <div className="profileRightWrapper">
                 {/* <Rightbar viewUser={viewUser} /> */}
-                <ProfileRightBar/>
+                <ProfileRightBar />
                 dfdgfssss
               </div>
             </div>

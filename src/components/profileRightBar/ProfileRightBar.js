@@ -44,7 +44,6 @@ function ProfileRightBar({ viewUser }) {
     };
     fetchAllFollowings();
   }, [path]);
-  
 
   //Fetching all followers Id
   const [allFollowersId, setAllFollowersId] = React.useState([]);
@@ -65,7 +64,9 @@ function ProfileRightBar({ viewUser }) {
   useEffect(() => {
     const fetchAllFollowings = async () => {
       try {
-        const res = await axios.get(`/users/allFollowings/${user?.others?._id}`);
+        const res = await axios.get(
+          `/users/allFollowings/${user?.others?._id}`
+        );
         setAllFollowingsId(res.data);
       } catch (error) {
         console.log(error);
@@ -224,14 +225,14 @@ function ProfileRightBar({ viewUser }) {
           {allFollowersId?.map((followerId, i) => (
             <FollowerUser key={i} followerId={followerId} index={i} />
           ))}
-          <FollowerUser/>
+          {/* <FollowerUser /> */}
 
           {/*  Following ===================================*/}
           <h4 className="followingHeading">Following</h4>
           {allFollowingsId?.map((followingId, i) => (
             <FollowingUser key={i} index={i} followingId={followingId} />
           ))}
-          <FollowerUser/>
+          {/* <FollowerUser /> */}
         </>
       )}
     </>

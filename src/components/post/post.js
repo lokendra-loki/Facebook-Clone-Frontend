@@ -43,17 +43,18 @@ function Post({ masterCurrentUser }) {
   const [liked, setLiked] = useState(false);
   const handleLike = async (id) => {
     try {
-      const res = await axios.put(`/posts/like/${id}`, {
+      await axios.put(`/posts/like/${id}`, {
         userId: masterCurrentUser._id,
       });
       setLiked(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
     setLiked(liked ? liked - 1 : liked + 1);
     setLiked(!liked);
   };
-  console.log(liked);
+  console.log(feedPosts);
 
   return (
     <>
@@ -62,14 +63,17 @@ function Post({ masterCurrentUser }) {
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                {/* <Link to={`/profile/feedPosts.userID`}> */}
-                <img
-                  className="postProfileImg"
-                  src={feedPost.profilePic}
-                  alt=""
-                />
-                {/* </Link> */}
-                <span className="postUsername">{feedPost.username}</span>
+                <Link to={`/profile/${feedPost.userID}`} className="link">
+                  <img
+                    className="postProfileImg"
+                    src={feedPost.profilePic}
+                    alt=""
+                  />
+                </Link>
+
+                <Link to={`/profile/${feedPost.userID}`} className="link">
+                  <span className="postUsername">{feedPost.username}</span>
+                </Link>
 
                 <span className="postDate">{format(feedPost.createdAt)}</span>
               </div>
@@ -90,7 +94,12 @@ function Post({ masterCurrentUser }) {
 
             <div className="postCenter">
               <span className="postText">{feedPost.desc}</span>
-              <img className="postImg" src={feedPost.img} alt="" />
+              <img
+                className="postImg"
+                src={feedPost.img}
+                onError={(event) => (event.target.style.display = "none")}
+                alt=""
+              />
             </div>
 
             <div className="postBottom">

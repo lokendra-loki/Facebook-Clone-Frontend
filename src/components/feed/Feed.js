@@ -7,8 +7,6 @@ import axios from "axios";
 import { ClassSharp } from "@material-ui/icons";
 
 function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
-
-
   return (
     <div className="feed">
       <div className="feedWrapper">

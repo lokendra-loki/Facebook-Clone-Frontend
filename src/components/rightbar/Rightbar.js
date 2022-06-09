@@ -8,10 +8,6 @@ function Rightbar({ viewUser }) {
       <div className="rightBar">
         <div className="rightBarWrapper">
           <ProfileRightBar viewUser={viewUser} />
-          <ProfileRightBar viewUser={viewUser} />
-          <ProfileRightBar viewUser={viewUser} />
-          <ProfileRightBar viewUser={viewUser} />
-          <ProfileRightBar viewUser={viewUser} />
         </div>
       </div>
     </>

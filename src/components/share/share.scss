@@ -20,6 +20,12 @@
         border-radius: 50%;
         object-fit: cover;
         margin-right: 10px;
+        cursor: pointer;
+        border: 1px solid transparent;
+
+        &:hover {
+          border: 1px solid rgb(72, 72, 72);
+        }
       }
 
       .shareInput {
@@ -42,6 +48,29 @@
           color: #bbbaba;
           font-size: 16px;
         }
+      }
+
+      .inputRequiredStar {
+        color: red;
+        padding-left: 5px;
+        font-size: 22px;
+      }
+      .youUploadedPost {
+        position: absolute;
+        z-index: 99;
+        background-color: rgb(2, 168, 2);
+        padding: 15px;
+        border-radius: 7px;
+        right: 470px;
+      }
+
+      .youUploadedPostError {
+        position: absolute;
+        z-index: 99;
+        background-color: red;
+        padding: 15px;
+        border-radius: 7px;
+        right: 470px;
       }
     }
 
@@ -86,6 +115,13 @@
               margin-right: 5px;
             }
           }
+          .inputRequiredStar {
+            color: red;
+            padding-left: 5px;
+            font-size: 13px;
+            position: absolute;
+            top: 218px;
+          }
 
           .RoomIcon {
             color: rgb(244, 74, 74);
@@ -103,7 +139,7 @@
           color: #bbbaba;
           align-items: center;
           cursor: pointer;
-          width: 80px;
+          width: 100px;
           height: 38px;
           font-size: 16px;
           font-weight: 600;
