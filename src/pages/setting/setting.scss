@@ -72,13 +72,12 @@
       .userCredentialEditModeCon {
         background-color: #000000;
         height: 500px;
-        width: 53.6%;
+        width: 55.6%;
         margin-left: 15%;
         position: absolute;
-        top: 120px;
+        top: 550px;
         z-index: 100;
-        // margin-left: -10px;
-        left: 306px;
+        right: 200px;
 
         .ucemcRow1 {
           display: flex;
@@ -109,7 +108,7 @@
           margin-bottom: 30px;
           border: none;
           height: 1px;
-          background-color: #333;
+          
         }
         .ucemcSaveBut {
           height: 40px;
@@ -142,6 +141,93 @@
 
             &::placeholder {
               font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .userSettingInfoCon {
+    .usiLeft {
+      display: none;
+    }
+    .useRight {
+      .userCredentialEditForm {
+        .userCredentialEditModeCon {
+          width: 70%;
+          padding-left: 15%;
+          position: absolute;
+          right: 15%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .userSettingInfoCon {
+    .useRight {
+      margin-left: -100px;
+      margin-right: -100px;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .userSettingInfoCon {
+    .useRight {
+      .userCredentialEditForm {
+        .userCredentialEditModeCon {
+          width: 90%;
+          padding-left: 15%;
+          position: absolute;
+          right: 5%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .userSettingInfoCon {
+    .useRight {
+      .userCredentialEditForm {
+        .userCredentialEditModeCon {
+          width: 100%;
+          padding-left: 15%;
+          position: absolute;
+          right: -7%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .userSettingInfoCon {
+    .useRight {
+      padding-left: 80px;
+    }
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .userSettingInfoCon {
+    .useRight {
+      .userCredentialEditForm {
+        .userCredentialEditModeCon {
+          .ucemcItemCon {
+            .ucemcItemTitle {
+              font-size: 18px;
+              color: white;
+              margin-left: -40px;
+            }
+            .ucemcItemTitleValueInput {
+              width: 200px;
+              margin-right: -40px;
             }
           }
         }

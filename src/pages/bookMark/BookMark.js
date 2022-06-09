@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import "./bookMark.scss";
 import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
-import Rightbar from "../../components/rightbar/Rightbar";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import BookMarkPost from "../../components/bookMarkPost/BookMarkPost";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
+import Rightbar from "../../components/rightbar/Rightbar";
 
 function BookMark() {
   const { user } = useContext(AuthContext);
@@ -51,30 +51,30 @@ function BookMark() {
   return (
     <>
       <Topbar />
-      <div className="profile">
+      <div className="bookmark">
         <Leftbar />
-        <div className="profileRight">
-          <div className="profileRightTop">
-            <div className="profileContainer">
-              <img className="coverPicture" src="" alt="" />
-              <img className="profilePicture" src="" alt="" />
+        <div className="bmprofileRight">
+          <div className="bmprofileRightTop">
+            <div className="bmprofileContainer">
+              <img className="bmcoverPicture" src="" alt="" />
+              <img className="bmprofilePicture" src="" alt="" />
             </div>
           </div>
 
-          <div className="profileInfo">
-            <div className="profileInfoContainer">
-              <h4 className="profileInfoName">
+          <div className="bmprofileInfo">
+            <div className="bmprofileInfoContainer">
+              <h4 className="bmprofileInfoName">
                 {user.others?.username} ({viewUser?.nickName}){" "}
               </h4>
-              <span className="profileDescription">{viewUser?.bio}</span>
+              <span className="bmprofileDescription">{viewUser?.bio}</span>
             </div>
-            <span className="totalBookmarkPost">
-              {bookmarkPostsId.length} Saved Posts
+            <span className="bmtotalBookmarkPost">
+              You have saved  {bookmarkPostsId.length}  Posts till now
             </span>
           </div>
 
-          <div className="profileRightBottom">
-            <div className="profileRightBookmarkPostCon">
+          <div className="bmprofileRightBottom">
+            <div className="bmprofileRightBookmarkPostCon">
               {bookmarkPostsId?.map((bookmarkPostId, i) => (
                 <BookMarkPost
                   index={i}
@@ -83,8 +83,6 @@ function BookMark() {
                 />
               ))}
             </div>
-            {/* <Rightbar viewUser={viewUser} /> */}
-            <ProfileRightBar />
           </div>
         </div>
       </div>

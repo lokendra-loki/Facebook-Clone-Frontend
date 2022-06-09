@@ -22,7 +22,6 @@ function BookMarkPost({ bookmarkPostId }) {
     };
     fetchBookmarkPosts();
   }, [bookmarkPostId]);
-  console.log(bookmarkPosts);
 
   //Bookmark
   const [removedBookmarked, setRemovedBookmarked] = useState(true);
@@ -75,7 +74,7 @@ function BookMarkPost({ bookmarkPostId }) {
 
           <div className="postCenter">
             <span className="postText">{bookmarkPosts?.desc}</span>
-            <img className="postImg" src="" alt="" />
+            <img className="postImg" src={bookmarkPosts.img} alt="" />
           </div>
 
           <div className="postBottom">

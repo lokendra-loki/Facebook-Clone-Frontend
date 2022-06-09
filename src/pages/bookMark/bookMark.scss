@@ -1,27 +1,27 @@
-.profile {
+.bookmark {
   display: flex;
   background-color: #18191a;
   color: rgb(204, 201, 201);
   height: 2000vh;
 
-  .profileRight {
+  .bmprofileRight {
     flex: 9;
     position: relative;
     background-color: #18191a;
 
-    .profileRightTop {
-      .profileContainer {
+    .bmprofileRightTop {
+      .bmprofileContainer {
         height: 320px;
         position: relative;
-        .coverPicture {
+        .bmcoverPicture {
           width: 100%;
         }
-        .coverPicture {
+        .bmcoverPicture {
           width: 100%;
           height: 250px;
           object-fit: cover;
         }
-        .profilePicture {
+        .bmprofilePicture {
           width: 150px;
           height: 150px;
           border-radius: 50%;
@@ -34,90 +34,92 @@
           border: 3px solid #fff;
           overflow: hidden;
         }
-        .followButton {
-          height: 40px;
-          width: 100px;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          border-radius: 5px;
-          font-size: 16px;
-          font-weight: 600;
-          margin-left: 70%;
-          margin-top: 10px;
-        }
       }
     }
 
-    .profileInfo {
+    .bmprofileInfo {
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
+      
 
-      .profileInfoContainer {
+      .bmprofileInfoContainer {
         display: flex;
         align-items: center;
         flex-direction: column;
         margin-left: 50px;
       }
-      .totalBookmarkPost {
+      .bmtotalBookmarkPost {
         font-size: 25px;
         font-weight: 600;
-        margin-left: -950px;
+        position: absolute;
+        margin-top:180px;
+        
       }
 
-      .profileInfoName {
+      .bmprofileInfoName {
         font-size: 34px;
         font-weight: bold;
         margin-bottom: 10px;
       }
 
-      .profileDescription {
+      .bmprofileDescription {
         font-size: 20px;
         font-weight: 300;
         margin-bottom: 10px;
       }
     }
 
-    .profileEditBut {
-      margin-left: 180px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      outline: none;
-      height: 40px;
-      background-color: #3a3b3c;
-      border-radius: 6px;
-      width: 130px;
-      gap: 5px;
-      color: rgb(179, 177, 177);
-
-      &:hover {
-        background-color: #4f4f4f;
-        color: rgb(206, 205, 205);
-      }
-
-      .editProfileTxt {
-        font-size: 600;
-        font-size: 16px;
-      }
-    }
-
-    .profileRightBottom {
+    .bmprofileRightBottom {
       display: flex;
       flex-direction: row;
       position: absolute;
-      top: 430px;
+      top: 480px;
 
-      .profileRightBookmarkPostCon {
+      .bmprofileRightBookmarkPostCon {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        // flex-direction: column;
         width: 100%;
         padding: 0px 20px;
+        gap: 20px;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1014px) {
+  .bmprofileRightBookmarkPostCon {
+    margin-left: 200px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .bmprofileRightBookmarkPostCon {
+    margin-left: 100px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .bmprofileRightBookmarkPostCon {
+    margin-left: 50px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .bmprofileRightBookmarkPostCon {
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .bookmark {
+    width: 600px;
+
+    .bmprofileRightBookmarkPostCon {
+      width: 520px !important;
+      margin-left: 35px;
     }
   }
 }
