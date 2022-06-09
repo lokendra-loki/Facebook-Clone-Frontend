@@ -1,10 +1,7 @@
 import Share from "../share/Share";
-import "./feed.scss";
 import Post from "../post/Post";
 import ParticularUserPost from "../particularUserPost/ParticularUserPost";
-import { useState } from "react";
-import axios from "axios";
-import { ClassSharp } from "@material-ui/icons";
+import "./feed.scss";
 
 function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
   return (
@@ -15,7 +12,7 @@ function Feed({ masterCurrentUser, masterCurrentUserDetail }) {
           masterCurrentUserDetail={masterCurrentUserDetail}
         />
         <Post masterCurrentUser={masterCurrentUser} />
-        <ParticularUserPost />
+        {/* <ParticularUserPost /> */}
       </div>
     </div>
   );

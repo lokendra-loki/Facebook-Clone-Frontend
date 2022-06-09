@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BookMark from "./pages/bookMark/BookMark";
 import { AuthContext } from "./context/authContext/AuthContext";
 
+
 function App() {
   const { user } = useContext(AuthContext);
   return (

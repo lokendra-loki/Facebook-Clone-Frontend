@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchUserResult from "../searchUserResult/SearchUserResult";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AllUsers from "../allUsers/AllUsers";
 import { Link } from "react-router-dom";
 import { Bookmark, Chat, WorkOutline, Home } from "@material-ui/icons";
 import "./leftbar.scss";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function Leftbar({
   searchUserResultData,
@@ -13,7 +14,9 @@ function Leftbar({
   searchResult,
   setSearchResult,
 }) {
+  const {user}=useContext(AuthContext);
   return (
+    
     <div className="leftBar">
       <div className="sideBarWrapper">
         <ul className="leftBarList">
@@ -28,10 +31,12 @@ function Leftbar({
             </li>
           </Link>
 
-          <li className="leftBarListItem">
-            <Chat className="leftBarIcon" />
-            <span className="leftBarListItemText">Profile</span>
-          </li>
+          <Link to={`/profile/${user.others._id}`} className="link">
+            <li className="leftBarListItem">
+              <Chat className="leftBarIcon" />
+              <span className="leftBarListItemText">Profile</span>
+            </li>
+          </Link>
 
           <Link to={`/bookMark/${masterCurrentUser?._id}`} className="link">
             <li className="leftBarListItem">
@@ -40,10 +45,12 @@ function Leftbar({
             </li>
           </Link>
 
+          <Link to={`/settings/${user.others._id}`} className="link">
           <li className="leftBarListItem">
             <SettingsIcon className="leftBarIcon" />
             <span className="leftBarListItemText">Settings</span>
           </li>
+          </Link>
 
           <li className="leftBarListItem">
             <WorkOutline className="leftBarIcon" />
@@ -67,8 +74,6 @@ function Leftbar({
           ) : (
             <AllUsers allUsers={allUsers} />
           )}
-
-         
         </ul>
       </div>
     </div>

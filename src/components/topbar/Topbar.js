@@ -63,7 +63,7 @@ function Topbar({ setSearchResult, allUsers }) {
           <Link to="/" className="link">
             <div
               className="IconCon"
-              onClick={(e) => window.location.reload("/")}
+              
             >
               <HomeOutlinedIcon className="topbarCenterIcon" />
             </div>

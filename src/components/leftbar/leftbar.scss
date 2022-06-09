@@ -4,6 +4,7 @@
   overflow-y: scroll;
   position: fixed;
   top: 45px;
+  
 
   .sideBarWrapper {
     padding: 20px;
@@ -22,6 +23,7 @@
         cursor: pointer;
         margin-bottom: 10px;
         color: rgb(206, 202, 202);
+        
 
         &:hover {
           background-color: #3a3b3c;

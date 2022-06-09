@@ -146,8 +146,8 @@ function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileContainer">
-              <img className="coverPicture" src="" alt="" />
-              <img className="profilePicture" src="" alt="" />
+              <img className="coverPicture" src="/assets/profile.jpeg" alt="" />
+              <img className="profilePicture" src="/assets/profile.jpeg" alt="" />
               <div className="ButtonCon">
                 <button className="followButton" onClick={handleUnFollow}>
                   UnFollow

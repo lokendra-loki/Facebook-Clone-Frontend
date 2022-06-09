@@ -9,8 +9,11 @@ import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function Post({ masterCurrentUser }) {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   //Fetch all feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
   useEffect(() => {
@@ -134,7 +137,7 @@ function Post({ masterCurrentUser }) {
                 className="bookmark"
                 onClick={() => saveBookmarkPost(feedPost._id)}
               >
-                Bookmark
+                bookmark
               </button>
               <div className="postBottomRight">
                 <span className="postCommentText">45 comments</span>

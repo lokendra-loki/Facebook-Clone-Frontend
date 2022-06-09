@@ -69,7 +69,7 @@ function BookMark() {
               <span className="bmprofileDescription">{viewUser?.bio}</span>
             </div>
             <span className="bmtotalBookmarkPost">
-              You have saved  {bookmarkPostsId.length}  Posts till now
+              You have saved {bookmarkPostsId.length} Posts till now
             </span>
           </div>
 
