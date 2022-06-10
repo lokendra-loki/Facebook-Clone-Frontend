@@ -7,9 +7,9 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 import ParticularUserPost from "../../components/particularUserPost/ParticularUserPost";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
-import { useAPI } from "../../context/currentUserContext";
 import axios from "axios";
 import "./profile.scss";
+import { useAPI } from "../../context/currentUserContext";
 
 function Profile() {
   const [openEditCon, setOpenEditCon] = useState(false);
@@ -29,6 +29,7 @@ function Profile() {
     };
     fetchInfo();
   }, [path]);
+  console.log(getUser);
 
   //Fetching userDetail
   const [viewUser, setViewUser] = useState({});
@@ -117,20 +118,23 @@ function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileContainer">
-              <img className="coverPicture" src={currentUser.coverPic} alt="" />
-              <img
-                className="profilePicture"
-                src={currentUser.profilePic}
-                alt=""
-              />
-              <div className="ButtonCon">
-                <button className="followButton" onClick={handleUnFollow}>
-                  UnFollow
-                </button>
-                <button className=" followingButton" onClick={handleFollow}>
-                  Follow
-                </button>
-              </div>
+              <img className="coverPicture" src={getUser.coverPic} alt="" />
+              <img className="profilePicture" src={getUser.profilePic} alt="" />
+              {path !== user._id && (
+                <div className="ButtonCon">
+                  {!getUser?.followers?.includes(user._id) ? null : (
+                    <button className="followButton" onClick={handleUnFollow}>
+                      Unfollow
+                    </button>
+                  )}
+
+                  <button className=" followingButton" onClick={handleFollow}>
+                    {getUser.followers?.includes(user._id)
+                      ? "Following"
+                      : "Follow"}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
@@ -138,13 +142,17 @@ function Profile() {
             <div className="followersFollowingCount">
               <div className="followersCount">
                 <span className="followersCountTxt">Followers</span>
-                <span className="followerNumber">{followers}</span>
+                <span className="followerNumber">
+                  {getUser?.followers?.length}
+                </span>
               </div>
 
               <hr className="piHr" />
               <div className="followersCount">
                 <span className="followersCountTxt">Following</span>
-                <span className="followerNumber">{followings}</span>
+                <span className="followerNumber">
+                  {getUser?.followings?.length}
+                </span>
               </div>
             </div>
 

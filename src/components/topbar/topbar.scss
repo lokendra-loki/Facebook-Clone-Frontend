@@ -103,8 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // background-color: yellow;
-
+    
     .trProfileCon {
       display: flex;
       align-items: center;
@@ -123,7 +122,7 @@
           height: 32px;
           border-radius: 50%;
           object-fit: cover;
-          margin-left: 0px;
+          margin-left:2px;
           overflow: hidden;
         }
         .trProfileName {

@@ -51,13 +51,15 @@
             border-radius: 5px;
             font-size: 16px;
             font-weight: 600;
-
             margin-top: 10px;
-            background-color: #000000;
+            background-color: #18191a;
             color: white;
+            min-width: 110px !important;
 
             &:hover {
-              background-color: #3a3b3c;
+              background-color: #000000;
+              color: white;
+              transition: all 0.4s ease-in-out;
             }
           }
 
@@ -68,14 +70,17 @@
             outline: none;
             cursor: pointer;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             margin-top: 10px;
-            background-color: #000000;
+            background-color: #18191a;
             color: white;
+            min-width: 110px !important;
 
             &:hover {
-              background-color: #3a3b3c;
+              background-color: #000000;
+              color: white;
+              transition: all 0.4s ease-in-out;
             }
           }
         }
@@ -203,12 +208,13 @@
       .profileInfo {
         .followersFollowingCount {
           position: absolute;
+          top: 300px;
           left: 50px;
           // background-color: green;
           display: flex;
-          font-size: 28px;
+          font-size: 24px;
           font-weight: 600;
-          color: white;
+          color: black;
           gap: 10px;
           .followersCount {
             display: flex;

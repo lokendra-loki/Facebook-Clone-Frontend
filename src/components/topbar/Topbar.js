@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -14,14 +14,12 @@ import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./topbar.scss";
 import { useAPI } from "../../context/currentUserContext";
 
 function Topbar({ setSearchResult, allUsers }) {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
-
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (

@@ -21,6 +21,7 @@
         object-fit: cover;
         margin-right: 10px;
         cursor: pointer;
+        overflow: hidden;
         border: 1px solid transparent;
 
         &:hover {

@@ -10,10 +10,13 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./post.scss";
+import { useAPI } from "../../context/currentUserContext";
 
 function Post() {
   const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
   const { user } = useContext(AuthContext);
+  const { currentUser } = useAPI();
+  console.log(currentUser);
 
   //All feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
@@ -38,6 +41,7 @@ function Post() {
         userId: user?._id,
       });
       setBookmarked(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +62,6 @@ function Post() {
     setLiked(liked ? liked - 1 : liked + 1);
     setLiked(!liked);
   };
-  
 
   return (
     <>
@@ -127,19 +130,24 @@ function Post() {
               </div>
 
               {/* Delete */}
-              <button
-                className="postDeleteBut"
-                onClick={() => handlePostDelete(feedPost._id)}
-              >
-                {deleting ? "Deleting..." : "Delete"}
-              </button>
+              {feedPost.userID === user._id && (
+                <button
+                  className="postDeleteBut"
+                  onClick={() => handlePostDelete(feedPost._id)}
+                >
+                  {deleting ? "Deleting..." : "Delete"}
+                </button>
+              )}
 
-              <button
-                className="bookmark"
-                onClick={() => saveBookmarkPost(feedPost._id)}
-              >
-                Bookmark
-              </button>
+              {feedPost.userID !== user._id && (
+                <button
+                  className="bookmark"
+                  onClick={() => saveBookmarkPost(feedPost._id)}
+                >
+                  {currentUser.bookmarks?.includes(feedPost._id) ? "Saved" : "Bookmark"}
+                </button>
+              )}
+
               <div className="postBottomRight">
                 <span className="postCommentText">45 comments</span>
               </div>

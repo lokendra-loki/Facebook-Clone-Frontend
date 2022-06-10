@@ -39,7 +39,7 @@ function Leftbar({
           </Link>
 
           <Link to={`/bookMark/${user?._id}`} className="link">
-            <li className="leftBarListItem">
+            <li className="leftBarListItem" onClick={window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
               <Bookmark className="leftBarIcon" />
               <span className="leftBarListItemText">Bookmarks</span>
             </li>
