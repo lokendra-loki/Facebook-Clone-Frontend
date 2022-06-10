@@ -3,6 +3,7 @@
   display: flex;
   color: rgb(197, 195, 195);
   height: 500vh;
+  margin-top: -10px;
 
   .usiLeft {
     flex: 2;
@@ -10,6 +11,119 @@
   .useRight {
     flex: 8;
     background-color: #000000;
+
+    .profileCoverPicDiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .uploadPP {
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      .profileDiv {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .uploadProfilePic {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 1px solid #2b2a2a;
+          object-fit: cover;
+        }
+        .ppIcon {
+          font-size: 45px;
+          cursor: pointer;
+        }
+      }
+      .profilePicChange {
+        height: 35px;
+        border: none;
+        outline: none;
+        background-color: #3d3d3d;
+        color: white;
+        font-size: 22px;
+        border-radius: 7px;
+        margin-top: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2b2a2a;
+          color: #ffffff;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      .ppsuccess{
+        color:white;
+        padding: 10px;
+        background-color: green;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: -20px;
+        
+      }
+      .uploadcP {
+        font-size: 25px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      .coverDiv {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .uploadCoverPic {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 1px solid #2b2a2a;
+          object-fit: cover;
+        }
+        .cpIcon {
+          font-size: 45px;
+          cursor: pointer;
+        }
+      }
+      .coverPicChange {
+        height: 35px;
+        border: none;
+        outline: none;
+        background-color: #3d3d3d;
+        color: white;
+        font-size: 22px;
+        border-radius: 7px;
+        margin-top: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2b2a2a;
+          color: #ffffff;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      .cpsuccess{
+        color:white;
+        padding: 10px;
+        background-color: green;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-bottom: -20px;
+        
+      }
+    }
 
     .userCredentialEditConHidden {
       display: hidden;
@@ -108,7 +222,6 @@
           margin-bottom: 30px;
           border: none;
           height: 1px;
-          
         }
         .ucemcSaveBut {
           height: 40px;

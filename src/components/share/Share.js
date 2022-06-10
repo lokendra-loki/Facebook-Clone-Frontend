@@ -72,6 +72,10 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
     );
   };
 
+  
+
+
+
   return (
     <div className="share">
       <form className="shareWrapper" onSubmit={handleSubmitPost}>
