@@ -7,8 +7,9 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 function BookMarkPost({ bookmarkPostId }) {
+  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
   const { user } = useContext(AuthContext);
-  const currentUser = user.others;
+
   //get bookmark posts detail from id
   const [bookmarkPosts, setBookmarkPosts] = useState({});
   useEffect(() => {
@@ -28,7 +29,7 @@ function BookMarkPost({ bookmarkPostId }) {
   const removeBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${bookmarkPostId}`, {
-        userId: currentUser?._id,
+        userId: user?._id,
       });
       setRemovedBookmarked(false);
       window.location.reload();
@@ -36,10 +37,6 @@ function BookMarkPost({ bookmarkPostId }) {
       console.log(error);
     }
   };
-  console.log(removedBookmarked);
-
-  //Open Close deleteEditCon
-  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
 
   return (
     <>
@@ -74,14 +71,17 @@ function BookMarkPost({ bookmarkPostId }) {
 
           <div className="postCenter">
             <span className="postText">{bookmarkPosts?.desc}</span>
-            <img className="postImg" src={bookmarkPosts.img} alt="" />
+            <img className="postImg" src={bookmarkPosts?.img} alt="" />
           </div>
 
           <div className="postBottom">
             <div className="postBottomLeft">
               <img className="likeIcon" src="/assets/like.png" alt="" />
               <img className="likeIcon" src="/assets/heart.png" alt="" />
-              <span className="postLikeCounter"> 9 people like it</span>
+              <span className="postLikeCounter">
+                {" "}
+                {bookmarkPosts?.likes?.length} Likes
+              </span>
             </div>
 
             <button className="bookmark" onClick={removeBookmarkPost}>

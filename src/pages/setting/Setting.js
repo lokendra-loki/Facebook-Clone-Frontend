@@ -13,24 +13,22 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { useAPI } from "../../context/currentUserContext";
 
 function Setting() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
-  const currentUser = user.others;
+  const { currentUser } = useAPI();
 
-  //To open  edit container
+  //Open edit container
   const [openUserCredentialEditCon, setOpenUserCredentialEditCon] =
     useState(false);
 
-  // user id from URL
-  const location = useLocation();
-  const path = location.pathname.split("/")[2];
-
-  //update userCredentials
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  //Update
+  const [username, setUsername] = useState(currentUser.username);
+  const [email, setEmail] = useState(currentUser.email);
   const [password, setPassword] = useState("");
-  // console.log(username, email, password);
 
   const updateThis = {
     username,
@@ -38,15 +36,17 @@ function Setting() {
     password,
   };
 
-  const handleUpdateUserCredentialSubmit = async (e) => {
+  const update = async (e) => {
     e.preventDefault();
     try {
       await axios.put(`/users/update/${path}`, updateThis);
       // localStorage.setItem("user", JSON.stringify(res.data));
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
+
   const [file1, setFile1] = useState(null);
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
@@ -81,10 +81,10 @@ function Setting() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.post("/userPic/create", {
-              userID: user.others._id,
+            const res = axios.put(`/users/update/${user._id}`, {
               profilePic: downloadURL,
             });
+
             setSuccess1(true);
             console.log(res.data);
             window.location.reload();
@@ -127,11 +127,11 @@ function Setting() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.post("/coverPic/create", {
-              userID: user.others._id,
+            const res = axios.put(`/users/update/${user._id}`, {
               coverPic: downloadURL,
             });
-           setSuccess2(true);
+
+            setSuccess2(true);
             console.log(res.data);
             window.location.reload();
           } catch (error) {
@@ -171,13 +171,13 @@ function Setting() {
                     className="uploadProfilePic"
                   />
                 ) : (
-                  <img src="" alt="" className="uploadProfilePic" />
+                  <img src={currentUser.profilePic} alt="" className="uploadProfilePic" />
                 )}
               </div>
               <button className="profilePicChange" onClick={handleSubmit1}>
                 {uploading1 ? " Saving..." : " Save"}
               </button>
-             {success1 && <span className="ppsuccess">Success</span>}
+              {success1 && <span className="ppsuccess">Success</span>}
             </form>
             {/* Cover Picture */}
             <span className="uploadcP">Cover Picture</span>
@@ -200,7 +200,7 @@ function Setting() {
                     className="uploadCoverPic"
                   />
                 ) : (
-                  <img src="" alt="" className="uploadCoverPic" />
+                  <img src={currentUser.coverPic}alt="" className="uploadCoverPic" />
                 )}
               </div>
               <button className="coverPicChange" type="submit">
@@ -227,13 +227,13 @@ function Setting() {
             <hr className="suiHr1" />
             <div className="usiItemCon">
               <span className="usiItemTitle">Username</span>
-              <span className="usiItemTitleValue">{currentUser.username}</span>
+              <span className="usiItemTitleValue">{currentUser?.username}</span>
             </div>
             <hr className="suiHr2" />
 
             <div className="usiItemCon">
               <span className="usiItemTitle">Email</span>
-              <span className="usiItemTitleValue">{currentUser.email}</span>
+              <span className="usiItemTitleValue">{currentUser?.email}</span>
             </div>
             <hr className="suiHr2" />
 
@@ -247,10 +247,7 @@ function Setting() {
 
           {/* User Credential Edit Mode Container */}
           {openUserCredentialEditCon && (
-            <form
-              className="userCredentialEditForm"
-              onSubmit={handleUpdateUserCredentialSubmit}
-            >
+            <form className="userCredentialEditForm" onSubmit={update}>
               <div className="userCredentialEditModeCon">
                 <div className="ucemcRow1">
                   <span className="ucemcTitle">Change Account Credentials</span>

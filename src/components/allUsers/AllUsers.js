@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./allUsers.scss";
 
-function AllUsers({ allUsers }) {
-  //Fetch allUsers to show in leftbar
+function AllUsers() {
+  //All user
   const [getAllUser, setGetAllUser] = useState([]);
   useEffect(() => {
     const fetchAllUsers = async () => {
@@ -14,23 +14,13 @@ function AllUsers({ allUsers }) {
     fetchAllUsers();
   }, []);
 
-  //Get all userDetails for profile pic
-  const [getAllUserDetails, setGetAllUserDetails] = useState([]);
-  useEffect(() => {
-    const fetchAllUserDetails = async () => {
-      const res = await axios.get("/userDetail/all");
-      setGetAllUserDetails(res.data);
-    };
-    fetchAllUserDetails();
-  }, []);
-
   return (
     <>
       {getAllUser.map((user, index) => (
         <Link key={index} to={`/profile/${user._id}`} className="link">
           <li className="leftBarFriend">
             <img
-              src={getAllUserDetails[index]?.profilePic}
+              src={getAllUser[index]?.profilePic}
               alt=""
               className="leftBarFriendImg"
             />

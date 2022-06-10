@@ -1,52 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./bookMark.scss";
-import Topbar from "../../components/topbar/Topbar";
-import Leftbar from "../../components/leftbar/Leftbar";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import BookMarkPost from "../../components/bookMarkPost/BookMarkPost";
-import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
-import Rightbar from "../../components/rightbar/Rightbar";
+import Topbar from "../../components/topbar/Topbar";
+import Leftbar from "../../components/leftbar/Leftbar";
+import axios from "axios";
+import "./bookMark.scss";
 
 function BookMark() {
   const { user } = useContext(AuthContext);
 
-  //Fetching data from URl id
-  const location = useLocation();
-  const path = location.pathname.split("/")[2];
-
-  //Fetching userDetail according to userID element
-  const [viewUser, setViewUser] = useState({});
+  //Current user
+  const [currentUser, setCurrentUser] = useState(user);
   useEffect(() => {
-    const fetchUserDetail = async () => {
-      try {
-        const res = await axios.post("/userDetail/userDetailData", {
-          userID: path,
-        });
-        setViewUser(res.data[0]);
-      } catch (error) {
-        console.log(error);
-      }
+    const fetchCurrentUser = async () => {
+      const res = await axios.get(`/users/get/${user?._id}`);
+      setCurrentUser(res.data);
     };
-    fetchUserDetail();
-  }, [path]);
-  console.log(viewUser);
+    fetchCurrentUser();
+  }, [user]);
 
-  //Fetch all bookmark postId
+  //All Bookmarked posts
   const [bookmarkPostsId, setBookmarkPostsId] = useState([]);
   useEffect(() => {
     const fetchBookmarkPostsId = async () => {
       try {
-        const res = await axios.get(`/users/bookmarkPosts/${user.others._id}`);
+        const res = await axios.get(`/users/bookmarkPosts/${user._id}`);
         setBookmarkPostsId(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchBookmarkPostsId();
-  }, [user.others._id]);
-  console.log(bookmarkPostsId);
+  }, [user?._id]);
 
   return (
     <>
@@ -56,17 +41,14 @@ function BookMark() {
         <div className="bmprofileRight">
           <div className="bmprofileRightTop">
             <div className="bmprofileContainer">
-              <img className="bmcoverPicture" src="" alt="" />
-              <img className="bmprofilePicture" src="" alt="" />
+              <img className="bmcoverPicture" src={currentUser.profilePic} alt="" />
+              <img className="bmprofilePicture" src={currentUser.coverPic} alt="" />
             </div>
           </div>
 
           <div className="bmprofileInfo">
             <div className="bmprofileInfoContainer">
-              <h4 className="bmprofileInfoName">
-                {user.others?.username} ({viewUser?.nickName}){" "}
-              </h4>
-              <span className="bmprofileDescription">{viewUser?.bio}</span>
+              <h4 className="bmprofileInfoName">{currentUser.username}</h4>
             </div>
             <span className="bmtotalBookmarkPost">
               You have saved {bookmarkPostsId.length} Posts till now

@@ -261,6 +261,23 @@
     }
   }
 }
+@media only screen and (max-width: 1780px) {
+  .userSettingInfoCon {
+    .usiLeft {
+      display: none;
+    }
+    .useRight {
+      .userCredentialEditForm {
+        .userCredentialEditModeCon {
+          width: 70%;
+          padding-left: 15%;
+          position: absolute;
+          right: 15%;
+        }
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: 1400px) {
   .userSettingInfoCon {

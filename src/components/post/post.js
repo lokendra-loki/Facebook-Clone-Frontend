@@ -1,37 +1,41 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./post.scss";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import getFeedPosts, {
   deleteFeedPost,
 } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
-import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
+import axios from "axios";
+import "./post.scss";
 
-function Post({ masterCurrentUser }) {
+function Post() {
+  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log(user);
-  //Fetch all feedPosts
+
+  //All feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
   useEffect(() => {
     getFeedPosts(dispatch);
   }, [dispatch]);
 
   //Delete feedPost
+  const [deleting, setDeleting] = useState(false);
   const handlePostDelete = (id) => {
+    setDeleting(true);
     deleteFeedPost(id, dispatch);
     window.location.reload();
   };
 
   //Bookmark
+  const [saving, setSaving] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const saveBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${id}`, {
-        userId: masterCurrentUser?._id,
+        userId: user?._id,
       });
       setBookmarked(true);
     } catch (error) {
@@ -39,15 +43,12 @@ function Post({ masterCurrentUser }) {
     }
   };
 
-  //Open Close deleteEditCon
-  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
-
   //Like and dislike
   const [liked, setLiked] = useState(false);
   const handleLike = async (id) => {
     try {
       await axios.put(`/posts/like/${id}`, {
-        userId: masterCurrentUser._id,
+        userId: user._id,
       });
       setLiked(true);
       window.location.reload();
@@ -57,7 +58,7 @@ function Post({ masterCurrentUser }) {
     setLiked(liked ? liked - 1 : liked + 1);
     setLiked(!liked);
   };
-  console.log(feedPosts);
+  
 
   return (
     <>
@@ -130,14 +131,14 @@ function Post({ masterCurrentUser }) {
                 className="postDeleteBut"
                 onClick={() => handlePostDelete(feedPost._id)}
               >
-                delete
+                {deleting ? "Deleting..." : "Delete"}
               </button>
 
               <button
                 className="bookmark"
                 onClick={() => saveBookmarkPost(feedPost._id)}
               >
-                bookmark
+                Bookmark
               </button>
               <div className="postBottomRight">
                 <span className="postCommentText">45 comments</span>

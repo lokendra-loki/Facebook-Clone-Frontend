@@ -11,6 +11,7 @@ function Register() {
 
   const onSubmit = async (values, actions) => {
     dispatch({ type: "LOGIN_START" });
+
     try {
       const res = await axios.post("/auth/register", {
         username: values.username,
@@ -49,15 +50,15 @@ function Register() {
       <form onSubmit={handleSubmit} className="form">
         <h3 className="loginLogo">Facebook</h3>
         <span className="loginDescription">
-            Connect with friends and the world around you on Facebook .
-          </span>
+          Connect with friends and the world around you on Facebook .
+        </span>
         <label htmlFor="username" className="registerInputLabel">
-          Username
+          Full Name
         </label>
         <input
           type="text"
           id="username"
-          placeholder="Username"
+          placeholder="Full Name"
           value={values.username}
           autoComplete="off"
           onChange={handleChange}

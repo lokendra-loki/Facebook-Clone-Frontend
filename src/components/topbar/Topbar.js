@@ -16,23 +16,11 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./topbar.scss";
+import { useAPI } from "../../context/currentUserContext";
 
 function Topbar({ setSearchResult, allUsers }) {
   const { user } = useContext(AuthContext);
-
-  //Fetch userCredential for profile pic
-  const [userInfo, setUserInfo] = useState({});
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const res = await axios.get(`/users/get/${user.others?._id}`);
-        setUserInfo(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUserInfo();
-  }, [user?.others?._id]);
+  const { currentUser } = useAPI();
 
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
@@ -61,10 +49,7 @@ function Topbar({ setSearchResult, allUsers }) {
         {/* Topbar Center */}
         <div className="topbarCenter">
           <Link to="/" className="link">
-            <div
-              className="IconCon"
-              
-            >
+            <div className="IconCon">
               <HomeOutlinedIcon className="topbarCenterIcon" />
             </div>
           </Link>
@@ -88,10 +73,10 @@ function Topbar({ setSearchResult, allUsers }) {
         {/* Topbar right */}
         <div className="topbarRight">
           <div className="trProfileCon">
-            <Link to={`/profile/${userInfo?._id}`} className="link">
-              <img className="trProfileImg" src={userInfo?.profilePic} alt="" />
+            <Link to={`/profile/${currentUser?._id}`} className="link">
+              <img className="trProfileImg" src={currentUser?.profilePic} alt="" />
               <span className="trProfileName">
-                {userInfo?.username?.split(" ")[0]}
+                {currentUser?.username?.split(" ")[0]}
               </span>
             </Link>
           </div>
@@ -121,7 +106,7 @@ function Topbar({ setSearchResult, allUsers }) {
           <SettingContainer currentUser={user} currentUserDetail={userDetail} />
         )} */}
 
-        {openSettingCon && <SettingContainer userInfo={userInfo} />}
+        {openSettingCon && <SettingContainer userInfo={currentUser} />}
       </div>
     </>
   );

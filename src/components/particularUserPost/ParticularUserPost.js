@@ -1,19 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./particularUserPost.scss";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
 import { deleteFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
 import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
-import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import axios from "axios";
 
-function ParticularUserPost({ masterCurrentUser, particularPosts }) {
- 
+function ParticularUserPost({ particularPosts }) {
   //Fetch all feedPosts
   const { dispatch } = useContext(FeedPostsContext);
   const { user } = useContext(AuthContext);
-  const currentUser = user?.others;
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -26,7 +24,7 @@ function ParticularUserPost({ masterCurrentUser, particularPosts }) {
   const saveBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${particularPosts?._id}`, {
-        userId: currentUser?._id,
+        userId: user?._id,
       });
       setBookmarked(true);
     } catch (error) {
@@ -43,15 +41,12 @@ function ParticularUserPost({ masterCurrentUser, particularPosts }) {
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">
-              {/* <Link to={`/profile/feedPosts.userID`}> */}
               <img
                 className="postProfileImg"
                 src={particularPosts?.profilePic}
                 alt=""
               />
-              {/* </Link> */}
               <span className="postUsername">{particularPosts?.username}</span>
-
               <span className="postDate">
                 {format(particularPosts?.createdAt)}
               </span>
@@ -73,14 +68,16 @@ function ParticularUserPost({ masterCurrentUser, particularPosts }) {
 
           <div className="postCenter">
             <span className="postText">{particularPosts?.desc}</span>
-            <img className="postImg" src="" alt="" />
+            <img className="postImg" src={particularPosts.img} alt="" />
           </div>
 
           <div className="postBottom">
             <div className="postBottomLeft">
               <img className="likeIcon" src="/assets/like.png" alt="" />
               <img className="likeIcon" src="/assets/heart.png" alt="" />
-              <span className="postLikeCounter"> 9 people like it</span>
+              <span className="postLikeCounter">
+                {particularPosts?.likes?.length} Likes
+              </span>
             </div>
             <button
               className="postDeleteBut"

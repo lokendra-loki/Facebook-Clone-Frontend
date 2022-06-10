@@ -3,6 +3,7 @@
   background-color: #18191a;
   color: rgb(204, 201, 201);
   height: 2000vh;
+  margin-top: -10px;
 
   .bmprofileRight {
     flex: 9;
@@ -18,8 +19,10 @@
         }
         .bmcoverPicture {
           width: 100%;
-          height: 250px;
+          height: 300px;
           object-fit: cover;
+          border-top: 1px solid #000;
+          border-radius: 10px 10px 0px 0px ;
         }
         .bmprofilePicture {
           width: 150px;

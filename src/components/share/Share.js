@@ -11,9 +11,12 @@ import {
 import app from "../../firebase";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { useAPI } from "../../context/currentUserContext";
 
-const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
+const Share = () => {
   const { user } = useContext(AuthContext);
+  const { currentUser } = useAPI();
+
   //Create Post
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
@@ -47,7 +50,6 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
         }
       },
       (error) => {
-        // Handle unsuccessful uploads
         console.log(error);
         setError(true);
       },
@@ -55,10 +57,10 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.post("/posts/create/", {
-              userID: masterCurrentUser?._id,
+              userID: user._id,
               desc: desc,
-              username: masterCurrentUser?.username,
-              profilePic: masterCurrentUser?.profilePic,
+              username: user?.username,
+              profilePic: currentUser?.profilePic,
               img: downloadURL,
             });
             setSuccess(true);
@@ -72,23 +74,19 @@ const Share = ({ masterCurrentUser, masterCurrentUserDetail }) => {
     );
   };
 
-  
-
-
-
   return (
     <div className="share">
       <form className="shareWrapper" onSubmit={handleSubmitPost}>
         <div className="shareTop">
-          <Link to={`/profile/${user.others._id}`} className=" link">
+          <Link to={`/profile/${user?.others?._id}`} className=" link">
             <img
               className="shareProfileImg"
-              src={masterCurrentUserDetail?.profilePic}
+              src={currentUser?.profilePic}
               alt=""
             />
           </Link>
           <input
-            placeholder={`What's on your mind ${masterCurrentUser?.username} ? `}
+            placeholder={`What's on your mind ${currentUser?.username} ? `}
             className="shareInput"
             onChange={(e) => setDesc(e.target.value)}
           />

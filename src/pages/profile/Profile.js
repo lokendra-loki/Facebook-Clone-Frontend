@@ -1,28 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./profile.scss";
 import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
-import Rightbar from "../../components/rightbar/Rightbar";
-import Feed from "../../components/feed/Feed";
 import EditIcon from "@mui/icons-material/Edit";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import EditProfile from "../../components/editProfileInfo/EditProfile";
 import ParticularUserPost from "../../components/particularUserPost/ParticularUserPost";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
+import { useAPI } from "../../context/currentUserContext";
+import axios from "axios";
+import "./profile.scss";
 
 function Profile() {
+  const [openEditCon, setOpenEditCon] = useState(false);
   const { user } = useContext(AuthContext);
+  const { currentUser } = useAPI();
 
   //Fetching data from URl id
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log(path);
 
-  //At first user create profile with username and email
-  //suppose user has not created any user detail yet then we cant be able to show name on profile
-  //so we will show username from id not from detail
+  //get details
   const [getUser, setGetUser] = useState({});
   useEffect(() => {
     const fetchInfo = async () => {
@@ -32,7 +30,7 @@ function Profile() {
     fetchInfo();
   }, [path]);
 
-  //Fetching userDetail according to userID element
+  //Fetching userDetail
   const [viewUser, setViewUser] = useState({});
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -63,28 +61,6 @@ function Profile() {
       console.log(error);
     }
   }, [path]);
-  console.log(particularUserAllPosts.length);
-  console.log(particularUserAllPosts);
-
-  //Follow user
-  // const [followed, setFollowed] = useState(false);
-  // const handleFollow = async () => {
-  //   try {
-  //     if (followed) {
-  //       setFollowed(false);
-  //       await axios.put(`/users/unfollow/${path}`, { userId: user.others._id });
-  //     } else {
-  //       await axios.put(`/users/follow/${path}`, {
-  //         userId: user.others._id,
-  //       });
-  //       setFollowed(true);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   setFollowed(!followed);
-  // };
-  // console.log(followed);
 
   //Alternative
   const [followed, setFollowed] = useState(false);
@@ -92,7 +68,7 @@ function Profile() {
   const handleFollow = async () => {
     try {
       await axios.put(`/users/follow/${path}`, {
-        userId: user.others._id,
+        userId: user?._id,
       });
       setFollowed(true);
       window.location.reload();
@@ -104,7 +80,7 @@ function Profile() {
   const handleUnFollow = async () => {
     try {
       await axios.put(`/users/unfollow/${path}`, {
-        userId: user.others._id,
+        userId: user?._id,
       });
       setUnfollowed(true);
       window.location.reload();
@@ -129,11 +105,6 @@ function Profile() {
     };
     fetchFollowers();
   }, [path]);
-  console.log(followers);
-  console.log(followings);
-
-  //To open Edit Profile Container
-  const [openEditCon, setOpenEditCon] = useState(false);
 
   return (
     <>
@@ -146,10 +117,10 @@ function Profile() {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileContainer">
-              <img className="coverPicture" src="/assets/profile.jpeg" alt="" />
+              <img className="coverPicture" src={currentUser.coverPic} alt="" />
               <img
                 className="profilePicture"
-                src="/assets/profile.jpeg"
+                src={currentUser.profilePic}
                 alt=""
               />
               <div className="ButtonCon">
@@ -202,7 +173,8 @@ function Profile() {
           <div className="profileRightBottom">
             <div className="yourTotalPostsCon">
               <span className="yourTotalPosts">
-                You have created {particularUserAllPosts?.length} posts till now
+                User have created {particularUserAllPosts?.length} posts till
+                now
               </span>
             </div>
 
