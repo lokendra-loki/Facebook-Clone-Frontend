@@ -147,7 +147,11 @@ function Profile() {
           <div className="profileRightTop">
             <div className="profileContainer">
               <img className="coverPicture" src="/assets/profile.jpeg" alt="" />
-              <img className="profilePicture" src="/assets/profile.jpeg" alt="" />
+              <img
+                className="profilePicture"
+                src="/assets/profile.jpeg"
+                alt=""
+              />
               <div className="ButtonCon">
                 <button className="followButton" onClick={handleUnFollow}>
                   UnFollow
@@ -216,7 +220,6 @@ function Profile() {
               <div className="profileRightWrapper">
                 {/* <Rightbar viewUser={viewUser} /> */}
                 <ProfileRightBar />
-                dfdgfssss
               </div>
             </div>
           </div>
