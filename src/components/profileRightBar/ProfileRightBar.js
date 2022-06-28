@@ -17,6 +17,7 @@ function ProfileRightBar({ viewUser }) {
   const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
 
+
   const [userKoAllFollowersId, setUserKoAllFollowersId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowers = async () => {
@@ -24,7 +25,7 @@ function ProfileRightBar({ viewUser }) {
         const res = await axios.get(`/users/allFollowers/${path}`);
         setUserKoAllFollowersId(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(" path Empty");
       }
     };
     fetchAllFollowers();
@@ -38,7 +39,7 @@ function ProfileRightBar({ viewUser }) {
         const res = await axios.get(`/users/allFollowings/${path}`);
         setUserKoAllFollowingsId(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(" path Empty");
       }
     };
     fetchAllFollowings();
@@ -49,30 +50,28 @@ function ProfileRightBar({ viewUser }) {
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
-        const res = await axios.get(`/users/allFollowers/${user?._id}`);
+        const res = await axios.get(`/users/allFollowers/${user.others?._id}`);
         setAllFollowersId(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(" path Empty");
       }
     };
     fetchAllFollowers();
-  }, [user?._id]);
+  }, [user.others?._id]);
 
   //Fetching all followings Id
   const [allFollowingsId, setAllFollowingsId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowings = async () => {
       try {
-        const res = await axios.get(
-          `/users/allFollowings/${user?._id}`
-        );
+        const res = await axios.get(`/users/allFollowings/${user.others?._id}`);
         setAllFollowingsId(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(" path Empty");
       }
     };
     fetchAllFollowings();
-  }, [user?._id]);
+  }, [user.others?._id]);
 
   return (
     <>

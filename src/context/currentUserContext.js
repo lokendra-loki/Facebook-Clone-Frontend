@@ -12,14 +12,14 @@ export function CurrentUserContextProvider({ children }) {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const res = await axios.get(`/users/get/${user._id}`);
+        const res = await axios.get(`/users/get/${user?.others?._id}`);
         setCurrentUser(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchCurrentUser();
-  }, [user?._id]);
+  }, [user?.others?._id]);
 
   return (
     <CurrentUserContext.Provider

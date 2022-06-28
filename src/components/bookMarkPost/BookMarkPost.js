@@ -2,12 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import "./bookMarkPost.scss";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { format } from "timeago.js";
-import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 function BookMarkPost({ bookmarkPostId }) {
-  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
   const { user } = useContext(AuthContext);
 
   //get bookmark posts detail from id
@@ -25,13 +23,23 @@ function BookMarkPost({ bookmarkPostId }) {
   }, [bookmarkPostId]);
 
   //Bookmark
-  const [removedBookmarked, setRemovedBookmarked] = useState(true);
   const removeBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${bookmarkPostId}`, {
-        userId: user?._id,
+        userId: user.others?._id,
       });
-      setRemovedBookmarked(false);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Like and dislike
+  const handleLike = async (id) => {
+    try {
+      await axios.put(`/posts/like/${id}`, {
+        userId: user.others?._id,
+      });
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -55,18 +63,9 @@ function BookMarkPost({ bookmarkPostId }) {
               </span>
             </div>
 
-            <div
-              className="postTopRight"
-              onClick={() => setOpenEditDeleteCon(!openEditDeleteCon)}
-            >
+            <div className="postTopRight">
               <MoreHorizIcon />
             </div>
-          </div>
-
-          <div className="deleteEditConWrapper">
-            {openEditDeleteCon && (
-              <DeleteEditOpenCon closeEditDeleteCon={setOpenEditDeleteCon} />
-            )}
           </div>
 
           <div className="postCenter">
@@ -76,8 +75,13 @@ function BookMarkPost({ bookmarkPostId }) {
 
           <div className="postBottom">
             <div className="postBottomLeft">
-              <img className="likeIcon" src="/assets/like.png" alt="" />
-              <img className="likeIcon" src="/assets/heart.png" alt="" />
+              <img
+                className="likeIcon"
+                src="/assets/like.png"
+                alt=""
+                onClick={() => handleLike(bookmarkPosts._id)}
+              />
+
               <span className="postLikeCounter">
                 {" "}
                 {bookmarkPosts?.likes?.length} Likes
@@ -87,9 +91,6 @@ function BookMarkPost({ bookmarkPostId }) {
             <button className="bookmark" onClick={removeBookmarkPost}>
               Remove
             </button>
-            <div className="postBottomRight">
-              <span className="postCommentText">45 comments</span>
-            </div>
           </div>
         </div>
       </div>

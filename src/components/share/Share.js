@@ -11,6 +11,7 @@ import {
 import app from "../../firebase";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { toast } from "react-toastify";
 import { useAPI } from "../../context/currentUserContext";
 
 const Share = () => {
@@ -57,9 +58,9 @@ const Share = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.post("/posts/create/", {
-              userID: user._id,
+              userID: user.others?._id,
               desc: desc,
-              username: user?.username,
+              username: user.others?.username,
               profilePic: currentUser?.profilePic,
               img: downloadURL,
             });

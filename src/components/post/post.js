@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import getFeedPosts, {
   deleteFeedPost,
 } from "../../context/feedPostContext/feedPostsApiCalls";
@@ -13,10 +11,8 @@ import "./post.scss";
 import { useAPI } from "../../context/currentUserContext";
 
 function Post() {
-  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
-  console.log(currentUser);
 
   //All feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
@@ -33,14 +29,12 @@ function Post() {
   };
 
   //Bookmark
-  const [saving, setSaving] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const saveBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${id}`, {
-        userId: user?._id,
+        userId: user.others?._id,
       });
-      setBookmarked(true);
+
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -48,19 +42,15 @@ function Post() {
   };
 
   //Like and dislike
-  const [liked, setLiked] = useState(false);
   const handleLike = async (id) => {
     try {
       await axios.put(`/posts/like/${id}`, {
-        userId: user._id,
+        userId: user.others?._id,
       });
-      setLiked(true);
       window.location.reload();
     } catch (error) {
       console.log(error);
     }
-    setLiked(liked ? liked - 1 : liked + 1);
-    setLiked(!liked);
   };
 
   return (
@@ -84,19 +74,6 @@ function Post() {
 
                 <span className="postDate">{format(feedPost.createdAt)}</span>
               </div>
-
-              <div
-                className="postTopRight"
-                onClick={() => setOpenEditDeleteCon(!openEditDeleteCon)}
-              >
-                <MoreHorizIcon />
-              </div>
-            </div>
-
-            <div className="deleteEditConWrapper">
-              {openEditDeleteCon && (
-                <DeleteEditOpenCon closeEditDeleteCon={setOpenEditDeleteCon} />
-              )}
             </div>
 
             <div className="postCenter">
@@ -118,39 +95,32 @@ function Post() {
                   alt=""
                   onClick={() => handleLike(feedPost._id)}
                 />
-                <img
-                  className="likeIcon"
-                  src="/assets/heart.png"
-                  alt=""
-                  onClick={() => handleLike(feedPost._id)}
-                />
+
                 <span className="postLikeCounter">
                   {feedPost.likes.length} people like it
                 </span>
               </div>
 
-              {/* Delete */}
-              {feedPost.userID === user._id && (
-                <button
-                  className="postDeleteBut"
-                  onClick={() => handlePostDelete(feedPost._id)}
-                >
-                  {deleting ? "Deleting..." : "Delete"}
-                </button>
-              )}
-
+              {/* Save */}
               {feedPost.userID !== user._id && (
                 <button
                   className="bookmark"
                   onClick={() => saveBookmarkPost(feedPost._id)}
                 >
-                  {currentUser.bookmarks?.includes(feedPost._id) ? "Saved" : "Bookmark"}
+                  {currentUser.bookmarks?.includes(feedPost._id)
+                    ? "Saved"
+                    : "Bookmark"}
                 </button>
               )}
+              {/* Delete */}
+              <button
+                className="bookmark"
+                onClick={() => handlePostDelete(feedPost?._id)}
+              >
+                {deleting ? "Deleting..." : "Delete"}
+              </button>
 
-              <div className="postBottomRight">
-                <span className="postCommentText">45 comments</span>
-              </div>
+              <button className="bookmark">Edit</button>
             </div>
           </div>
         </div>

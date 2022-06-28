@@ -13,7 +13,7 @@ function BookMark() {
   const [currentUser, setCurrentUser] = useState(user);
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      const res = await axios.get(`/users/get/${user?._id}`);
+      const res = await axios.get(`/users/get/${user.others?._id}`);
       setCurrentUser(res.data);
     };
     fetchCurrentUser();
@@ -24,14 +24,14 @@ function BookMark() {
   useEffect(() => {
     const fetchBookmarkPostsId = async () => {
       try {
-        const res = await axios.get(`/users/bookmarkPosts/${user._id}`);
+        const res = await axios.get(`/users/bookmarkPosts/${user.others?._id}`);
         setBookmarkPostsId(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchBookmarkPostsId();
-  }, [user?._id]);
+  }, [user.others?._id]);
 
   return (
     <>

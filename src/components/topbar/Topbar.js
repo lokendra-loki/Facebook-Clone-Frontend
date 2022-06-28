@@ -20,6 +20,7 @@ import { useAPI } from "../../context/currentUserContext";
 function Topbar({ setSearchResult, allUsers }) {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
+  console.log(currentUser);
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (

@@ -13,8 +13,12 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    loginCall({ email, password }, dispatch);
-    navigate("/");
+    try {
+      loginCall({ email, password }, dispatch);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

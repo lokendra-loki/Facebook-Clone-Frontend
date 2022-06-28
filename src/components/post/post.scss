@@ -66,9 +66,7 @@
 
     .postCenter {
       margin: 20px 0px;
-      // background-color: red;
       max-height: 280px !important;
-      // position:relative;
 
       .postImg {
         margin-top: 20px !important;
@@ -76,6 +74,8 @@
         object-fit: cover;
         overflow: hidden;
       }
+
+      
     }
 
     .postBottom {
@@ -86,6 +86,8 @@
       .postBottomLeft {
         display: flex;
         align-items: center;
+        flex-direction: column;
+        gap: 5px;
 
         .likeIcon {
           width: 24px;

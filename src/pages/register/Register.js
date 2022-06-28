@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { registerSchema } from "./formValidationSchema";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 import "./register.css";
+import { toast } from "react-toastify";
 const { useFormik } = require("formik");
 
 function Register() {
   const { isFetching, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = async (values, actions) => {
     dispatch({ type: "LOGIN_START" });
@@ -19,10 +21,19 @@ function Register() {
         password: values.password,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+
+      // const res1 = await axios.post("/userDetail/create", {
+      //   userID: res.data._id,
+      //   username: res.data.username,
+      // });
+      // console.log(res1);
+
       actions.resetForm();
-      window.location.replace("/");
+      navigate("/");
+      toast.success("Register Successful", { theme: "colored" });
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
+      toast.error("Username/Email must be unique", { theme: "colored" });
     }
   };
 
