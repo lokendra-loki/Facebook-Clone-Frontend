@@ -13,6 +13,7 @@ import { useAPI } from "../../context/currentUserContext";
 function Post() {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
+  console.log(currentUser);
 
   //All feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
@@ -32,7 +33,7 @@ function Post() {
   const saveBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${id}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
 
       window.location.reload();
@@ -107,7 +108,7 @@ function Post() {
                   className="bookmark"
                   onClick={() => saveBookmarkPost(feedPost._id)}
                 >
-                  {currentUser.bookmarks?.includes(feedPost._id)
+                  {currentUser?.bookmarks?.includes(feedPost._id)
                     ? "Saved"
                     : "Bookmark"}
                 </button>

@@ -7,7 +7,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import "./editProfile.scss";
 import { useAPI1 } from "../../context/currentUserDetailContext";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function EditProfile() {
   const { currentUserDetail } = useAPI1();
@@ -85,7 +85,7 @@ function EditProfile() {
   return (
     <form className="editProfileInputCon" onSubmit={handleUserInfoSave}>
       <div className="epiRow1">
-        <ArrowBackIcon className="epiClearCon" onClick={() => navigate(-1)} />
+        <ArrowBackIcon className="epiClearCon" onClick={() => navigate(-1)}  />
         <span className="epiEditProfile">Edit Profile</span>
       </div>
       <hr className="epiHr1" />

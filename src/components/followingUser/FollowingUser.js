@@ -52,9 +52,7 @@ function FollowingUser({ followingId }) {
             </div>
           </div>
         </Link>
-        <button className="followingListFollowBack" onClick={handleUnFollow}>
-          Unfollow
-        </button>
+       
       </div>
     </>
   );

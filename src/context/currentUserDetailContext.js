@@ -21,7 +21,7 @@ export function CurrentUserDetailContextProvider({ children }) {
       }
     };
     fetchCurrentUser();
-  }, [user?._id, user?.others?._id]);
+  }, [user?._id]);
 
   return (
     <CurrentUserDetailContext.Provider

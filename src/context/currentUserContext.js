@@ -8,20 +8,21 @@ const CurrentUserContext = createContext();
 //context provider
 export function CurrentUserContextProvider({ children }) {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  console.log(user?.username);
+
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
         const res = await axios.get(`/users/get/${user?._id}`);
-        setCurrentUser(res.data);
+        setCurrentUser(res.data[0]);
       } catch (error) {
         console.log(error);
       }
     };
     fetchCurrentUser();
-  }, [user?._id, user?.others?._id]);
-  console.log(user);
+  }, [user?._id]);
+  
 
   return (
     <CurrentUserContext.Provider

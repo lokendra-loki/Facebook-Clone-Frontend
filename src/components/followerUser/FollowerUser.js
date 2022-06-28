@@ -51,10 +51,6 @@ function FollowerUser({ followerId }) {
             </div>
           </div>
         </Link>
-
-        <button className="followerListFollowBack" onClick={handleFollow}>
-          Follow back
-        </button>
       </div>
     </>
   );
