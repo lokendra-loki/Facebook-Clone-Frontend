@@ -1,20 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import Topbar from "../../components/topbar/Topbar";
 import Leftbar from "../../components/leftbar/Leftbar";
-import EditIcon from "@mui/icons-material/Edit";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import EditProfile from "../../components/editProfileInfo/EditProfile";
 import ParticularUserPost from "../../components/particularUserPost/ParticularUserPost";
 import ProfileRightBar from "../../components/profileRightBar/ProfileRightBar";
 import axios from "axios";
 import "./profile.scss";
-import { useAPI } from "../../context/currentUserContext";
 
 function Profile() {
-  const [openEditCon, setOpenEditCon] = useState(false);
   const { user } = useContext(AuthContext);
-  const { currentUser } = useAPI();
 
   //Fetching data from URl id
   const location = useLocation();
@@ -158,7 +153,7 @@ function Profile() {
 
             <div className="profileInfoContainer">
               <h4 className="profileInfoName">
-                {getUser?.username} ({viewUser?.nickName}){" "}
+                {getUser?.username} 
               </h4>
               <span className="profileDescription">{viewUser?.bio}</span>
             </div>
@@ -184,7 +179,6 @@ function Profile() {
                 ))}
               </div>
               <div className="profileRightWrapper">
-                {/* <Rightbar viewUser={viewUser} /> */}
                 <ProfileRightBar />
               </div>
             </div>

@@ -41,7 +41,7 @@ function FollowerUser({ followerId }) {
         <Link to={`/profile/${followerId}`} className="link">
           <div className="followerListImgAndName">
             <img
-              src={followerInfo.profilePic}
+              src={followerInfo?.profilePic}
               alt=""
               className="followerListImg"
             />

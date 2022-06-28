@@ -4,14 +4,12 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SchoolIcon from "@mui/icons-material/School";
-import EmailIcon from "@mui/icons-material/Email";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./profileRightBar.scss";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import FollowerUser from "../followerUser/FollowerUser";
 import FollowingUser from "../followingUser/FollowingUser";
-import { Link } from "@material-ui/core";
 
 function ProfileRightBar({ viewUser }) {
   const location = useLocation();
@@ -50,28 +48,44 @@ function ProfileRightBar({ viewUser }) {
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
-        const res = await axios.get(`/users/allFollowers/${user.others?._id}`);
+        const res = await axios.get(`/users/allFollowers/${user?._id}`);
         setAllFollowersId(res.data);
       } catch (error) {
         console.log(" path Empty");
       }
     };
     fetchAllFollowers();
-  }, [user.others?._id]);
+  }, [user?._id]);
 
   //Fetching all followings Id
   const [allFollowingsId, setAllFollowingsId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowings = async () => {
       try {
-        const res = await axios.get(`/users/allFollowings/${user.others?._id}`);
+        const res = await axios.get(`/users/allFollowings/${user?._id}`);
         setAllFollowingsId(res.data);
       } catch (error) {
         console.log(" path Empty");
       }
     };
     fetchAllFollowings();
-  }, [user.others?._id]);
+  }, [user?._id]);
+
+  //Fetch userDetail
+  const [userDetail, setUserDetail] = React.useState({});
+  useEffect(() => {
+    const fetchUserDetail = async () => {
+      try {
+        const res = await axios.post("/userDetail/userDetailData", {
+          userID: user?._id,
+        });
+        setUserDetail(res.data[0]);
+      } catch (error) {
+        console.log(" path Empty");
+      }
+    };
+    fetchUserDetail();
+  }, [user?._id]);
 
   return (
     <>
@@ -82,17 +96,19 @@ function ProfileRightBar({ viewUser }) {
             <div className="ppUserInfoItemCon">
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
-                {viewUser?.currentJobPosition1} at{" "}
-                <span className="boldSpan">{viewUser?.currentJobCompany1}</span>
+                {userDetail?.currentJobPosition1} at{" "}
+                <span className="boldSpan">
+                  {userDetail?.currentJobCompany1}
+                </span>
               </span>
             </div>
 
             <div className="ppUserInfoItemCon">
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
-                {viewUser?.currentJobPosition2} at{" "}
+                {userDetail?.currentJobPosition2} at{" "}
                 <span className="boldSpan">
-                  {viewUser?.currentJobCompany2},
+                  {userDetail?.currentJobCompany2},
                 </span>
               </span>
             </div>
@@ -100,7 +116,7 @@ function ProfileRightBar({ viewUser }) {
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 Founder at{" "}
-                <span className="boldSpan">{viewUser?.founderOf1}</span>
+                <span className="boldSpan">{userDetail?.founderOf1}</span>
               </span>
             </div>
 
@@ -108,25 +124,7 @@ function ProfileRightBar({ viewUser }) {
               <BusinessCenterIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 Co-founder at{" "}
-                <span className="boldSpan">{viewUser?.founderOf1}</span>
-              </span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Former{" "}
-                <span className="boldSpan">{viewUser?.pastJob1Position}</span>{" "}
-                at {viewUser?.pastJob1Company}
-              </span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Former{" "}
-                <span className="boldSpan">{viewUser?.pastJob2Position}</span>{" "}
-                at {viewUser?.pastJob2Company}
+                <span className="boldSpan">{userDetail?.founderOf1}</span>
               </span>
             </div>
 
@@ -135,10 +133,12 @@ function ProfileRightBar({ viewUser }) {
               <span className="ppUserInfoItemTxt">
                 Studies{" "}
                 <span className="boldSpan">
-                  {viewUser?.currentStudyingCourse}
+                  {userDetail?.currentStudyingCourse}
                 </span>{" "}
                 at {""}
-                {viewUser?.currentStudyingUniversity}{" "}
+                <span className="boldSpan">
+                  {userDetail?.currentStudyingUniversity}
+                </span>
               </span>
             </div>
 
@@ -147,20 +147,9 @@ function ProfileRightBar({ viewUser }) {
               <span className="ppUserInfoItemTxt">
                 +2 Completed from{" "}
                 <span className="boldSpan">
-                  {viewUser?.plus2CompletedCollege}
+                  {userDetail?.plus2CompletedCollege}
                 </span>{" "}
-                {viewUser?.plus2CompletedCollegeLocation}
-              </span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <SchoolIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                SEE completed from{" "}
-                <span className="boldSpan">
-                  {viewUser?.sEECompletedCollege}
-                </span>{" "}
-                {viewUser?.sEECompletedSchoolLocation}{" "}
+                {userDetail?.plus2CompletedCollegeLocation}
               </span>
             </div>
 
@@ -168,26 +157,14 @@ function ProfileRightBar({ viewUser }) {
               <LocationCityIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 Lives in{" "}
-                <span className="boldSpan">{viewUser?.currentlyLiving}</span>{" "}
+                <span className="boldSpan">{userDetail?.currentlyLiving}</span>{" "}
               </span>
             </div>
 
             <div className="ppUserInfoItemCon">
               <LocationOnIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
-                From <span className="boldSpan">{viewUser?.from}</span>{" "}
-              </span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <EmailIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">lokendra@gmail.com</span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <LocationOnIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Relationship: <span className="boldSpan">single</span>{" "}
+                From <span className="boldSpan">{userDetail?.from}</span>{" "}
               </span>
             </div>
 
@@ -195,14 +172,14 @@ function ProfileRightBar({ viewUser }) {
               <MoreHorizIcon className="ppInfoIcon" />
               <span className="ppUserInfoItemTxt">
                 See more about{" "}
-                <span className="boldSpan">{viewUser?.username}</span>
+                <span className="boldSpan">{userDetail?.username}</span>
               </span>
             </div>
 
             <button
               className="profileEdiBut"
               onClick={() =>
-                window.location.replace(`/profileEdit/${user.others?._id}`)
+                window.location.replace(`/profileEdit/${user?._id}`)
               }
             >
               Edit

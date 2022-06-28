@@ -22,11 +22,11 @@ function Register() {
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
 
-      // const res1 = await axios.post("/userDetail/create", {
-      //   userID: res.data._id,
-      //   username: res.data.username,
-      // });
-      // console.log(res1);
+      const res1 = await axios.post("/userDetail/create", {
+        userID: res.data._id,
+        username: res.data.username,
+      });
+      console.log(res1);
 
       actions.resetForm();
       navigate("/");

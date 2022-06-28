@@ -11,12 +11,12 @@ import {
 import app from "../../firebase";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import { toast } from "react-toastify";
 import { useAPI } from "../../context/currentUserContext";
 
 const Share = () => {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
+  console.log(user)
 
   //Create Post
   const [desc, setDesc] = useState("");
@@ -57,10 +57,10 @@ const Share = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.post("/posts/create/", {
-              userID: user.others?._id,
+            const res = axios.post("/posts/create", {
+              userID: user?._id,
               desc: desc,
-              username: user.others?.username,
+              username: currentUser?.username,
               profilePic: currentUser?.profilePic,
               img: downloadURL,
             });
@@ -79,7 +79,7 @@ const Share = () => {
     <div className="share">
       <form className="shareWrapper" onSubmit={handleSubmitPost}>
         <div className="shareTop">
-          <Link to={`/profile/${user?.others?._id}`} className=" link">
+          <Link to={`/profile/${user?._id}`} className=" link">
             <img
               className="shareProfileImg"
               src={currentUser?.profilePic}

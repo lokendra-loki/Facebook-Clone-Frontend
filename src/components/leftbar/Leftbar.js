@@ -14,7 +14,6 @@ function Leftbar({
   setSearchResult,
 }) {
   const { user } = useContext(AuthContext);
-  
 
   return (
     <div className="leftBar">
@@ -31,21 +30,24 @@ function Leftbar({
             </li>
           </Link>
 
-          <Link to={`/profile/${user.others?._id}`} className="link">
+          <Link to={`/profile/${user?._id}`} className="link">
             <li className="leftBarListItem">
               <Chat className="leftBarIcon" />
               <span className="leftBarListItemText">Profile</span>
             </li>
           </Link>
 
-          <Link to={`/bookMark/${user.others?._id}`} className="link">
-            <li className="leftBarListItem" onClick={window.scrollTo({top: 0, left: 0, behavior: 'smooth'})}>
+          <Link to={`/bookMark/${user?._id}`} className="link">
+            <li
+              className="leftBarListItem"
+              onClick={window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+            >
               <Bookmark className="leftBarIcon" />
               <span className="leftBarListItemText">Bookmarks</span>
             </li>
           </Link>
 
-          <Link to={`/settings/${user.others?._id}`} className="link">
+          <Link to={`/settings/${user?._id}`} className="link">
             <li className="leftBarListItem">
               <SettingsIcon className="leftBarIcon" />
               <span className="leftBarListItemText">Settings</span>

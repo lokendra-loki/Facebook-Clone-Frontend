@@ -14,13 +14,14 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import { useAPI } from "../../context/currentUserContext";
-import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Setting() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
+ 
+  
 
   //Open edit container
   const [openUserCredentialEditCon, setOpenUserCredentialEditCon] =
@@ -81,13 +82,12 @@ function Setting() {
       (error) => {},
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log(downloadURL);
           try {
-            const res = axios.put(`/users/update/${user._id}`, {
+            axios.put(`/users/update/${user._id}`, {
               profilePic: downloadURL,
             });
-
             setSuccess1(true);
-            console.log(res.data);
             window.location.reload();
           } catch (error) {
             console.log(error);
@@ -128,12 +128,10 @@ function Setting() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
-            const res = axios.put(`/users/update/${user._id}`, {
+            axios.put(`/users/update/${user._id}`, {
               coverPic: downloadURL,
             });
-
             setSuccess2(true);
-            console.log(res.data);
             window.location.reload();
           } catch (error) {
             console.log(error);
