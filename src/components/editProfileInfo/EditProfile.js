@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import ClearIcon from "@mui/icons-material/Clear";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SchoolIcon from "@mui/icons-material/School";
-import EmailIcon from "@mui/icons-material/Email";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import "./editProfile.scss";
 
 function EditProfile({ viewUser, closeEditCon }) {
-  const userDetailId = viewUser._id;
+  const userDetailId = viewUser?._id;
+  const { user } = useContext(AuthContext);
 
   //Edit Profile info
   const [currentJobPosition1, setCurrentJobPosition1] = useState("");
@@ -32,6 +31,9 @@ function EditProfile({ viewUser, closeEditCon }) {
   const [sEECompletedCollegeLocation, setSEECompletedCollegeLocation] =
     useState("");
 
+  const [from, setFrom] = useState("");
+  const [currentlyLiving, setCurrentlyLiving] = useState("");
+
   const saveUserDetail = {
     currentJobPosition1,
     currentJobCompany1,
@@ -47,41 +49,39 @@ function EditProfile({ viewUser, closeEditCon }) {
     plus2CompletedCollegeLocation,
     sEECompletedCollege,
     sEECompletedCollegeLocation,
+    from,
+    currentlyLiving,
   };
 
-  const handleUserInfoSave = async () => {
-    try {
-      const res = await axios.put(
-        `/userDetail/update/${userDetailId}`,
-        saveUserDetail
-      );
-      console.log(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleUserInfoSave = async () => {
+  //   try {
+  //     const res = await axios.put(
+  //       `/userDetail/update/${userDetailId}`,
+  //       saveUserDetail
+  //     );
+  //     console.log(res.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
-    <form className="editProfileInputCon" onSubmit={handleUserInfoSave}>
+    <form className="editProfileInputCon">
       <div className="epiRow1">
+        <ArrowBackIcon className="epiClearCon" />
         <span className="epiEditProfile">Edit Profile</span>
-        <div className="epiClearCon" onClick={() => closeEditCon(false)}>
-          <ClearIcon className="epiClearIcon" />
-        </div>
       </div>
       <hr className="epiHr1" />
 
-      <div className="epiRow2">
-        <span className="epiProfilePic">Profile Picture</span>
-        <span className="epiEdit">Edit</span>
-      </div>
-      <img src="" alt="" className="epiProfilePicAvatar" />
-
-      <div className="epiRow3">
-        <span className="epiCoverPic">Cover Picture</span>
-        <span className="epiEdit3">Edit</span>
-      </div>
-      <img src="" alt="" className="epiCoverPicAvatar" />
+      {/* {file ? (
+          <img
+            src={URL.createObjectURL(file)}
+            className="fpcSelectedItemCon"
+            alt=""
+          />
+        ) : (
+          <img src="" className="fpcSelectedItemCon" alt="" />
+        )} */}
 
       <span className="epiBio">Bio</span>
       <textarea className="epiBioInput" placeholder="Write your Bio here" />
@@ -123,7 +123,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">Founder of</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <ApartmentIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -134,7 +134,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">Founder of</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <ApartmentIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -145,7 +145,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">Currently Studying</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <SchoolIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -162,7 +162,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">Graduated from</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <SchoolIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -179,7 +179,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">+2 Completed from</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <SchoolIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -196,7 +196,7 @@ function EditProfile({ viewUser, closeEditCon }) {
 
       <span className="userInfoInputConTitle">SEE completed from</span>
       <div className="userInfoInputCon">
-        <BusinessCenterIcon className="userInfoEditIcon" />
+        <SchoolIcon className="userInfoEditIcon" />
         <input
           type="text"
           className="userInfoInput"
@@ -210,6 +210,24 @@ function EditProfile({ viewUser, closeEditCon }) {
           onChange={(e) => setSEECompletedCollegeLocation(e.target.value)}
         />
       </div>
+
+      <span className="userInfoInputConTitle">Address</span>
+      <div className="userInfoInputCon">
+        <LocationOnIcon className="userInfoEditIcon" />
+        <input
+          type="text"
+          className="userInfoInput"
+          placeholder="From"
+          onChange={(e) => setFrom(e.target.value)}
+        />
+        <input
+          type="text"
+          className="userInfoInput"
+          placeholder="Currently Living"
+          onChange={(e) => setCurrentlyLiving(e.target.value)}
+        />
+      </div>
+
       <button className="save" type="submit">
         save
       </button>

@@ -14,6 +14,7 @@ import {
 } from "firebase/storage";
 import app from "../../firebase";
 import { useAPI } from "../../context/currentUserContext";
+import EditProfile from "../../components/editProfileInfo/EditProfile";
 
 function Setting() {
   const location = useLocation();
@@ -171,7 +172,11 @@ function Setting() {
                     className="uploadProfilePic"
                   />
                 ) : (
-                  <img src={currentUser.profilePic} alt="" className="uploadProfilePic" />
+                  <img
+                    src={currentUser.profilePic}
+                    alt=""
+                    className="uploadProfilePic"
+                  />
                 )}
               </div>
               <button className="profilePicChange" onClick={handleSubmit1}>
@@ -200,7 +205,11 @@ function Setting() {
                     className="uploadCoverPic"
                   />
                 ) : (
-                  <img src={currentUser.coverPic}alt="" className="uploadCoverPic" />
+                  <img
+                    src={currentUser.coverPic}
+                    alt=""
+                    className="uploadCoverPic"
+                  />
                 )}
               </div>
               <button className="coverPicChange" type="submit">

@@ -162,21 +162,7 @@ function Profile() {
               </h4>
               <span className="profileDescription">{viewUser?.bio}</span>
             </div>
-
-            <button
-              className="profileEditBut"
-              onClick={() => setOpenEditCon(!openEditCon)}
-            >
-              <EditIcon />
-              <span className="editProfileTxt">
-                {openEditCon ? " Cancel" : " Edit Profile"}
-              </span>
-            </button>
           </div>
-
-          {openEditCon && (
-            <EditProfile viewUser={viewUser} closeEditCon={setOpenEditCon} />
-          )}
 
           <div className="profileRightBottom">
             <div className="yourTotalPostsCon">

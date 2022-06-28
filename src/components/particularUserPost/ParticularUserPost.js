@@ -1,17 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./particularUserPost.scss";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { FeedPostsContext } from "../../context/feedPostContext/FeedPostContext";
 import { deleteFeedPost } from "../../context/feedPostContext/feedPostsApiCalls";
 import { format } from "timeago.js";
-import DeleteEditOpenCon from "../deleteEditOpenCon/DeleteEditOpenCon";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
+import { useAPI } from "../../context/currentUserContext";
 
 function ParticularUserPost({ particularPosts }) {
   //Fetch all feedPosts
   const { dispatch } = useContext(FeedPostsContext);
   const { user } = useContext(AuthContext);
+  const { currentUser } = useAPI();
 
   //Delete feedPost
   const handlePostDelete = (id) => {
@@ -20,20 +21,28 @@ function ParticularUserPost({ particularPosts }) {
   };
 
   //Bookmark
-  const [bookmarked, setBookmarked] = useState(false);
   const saveBookmarkPost = async (id) => {
     try {
-      await axios.put(`/users/bookmark/${particularPosts?._id}`, {
-        userId: user?._id,
+      await axios.put(`/users/bookmark/${id}`, {
+        userId: user.others?._id,
       });
-      setBookmarked(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
 
-  //Open Close deleteEditCon
-  const [openEditDeleteCon, setOpenEditDeleteCon] = useState(false);
+  //Like and dislike
+  const handleLike = async (id) => {
+    try {
+      await axios.put(`/posts/like/${id}`, {
+        userId: user.others?._id,
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -52,29 +61,24 @@ function ParticularUserPost({ particularPosts }) {
               </span>
             </div>
 
-            <div
-              className="postTopRight"
-              onClick={() => setOpenEditDeleteCon(!openEditDeleteCon)}
-            >
+            <div className="postTopRight">
               <MoreHorizIcon />
             </div>
           </div>
 
-          <div className="deleteEditConWrapper">
-            {openEditDeleteCon && (
-              <DeleteEditOpenCon closeEditDeleteCon={setOpenEditDeleteCon} />
-            )}
-          </div>
-
           <div className="postCenter">
             <span className="postText">{particularPosts?.desc}</span>
-            <img className="postImg" src={particularPosts.img} alt="" />
+            <img className="postImg" src={particularPosts?.img} alt="" />
           </div>
 
           <div className="postBottom">
             <div className="postBottomLeft">
-              <img className="likeIcon" src="/assets/like.png" alt="" />
-              <img className="likeIcon" src="/assets/heart.png" alt="" />
+              <img
+                className="likeIcon"
+                src="/assets/like.png"
+                alt=""
+                onClick={() => handleLike(particularPosts?._id)}
+              />
               <span className="postLikeCounter">
                 {particularPosts?.likes?.length} Likes
               </span>
@@ -86,15 +90,16 @@ function ParticularUserPost({ particularPosts }) {
               delete
             </button>
 
-            <button
-              className="bookmark"
-              onClick={() => saveBookmarkPost(particularPosts?._id)}
-            >
-              Bookmark
-            </button>
-            <div className="postBottomRight">
-              <span className="postCommentText">45 comments</span>
-            </div>
+            {particularPosts.userID !== user._id && (
+              <button
+                className="bookmark"
+                onClick={() => saveBookmarkPost(particularPosts?._id)}
+              >
+                {currentUser.bookmarks?.includes(particularPosts?._id)
+                  ? "Saved"
+                  : "Bookmark"}
+              </button>
+            )}
           </div>
         </div>
       </div>

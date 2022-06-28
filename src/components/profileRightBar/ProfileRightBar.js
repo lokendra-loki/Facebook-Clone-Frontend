@@ -11,12 +11,12 @@ import "./profileRightBar.scss";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import FollowerUser from "../followerUser/FollowerUser";
 import FollowingUser from "../followingUser/FollowingUser";
+import { Link } from "@material-ui/core";
 
 function ProfileRightBar({ viewUser }) {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
-
 
   const [userKoAllFollowersId, setUserKoAllFollowersId] = React.useState([]);
   useEffect(() => {
@@ -198,11 +198,19 @@ function ProfileRightBar({ viewUser }) {
                 <span className="boldSpan">{viewUser?.username}</span>
               </span>
             </div>
+
+            <button
+              className="profileEdiBut"
+              onClick={() =>
+                window.location.replace(`/profileEdit/${user.others?._id}`)
+              }
+            >
+              Edit
+            </button>
           </div>
         </>
       ) : null}
-      {/*  Followers ===================================*/}
-
+      '{/*  Followers ===================================*/}
       {/* ============ */}
       {path ? (
         <>

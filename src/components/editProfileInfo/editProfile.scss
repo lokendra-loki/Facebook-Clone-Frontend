@@ -1,22 +1,17 @@
 .editProfileInputCon {
   background-color: #242526;
-  height: 180vh; 
   margin: 0px 20px;
   border-radius: 8px;
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  z-index: 999;
-  position: sticky;
-  margin-top: -380px;
-
 
   .epiRow1 {
     display: flex;
     align-items: center;
+    gap:30%;
 
-    margin-left: 43%;
-    justify-content: space-between;
+   
 
     .epiEditProfile {
       font-size: 18px;
@@ -76,6 +71,20 @@
     margin-left: 34%;
   }
 
+  .ppSaveBtn{
+    margin-top: 30px;
+    height: 35px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #0d0d0d;
+    color: white;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+  }
+
   .epiRow3 {
     display: flex;
     align-items: center;
@@ -106,6 +115,20 @@
     border-radius: 12px;
   }
 
+  .cpSaveBtn{
+    margin-top: 30px;
+    height: 35px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #0d0d0d;
+    color: white;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+  }
+
   .epiBio {
     margin-top: 20px;
     font-size: 18px;
@@ -129,5 +152,28 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
+    .userInfoEditIcon {
+      color: white;
+    }
+
+    .userInfoInput {
+      height: 30px;
+      width: 220px;
+      outline: none;
+      padding-left: 5px;
+    }
+  }
+  .save {
+    margin-top: 30px;
+    height: 35px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #0d0d0d;
+    color: white;
+    border: 1px solid grey;
   }
 }

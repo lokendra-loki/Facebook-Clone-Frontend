@@ -9,6 +9,7 @@ import BookMark from "./pages/bookMark/BookMark";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProfileEditPage from "./pages/profileEdPage/ProfileEditPage";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -19,8 +20,17 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={user ? <Home /> : <Login />} />
         <Route exact path="/profile/:id" element={<Profile />} />
-        <Route exact path="/settings/:id" element={user ? <Setting /> : <Login /> } />
-        <Route exact path="/bookMark/:id" element={user ?<BookMark /> : <Login />} />
+        <Route
+          exact
+          path="/settings/:id"
+          element={user ? <Setting /> : <Login />}
+        />
+        <Route
+          exact
+          path="/bookMark/:id"
+          element={user ? <BookMark /> : <Login />}
+        />
+        <Route exact path="/profileEdit/:id" element={<ProfileEditPage />} />
       </Routes>
       <ToastContainer
         position="bottom-left"
