@@ -13,7 +13,6 @@ import { useAPI } from "../../context/currentUserContext";
 function Post() {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
-  console.log(currentUser);
 
   //All feedPosts
   const { feedPosts, dispatch } = useContext(FeedPostsContext);
@@ -103,16 +102,15 @@ function Post() {
               </div>
 
               {/* Save */}
-              {feedPost.userID !== user._id && (
-                <button
-                  className="bookmark"
-                  onClick={() => saveBookmarkPost(feedPost._id)}
-                >
-                  {currentUser?.bookmarks?.includes(feedPost._id)
-                    ? "Saved"
-                    : "Bookmark"}
-                </button>
-              )}
+              <button
+                className="bookmark"
+                onClick={() => saveBookmarkPost(feedPost._id)}
+              >
+                {currentUser?.bookmarks?.includes(feedPost._id)
+                  ? "Saved"
+                  : "Bookmark"}
+              </button>
+
               {/* Delete */}
               <button
                 className="bookmark"

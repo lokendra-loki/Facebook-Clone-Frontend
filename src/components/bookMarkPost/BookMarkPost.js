@@ -26,7 +26,7 @@ function BookMarkPost({ bookmarkPostId }) {
   const removeBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${bookmarkPostId}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
       window.location.reload();
     } catch (error) {
@@ -38,7 +38,7 @@ function BookMarkPost({ bookmarkPostId }) {
   const handleLike = async (id) => {
     try {
       await axios.put(`/posts/like/${id}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
       window.location.reload();
     } catch (error) {

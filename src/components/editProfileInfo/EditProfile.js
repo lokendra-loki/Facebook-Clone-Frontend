@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
@@ -7,11 +7,13 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import "./editProfile.scss";
 import { useAPI1 } from "../../context/currentUserDetailContext";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 function EditProfile() {
   const { currentUserDetail } = useAPI1();
   const navigate = useNavigate();
+  const {user} =createContext(AuthContext);
 
   //Edit Profile info
   const [bio, setBio] = useState(currentUserDetail.bio);
@@ -85,7 +87,10 @@ function EditProfile() {
   return (
     <form className="editProfileInputCon" onSubmit={handleUserInfoSave}>
       <div className="epiRow1">
-        <ArrowBackIcon className="epiClearCon" onClick={() => navigate(-1)}  />
+        <ArrowBackIcon
+          className="epiClearCon"
+          onClick={() => navigate(`/profile/${user?._id}`)}
+        />
         <span className="epiEditProfile">Edit Profile</span>
       </div>
       <hr className="epiHr1" />

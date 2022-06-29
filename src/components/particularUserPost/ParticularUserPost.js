@@ -24,7 +24,7 @@ function ParticularUserPost({ particularPosts }) {
   const saveBookmarkPost = async (id) => {
     try {
       await axios.put(`/users/bookmark/${id}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
       window.location.reload();
     } catch (error) {
@@ -36,7 +36,7 @@ function ParticularUserPost({ particularPosts }) {
   const handleLike = async (id) => {
     try {
       await axios.put(`/posts/like/${id}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
       window.location.reload();
     } catch (error) {
@@ -100,6 +100,7 @@ function ParticularUserPost({ particularPosts }) {
                   : "Bookmark"}
               </button>
             )}
+            
           </div>
         </div>
       </div>

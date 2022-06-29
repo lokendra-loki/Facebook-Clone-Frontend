@@ -11,7 +11,6 @@ import "./profile.scss";
 function Profile() {
   const { user } = useContext(AuthContext);
 
-  //Fetching data from URl id
   const location = useLocation();
   const path = location.pathname.split("/")[2];
 
@@ -24,7 +23,6 @@ function Profile() {
     };
     fetchInfo();
   }, [path]);
-  console.log(getUser);
 
   //Fetching userDetail
   const [viewUser, setViewUser] = useState({});
@@ -59,14 +57,11 @@ function Profile() {
   }, [path]);
 
   //Alternative
-  const [followed, setFollowed] = useState(false);
-  const [unfollowed, setUnfollowed] = useState(false);
   const handleFollow = async () => {
     try {
       await axios.put(`/users/follow/${path}`, {
         userId: user?._id,
       });
-      setFollowed(true);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -78,29 +73,11 @@ function Profile() {
       await axios.put(`/users/unfollow/${path}`, {
         userId: user?._id,
       });
-      setUnfollowed(true);
       window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
-
-  //follower and following count
-  const [followers, setFollowers] = useState(0);
-  const [followings, setFollowings] = useState(0);
-  useEffect(() => {
-    const fetchFollowers = async () => {
-      try {
-        const res1 = await axios.get(`/users/followers/${path}`);
-        const res2 = await axios.get(`/users/followings/${path}`);
-        setFollowers(res1.data);
-        setFollowings(res2.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchFollowers();
-  }, [path]);
 
   return (
     <>
@@ -152,9 +129,7 @@ function Profile() {
             </div>
 
             <div className="profileInfoContainer">
-              <h4 className="profileInfoName">
-                {getUser?.username} 
-              </h4>
+              <h4 className="profileInfoName">{getUser?.username}</h4>
               <span className="profileDescription">{viewUser?.bio}</span>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -11,16 +11,13 @@ import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import SettingContainer from "../settingContainer/SettingContainer";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
-import { AuthContext } from "../../context/authContext/AuthContext";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Link } from "react-router-dom";
 import "./topbar.scss";
 import { useAPI } from "../../context/currentUserContext";
 
 function Topbar({ setSearchResult, allUsers }) {
-  const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
-  console.log(currentUser);
   const [openSettingCon, setOpenSettingCon] = useState(false);
 
   return (
@@ -73,7 +70,11 @@ function Topbar({ setSearchResult, allUsers }) {
         <div className="topbarRight">
           <div className="trProfileCon">
             <Link to={`/profile/${currentUser?._id}`} className="link">
-              <img className="trProfileImg" src={currentUser?.profilePic} alt="" />
+              <img
+                className="trProfileImg"
+                src={currentUser?.profilePic}
+                alt=""
+              />
               <span className="trProfileName">
                 {currentUser?.username?.split(" ")[0]}
               </span>
@@ -101,10 +102,6 @@ function Topbar({ setSearchResult, allUsers }) {
         </div>
       </div>
       <div className="settingContainerWrapper">
-        {/* {openSettingCon && (
-          <SettingContainer currentUser={user} currentUserDetail={userDetail} />
-        )} */}
-
         {openSettingCon && <SettingContainer userInfo={currentUser} />}
       </div>
     </>

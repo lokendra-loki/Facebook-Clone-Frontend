@@ -1,11 +1,10 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
+
 import "./followerUser.scss";
 
 function FollowerUser({ followerId }) {
-  const { user } = useContext(AuthContext);
   //Fetching userCredentials from id
   const [followerInfo, setAllFollowerInfo] = React.useState({});
   useEffect(() => {
@@ -19,21 +18,6 @@ function FollowerUser({ followerId }) {
     };
     fetchUserInfo();
   }, [followerId]);
-
-  //Follow
-  const [followed, setFollowed] = useState(false);
-  const handleFollow = async () => {
-    try {
-      await axios.put(`/users/follow/${followerId}`, {
-        userId: user.others._id,
-      });
-      setFollowed(true);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log(followed);
 
   return (
     <>

@@ -11,37 +11,39 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import FollowerUser from "../followerUser/FollowerUser";
 import FollowingUser from "../followingUser/FollowingUser";
 
-function ProfileRightBar({ viewUser }) {
+function ProfileRightBar() {
   const location = useLocation();
-  const path = location.pathname.split("/")[2];
+  const path = location.pathname.split("/")[2]
   const { user } = useContext(AuthContext);
 
   const [userKoAllFollowersId, setUserKoAllFollowersId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowers = async () => {
       try {
-        const res = await axios.get(`/users/allFollowers/${path}`);
+        const res = await axios.get(`/users/allFollowers/${path || user?._id}`);
         setUserKoAllFollowersId(res.data);
       } catch (error) {
         console.log(" path Empty");
       }
     };
     fetchAllFollowers();
-  }, [path]);
+  }, [path, user?._id]);
 
   //Fetching all followings Id
   const [userKoAllFollowingsId, setUserKoAllFollowingsId] = React.useState([]);
   useEffect(() => {
     const fetchAllFollowings = async () => {
       try {
-        const res = await axios.get(`/users/allFollowings/${path}`);
+        const res = await axios.get(
+          `/users/allFollowings/${path || user?._id}`
+        );
         setUserKoAllFollowingsId(res.data);
       } catch (error) {
         console.log(" path Empty");
       }
     };
     fetchAllFollowings();
-  }, [path]);
+  }, [path, user?._id]);
 
   //Fetching all followers Id
   const [allFollowersId, setAllFollowersId] = React.useState([]);
@@ -108,7 +110,7 @@ function ProfileRightBar({ viewUser }) {
               <span className="ppUserInfoItemTxt">
                 {userDetail?.currentJobPosition2} at{" "}
                 <span className="boldSpan">
-                  {userDetail?.currentJobCompany2},
+                  {userDetail?.currentJobCompany2}
                 </span>
               </span>
             </div>

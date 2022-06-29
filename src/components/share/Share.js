@@ -16,8 +16,6 @@ import { useAPI } from "../../context/currentUserContext";
 const Share = () => {
   const { user } = useContext(AuthContext);
   const { currentUser } = useAPI();
-  console.log(user)
-  console.log(currentUser);
 
   //Create Post
   const [desc, setDesc] = useState("");
@@ -59,9 +57,9 @@ const Share = () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           try {
             const res = axios.post("/posts/create", {
-              userID: user.others?._id,
+              userID: user?._id,
               desc: desc,
-              username: user.others?.username,
+              username: currentUser?.username,
               profilePic: currentUser?.profilePic,
               img: downloadURL,
             });

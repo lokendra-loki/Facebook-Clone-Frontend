@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/authContext/AuthContext";
 import "./followingUser.scss";
 
 function FollowingUser({ followingId }) {
-  const { user } = useContext(AuthContext);
   //Fetching userCredentials from id
   const [followingInfo, setAllFollowingInfo] = React.useState({});
   useEffect(() => {
@@ -19,20 +17,6 @@ function FollowingUser({ followingId }) {
     };
     fetchUserInfo();
   }, [followingId]);
-
-  //Unfollow
-  const [unfollowed, setUnfollowed] = useState(false);
-  const handleUnFollow = async () => {
-    try {
-      await axios.put(`/users/unfollow/${followingId}`, {
-        userId: user.others._id,
-      });
-      setUnfollowed(true);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
@@ -52,7 +36,6 @@ function FollowingUser({ followingId }) {
             </div>
           </div>
         </Link>
-       
       </div>
     </>
   );
