@@ -79,6 +79,7 @@ function EditProfile() {
         `/userDetail/update/${currentUserDetail._id}`,
         saveUserDetail
       );
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +101,7 @@ function EditProfile() {
         className="epiBioInput"
         placeholder="Write your Bio here"
         onChange={(e) => setBio(e.target.value)}
-        defaultValue={currentUserDetail.bio}
+        defaultValue={currentUserDetail?.bio}
       />
 
       {/* User information input ==============================*/}
@@ -112,14 +113,14 @@ function EditProfile() {
           className="userInfoInput"
           placeholder="Position"
           onChange={(e) => setCurrentJobPosition1(e.target.value)}
-          defaultValue={currentUserDetail.currentJobPosition1}
+          defaultValue={currentUserDetail?.currentJobPosition1}
         />
         <input
           type="text"
           className="userInfoInput"
           placeholder="company Name"
           onChange={(e) => setCurrentJobCompany1(e.target.value)}
-          defaultValue={currentUserDetail.currentJobCompany1}
+          defaultValue={currentUserDetail?.currentJobCompany1}
         />
       </div>
 
@@ -131,14 +132,14 @@ function EditProfile() {
           className="userInfoInput"
           placeholder="Position"
           onChange={(e) => setCurrentJobPosition2(e.target.value)}
-          defaultValue={currentUserDetail.currentJobPosition2}
+          defaultValue={currentUserDetail?.currentJobPosition2}
         />
         <input
           type="text"
           className="userInfoInput"
           placeholder="company Name"
           onChange={(e) => setCurrentJobCompany2(e.target.value)}
-          defaultValue={currentUserDetail.currentJobCompany2}
+          defaultValue={currentUserDetail?.currentJobCompany2}
         />
       </div>
 

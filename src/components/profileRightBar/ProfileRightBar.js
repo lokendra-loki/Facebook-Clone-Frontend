@@ -13,7 +13,7 @@ import FollowingUser from "../followingUser/FollowingUser";
 
 function ProfileRightBar() {
   const location = useLocation();
-  const path = location.pathname.split("/")[2]
+  const path = location.pathname.split("/")[2];
   const { user } = useContext(AuthContext);
 
   const [userKoAllFollowersId, setUserKoAllFollowersId] = React.useState([]);
@@ -95,88 +95,111 @@ function ProfileRightBar() {
         <>
           <h4 className="userInfo">User Information</h4>
           <div className="rightBarInfoContainer">
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                {userDetail?.currentJobPosition1} at{" "}
-                <span className="boldSpan">
-                  {userDetail?.currentJobCompany1}
+            {userDetail?.currentJobPosition1 && (
+              <div className="ppUserInfoItemCon">
+                <BusinessCenterIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  {userDetail?.currentJobPosition1}{" "}
+                  {userDetail?.currentJobCompany1 && "at "}
+                  <span className="boldSpan">
+                    {userDetail?.currentJobCompany1}
+                  </span>
                 </span>
-              </span>
-            </div>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                {userDetail?.currentJobPosition2} at{" "}
-                <span className="boldSpan">
-                  {userDetail?.currentJobCompany2}
+            {userDetail?.currentJobPosition2 && (
+              <div className="ppUserInfoItemCon">
+                <BusinessCenterIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  {userDetail?.currentJobPosition2}{" "}
+                  {userDetail?.currentJobCompany2 && "at "}
+                  <span className="boldSpan">
+                    {userDetail?.currentJobCompany2}
+                  </span>
                 </span>
-              </span>
-            </div>
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Founder at{" "}
-                <span className="boldSpan">{userDetail?.founderOf1}</span>
-              </span>
-            </div>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <BusinessCenterIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Co-founder at{" "}
-                <span className="boldSpan">{userDetail?.founderOf1}</span>
-              </span>
-            </div>
-
-            <div className="ppUserInfoItemCon">
-              <SchoolIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Studies{" "}
-                <span className="boldSpan">
-                  {userDetail?.currentStudyingCourse}
-                </span>{" "}
-                at {""}
-                <span className="boldSpan">
-                  {userDetail?.currentStudyingUniversity}
+            {userDetail?.founderOf1 && (
+              <div className="ppUserInfoItemCon">
+                <BusinessCenterIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  Founder at{" "}
+                  <span className="boldSpan">{userDetail?.founderOf1}</span>
                 </span>
-              </span>
-            </div>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <SchoolIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                +2 Completed from{" "}
-                <span className="boldSpan">
-                  {userDetail?.plus2CompletedCollege}
-                </span>{" "}
-                {userDetail?.plus2CompletedCollegeLocation}
-              </span>
-            </div>
+            {userDetail?.founderOf1 && (
+              <div className="ppUserInfoItemCon">
+                <BusinessCenterIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  Co-founder at{" "}
+                  <span className="boldSpan">{userDetail?.founderOf1}</span>
+                </span>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <LocationCityIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                Lives in{" "}
-                <span className="boldSpan">{userDetail?.currentlyLiving}</span>{" "}
-              </span>
-            </div>
+            {userDetail?.currentStudyingCourse && (
+              <div className="ppUserInfoItemCon">
+                <SchoolIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  Studies{" "}
+                  <span className="boldSpan">
+                    {userDetail?.currentStudyingCourse}
+                  </span>{" "}
+                  {userDetail?.currentStudyingUniversity && "at "} {""}
+                  <span className="boldSpan">
+                    {userDetail?.currentStudyingUniversity}
+                  </span>
+                </span>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <LocationOnIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                From <span className="boldSpan">{userDetail?.from}</span>{" "}
-              </span>
-            </div>
+            {userDetail?.plus2CompletedCollege && (
+              <div className="ppUserInfoItemCon">
+                <SchoolIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  +2 Completed from{" "}
+                  <span className="boldSpan">
+                    {userDetail?.plus2CompletedCollege}
+                  </span>{" "}
+                  {userDetail?.plus2CompletedCollegeLocation}
+                </span>
+              </div>
+            )}
 
-            <div className="ppUserInfoItemCon">
-              <MoreHorizIcon className="ppInfoIcon" />
-              <span className="ppUserInfoItemTxt">
-                See more about{" "}
-                <span className="boldSpan">{userDetail?.username}</span>
-              </span>
-            </div>
+            {userDetail?.currentlyLiving && (
+              <div className="ppUserInfoItemCon">
+                <LocationCityIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  Lives in{" "}
+                  <span className="boldSpan">
+                    {userDetail?.currentlyLiving}
+                  </span>{" "}
+                </span>
+              </div>
+            )}
+
+            {userDetail?.from && (
+              <div className="ppUserInfoItemCon">
+                <LocationOnIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  From <span className="boldSpan">{userDetail?.from}</span>{" "}
+                </span>
+              </div>
+            )}
+
+            {userDetail?.username && (
+              <div className="ppUserInfoItemCon">
+                <MoreHorizIcon className="ppInfoIcon" />
+                <span className="ppUserInfoItemTxt">
+                  See more about{" "}
+                  <span className="boldSpan">{userDetail?.username}</span>
+                </span>
+              </div>
+            )}
 
             <button
               className="profileEdiBut"

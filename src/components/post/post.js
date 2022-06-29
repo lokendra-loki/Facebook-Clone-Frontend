@@ -45,7 +45,7 @@ function Post() {
   const handleLike = async (id) => {
     try {
       await axios.put(`/posts/like/${id}`, {
-        userId: user.others?._id,
+        userId: user?._id,
       });
       window.location.reload();
     } catch (error) {

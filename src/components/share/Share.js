@@ -116,7 +116,7 @@ const Share = () => {
                   onChange={(e) => setFile(e.target.files[0])}
                 />
               </label>
-              {!file && <span className="inputRequiredStar">(required)</span>}
+              {!file && <span className="inputRequiredStar1">(required)</span>}
             </div>
 
             <div className="shareOption feelingShareOption">

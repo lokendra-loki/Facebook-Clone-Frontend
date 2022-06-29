@@ -4,6 +4,7 @@
   overflow-x: hidden !important;
   margin-top: -10px;
   min-height: 1000px;
+  
 }
 
 @media only screen and (max-width: 1700px) {
@@ -30,9 +31,9 @@
     .fw {
       width: 700px;
     }
-    .rbw {
-      width: 310px !important;
-    }
+    // .rbw {
+    //   width: 310px !important;
+    // }
   }
 }
 
